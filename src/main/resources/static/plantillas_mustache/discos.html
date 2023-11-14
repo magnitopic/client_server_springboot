@@ -1,0 +1,20 @@
+<!-- la manera de indicar a mustache que haga lo indicado con cada elemento de un array que vamos a darle -->
+<!-- enlace_comprar_listado_principal-->
+{{#.}}
+<div class="card" id-producto="{{id}}">
+	<img src="mostrar_imagen?id={{id}}" alt="albumCover" />
+	<img src="imgs/disk.webp" alt="disk" class="card-disk" />
+	<div class="card-info">
+		<p class="card-title">{{nombre}}</p>
+		<div class="card-album">
+			<p>{{artista}}</p>
+			<p>•</p>
+			<p>{{nombre_genero}}</p>
+		</div>
+		<div class="card-bottom">
+			<p class="card-price">{{precio}} €</p>
+			<a href="#" class="enlace_comprar_listado_principal" id-producto="{{id}}" >Añadir al carrito</a>			
+		</div>
+	</div>
+</div>
+{{/.}}

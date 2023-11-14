@@ -1,0 +1,16 @@
+<div>
+	Carrito de la compra
+	{{#.}}
+	<div>
+		Nombre: {{nombre}} <br>
+		<img src="subidas/{{libro_id}}.jpg" height="40px">
+		precio: {{precio_disco}}€ <br>
+		cantidad: <input type="number" value="{{cantidad}}"> <br>
+		<a href="#" >Borrar Producto</a>
+	</div>
+	{{/.}}
+</div>
+
+<div style="text-align: center; font-size: 1.5em;padding: 10px;">
+	<a href="#" id="realizar_pedido">Realizar pedido</a>
+</div>

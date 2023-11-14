@@ -1,0 +1,95 @@
+package tienda.discos.servicioJPAImpl;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
+
+import org.hibernate.query.internal.NativeQueryImpl;
+import org.hibernate.transform.AliasToEntityMapResultTransformer;
+import org.springframework.stereotype.Service;
+
+import tienda.discos.constantesSQL.ConstantesSQL;
+import tienda.discos.model.Disco;
+import tienda.discos.model.Genero;
+import tienda.discos.servicios.ServicioDiscos;
+
+
+@Service
+@Transactional
+public class ServicioDiscosJPAImpl implements ServicioDiscos {
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@Override
+	public void registrarDisco(Disco d) {
+		Genero g = entityManager.find(Genero.class, d.getIdGenero());
+		d.setGenero(g);
+		try {
+			d.setImagenPortada(d.getFotoSubida().getBytes());
+		} catch (IOException e) {
+			System.out.println("No se puede procesar la foto subida.");
+			e.printStackTrace();
+		}
+		entityManager.persist(d);
+	}
+
+	@Override
+	public List<Disco> obtenerDiscos() {
+		// TODO Auto-generated method stub
+		return entityManager.createQuery("select d from Disco d order by d.id desc").getResultList();
+	}
+
+	@Override
+	public void borrarDisco(int id) {
+		Disco d = entityManager.find(Disco.class, id);
+		if (d != null)
+			entityManager.remove(d);
+	}
+
+	@Override
+	public Disco obtenerDiscoPorId(int id) {
+		return entityManager.find(Disco.class, id);
+	}
+
+	@Override
+	public void gurdarCambioDisco(Disco d) {
+		Genero g = entityManager.find(Genero.class, d.getIdGenero());
+		d.setGenero(g);
+		if (d.getFotoSubida().getSize() == 0) {
+			System.out.println("No se subio una nueva foto, tenemos que mantener la anterior");
+			Disco discoAnterior = entityManager.find(Disco.class, d.getId());
+			d.setImagenPortada(discoAnterior.getImagenPortada());
+		}else {
+			System.out.println("Asignar la nueva foto al registro");
+			try {
+				d.setImagenPortada(d.getFotoSubida().getBytes());
+			} catch (IOException e) {
+				System.out.println("No se puede procesar la foto subida");
+				e.printStackTrace();
+			}
+		}
+		entityManager.merge(d);
+	}
+
+	@Override
+	public List<Map<String, Object>> obtenerDiscosParaFormatJSON() {
+		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_DISCOS_JSON);
+		NativeQueryImpl nativequery = (NativeQueryImpl)query;
+		nativequery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
+		return nativequery.getResultList();
+	}
+	
+	@Override
+	public Map<String, Object> obtenerDetallesDisco(int parseInt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

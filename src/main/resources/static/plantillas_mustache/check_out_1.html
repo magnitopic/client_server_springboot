@@ -1,0 +1,32 @@
+<div>Realizar Pedido</div>
+<div>Introduce tus datos de envío</div>
+<form id="formulario_pedido">
+	<div>
+		<label for="nombre">Nombre</label>
+		<input type="text" name="nombre" id="nombre">
+	</div>
+	<div>
+		<label for="direccion">Direccion</label>
+		<input type="text" name="direccion" id="direccion">
+	</div>
+	<div>
+		<label for="provincia">Provincia</label>
+		<select name="provincia" id="provincia"></select>
+	</div>
+	<div>
+		<input type="submit" id="aceptar_paso_1" value="Siguiente">
+	</div>
+</form>
+
+<script>
+	// script que llena el select de las provincias con los valores del array de provincias
+	let provincias = ["Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "Cuenca", "Girona", "Granada", "Guadalajara", "Guipúzcoa", "Huelva", "Huesca", "Islas Baleares", "Jaén", "A Coruña", "La Rioja", "Las Palmas", "León", "Lleida", "Lugo", "Madrid", "Málaga", "Murcia", "Navarra", "Ourense", "Palencia", "Pontevedra", "Salamanca", "Segovia", "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza"];
+
+	let select_provincias = document.getElementById("provincia");
+	for (let i = 0; i < provincias.length; i++) {
+		let option = document.createElement("option");
+		option.value = provincias[i];
+		option.text = provincias[i];
+		select_provincias.appendChild(option);
+	}
+</script>

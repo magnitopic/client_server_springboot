@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin - Listado discos</title>
+</head>
+<body>
+	
+
+	<div th:insert="fragments/general.html :: menu"></div>
+	
+	<a href="registrarDisco">Registar disco nuevo</a>
+	
+	<p>Listado de los discos:</p>
+	
+	<div th:each="disco : ${discos}" style="margin: 15px;" >
+		Nombre: <span th:text="${disco.nombre}" ></span> <br>
+		Artista: <span th:text="${disco.artista}"></span> <br>
+		Discográfica: <span th:text="${disco.discografica}"></span>
+		Año: <span th:text="${disco.ano}"></span>
+		Precio: <span th:text="${disco.precio}"></span>
+		Genero: <span th:text="${disco.genero.nombre}"></span> <br>
+		Portada: <br>
+		<img height="80px" th:src="@{${'../mostrar_imagen?id='+ disco.id}}" alt="albumCover" /><br>
+		<a th:href="@{${'borrarDisco?id='+ disco.id}}" onclick="return confirm('¿seguro?')" >borrar</a> 
+		<a th:href="@{${'editarDisco?id='+ disco.id}}">modificar</a>
+	</div>
+</body>
+</html>

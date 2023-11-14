@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheats" href="../../css/header.css" />
+		<link rel="stylesheet" href="css/card.css" />
+		<meta charset="ISO-8859-1" />
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<a href="admin/obtenerDiscos"
+			>Acceso a la administración de la pagina</a
+		>
+		<h1 style="background-color: #d3d3d3">Parte publica de la tienda</h1>
+		<div style="margin: 15px; text-align: center" id="mensaje_login">
+			Usuario no identificado
+		</div>
+		<h1>Bienvenido a la tienda de Discos</h1>
+
+		<div
+			style="
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				flex-direction: row;
+			"
+		>
+			<a href="#" id="inicio">Inicio</a>
+			<a href="#" id="discos">Discos</a>
+			<a href="#" id="registrarme">Registro</a>
+			<a href="#" id="logIn">Identificarse</a>
+			<a href="#" id="carrito">Carrito</a>
+			<a href="#" id="">Ver Pedidos</a>
+			<a href="#" id="">Mis datos</a>
+			<a href="#" id="logout">Cerrar sesión</a>
+		</div>
+		<div id="contenedor" style="display: flex; flex-wrap: wrap"></div>
+		<script src="librerias_js/jquery.js"></script>
+		<script src="librerias_js/mustache.js"></script>
+		<script src="librerias_js/js.cookie.js"></script>
+		<script src="javascript/constantes.js"></script>
+		<script src="javascript/carga_plantillas.js"></script>
+		<script src="javascript/funciones_menu.js"></script>
+		<script src="javascript/pasos_checkout.js"></script>
+	</body>
+</html>
