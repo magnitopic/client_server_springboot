@@ -2,7 +2,7 @@ $("#inicio").click(() => {
 	$("#contenedor").html(plantillaInicio);
 });
 
-$("#discos").click(() => {
+function mostrar_discos(){
 	$.getJSON("servicioWebDiscos/obtenerDiscos", (res) => {
 		//alert("respuesta del servidor: \n"+res);
 		let texto_html = "";
@@ -45,7 +45,9 @@ $("#discos").click(() => {
 			});
 		});
 	});
-});
+}
+
+$("#discos").click(mostrar_discos);
 
 $("#registrarme").click(() => {
 	$("#contenedor").html(plantillaRegistro);

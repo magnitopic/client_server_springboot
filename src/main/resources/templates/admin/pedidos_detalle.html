@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin - Detalle Pedidos</title>
+</head>
+<body>
+	
+
+	<div th:insert="fragments/general.html :: menu"></div>
+
+	<div style="text-align: center;">Detalles del pedido:</div>
+
+	<div>datos de envio:</div>
+	Nombre: <span th:text="${pedido.nombreCompleto}" ></span> <br>
+	direccion: <span th:text="${pedido.direccion}" ></span> <br>
+	provincia: <span th:text="${pedido.provincia}" ></span> <br>
+	
+	<br>
+	
+	<div>datos de pago</div>
+	tipo de tarjeta: <span th:text="${pedido.tipoTarjeta}" ></span><br>
+	titular: <span th:text="${pedido.titularTargeta}" ></span> <br>
+	numero de tarjeta: <span th:text="${pedido.numeroTarjeta}" ></span> <br>
+	
+	<br>
+	
+	<div>Productos del pedido:</div>
+	<div th:each="productoPedido : ${pedido.productoPedido}" style="margin: 15px;" >
+		Nombre: <span th:text="${productoPedido.disco.nombre}" ></span> <br>
+		precio/unidad: <span th:text="${productoPedido.disco.precio}" ></span> <br>
+		Cantidad: <span th:text="${productoPedido.cantidad}" ></span> <br>
+	</div>
+	
+	<br>
+	
+	<div style="margin: 15px">Estado del pedido</div>
+	<select th:field="${pedido.estado}" id="select_estado" onchange="alert('por hacer... actualizar el estado')">
+		<option th:each="e : ${estados}" th:text="${e}" th:value="${e}"/>
+	</select>
+	
+</body>
+</html>

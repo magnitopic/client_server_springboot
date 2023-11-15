@@ -18,8 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tienda.discos.constantes.EstadosPedido;
 import tienda.discos.model.Disco;
 import tienda.discos.model.Genero;
+import tienda.discos.model.Pedido;
+import tienda.discos.model.ProductoPedido;
 import tienda.discos.model.Usuario;
 import tienda.discos.model.setup.SetUp;
 
@@ -80,13 +83,51 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			// Crear registros de usuarios
 			Usuario u1 = new Usuario("Magnitopic", "testMail@mail.com", "1234Password");
 			//copiarImagenBase(rutaReal, "/imagenes_base/u1.jpg", "/subidas/u1.jpg");
+			u1.setAvatar(copiarImagenBase("http://localhost:8080/imagenes_base_usuarios/1.jpg"));
 			Usuario u2 = new Usuario("user", "mailTest@mail.com", "123");
 			//copiarImagenBase(rutaReal, "/imagenes_base/u2.jpg", "/subidas/u2.jpg");
+			u2.setAvatar(copiarImagenBase("http://localhost:8080/imagenes_base_usuarios/2.jpg"));
 			Usuario u3 = new Usuario("mag", "mail@mail.com", "123");
 			//copiarImagenBase(rutaReal, "/imagenes_base/u3.jpg", "/subidas/u3.jpg");
+			u3.setAvatar(copiarImagenBase("http://localhost:8080/imagenes_base_usuarios/3.jpg"));
 			entityManager.persist(u1);
 			entityManager.persist(u2);
 			entityManager.persist(u3);
+			// Crear unos pedidos por defecto
+			
+			Pedido p1 = new Pedido();
+			p1.setNombreCompleto("N. Completo");
+			p1.setDireccion("Info Dirección");
+			p1.setProvincia("Info Provincia");
+			p1.setTipoTarjeta("VISA");
+			p1.setNumeroTarjeta("123 456 789");
+			p1.setTitularTargeta("Info Titular");
+			p1.setUsuario(u3);
+			p1.setEstado(EstadosPedido.TERMINADO);
+			entityManager.persist(p1);
+			ProductoPedido pp1 = new ProductoPedido();
+			pp1.setPedido(p1);
+			pp1.setDisco(d1);
+			pp1.setCantidad(2);
+			entityManager.persist(pp1);
+
+			Pedido p2 = new Pedido();
+			p2.setNombreCompleto("N. Completo");
+			p2.setDireccion("Info Dirección");
+			p2.setProvincia("Info Provincia");
+			p2.setTipoTarjeta("VISA");
+			p2.setNumeroTarjeta("123 456 789");
+			p2.setTitularTargeta("Info Titular");
+			p2.setUsuario(u2);
+			p2.setEstado(EstadosPedido.TERMINADO);
+			entityManager.persist(p2);
+			ProductoPedido pp2 = new ProductoPedido();
+			pp2.setPedido(p2);
+			pp2.setDisco(d3);
+			pp2.setCantidad(2);
+			entityManager.persist(pp2);
+			
+			
 			// una vez realizado los registros iniciales marcaremos el setup como completado
 			SetUp registroSetUp = new SetUp();
 			registroSetUp.setCompletado(true);

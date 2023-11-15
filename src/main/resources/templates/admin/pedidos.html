@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin - Listado discos</title>
+</head>
+<body>
+	
+
+	<div th:insert="fragments/general.html :: menu"></div>
+	
+	<a href="registrarDisco">Registar disco nuevo</a>
+	
+	<p>Listado de pedidos:</p>
+	
+	<div th:each="pedido : ${pedidos}" style="margin: 15px;" >
+		Nombre: <span th:text="${pedido.nombreCompleto}" ></span> <br>
+		Dirección: <span th:text="${pedido.direccion}" ></span> <br>
+		Estado: <span th:text="${pedido.estado}" ></span> <br>
+		<a th:href="@{${ 'verDetallesPedido?id=' + pedido.id }}" >Ver detalles</a> 
+	</div>
+</body>
+</html>

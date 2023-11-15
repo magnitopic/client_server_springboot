@@ -18,7 +18,7 @@ public interface ServicioDiscos {
 	
 	void gurdarCambioDisco(Disco d);
 
-	Map<String, Object> obtenerDetallesDisco(int parseInt);
+	Map<String, Object> obtenerDetallesDisco(int idDisco);
 
 	List<Map<String, Object>> obtenerDiscosParaFormatJSON();
 	

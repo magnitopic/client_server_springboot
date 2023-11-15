@@ -1,8 +1,10 @@
 package tienda.discos.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -13,6 +15,10 @@ public class Usuario {
 	private String nombre;
 	private String email;
 	private String pass;
+	
+	@Lob
+	@Column(name = "avatar")
+	private byte[] avatar;
 	
 	@OneToOne
 	private Carrito carrito;
@@ -66,5 +72,11 @@ public class Usuario {
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+	public byte[] getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(byte[] avatar) {
+		this.avatar = avatar;
 	}
 }

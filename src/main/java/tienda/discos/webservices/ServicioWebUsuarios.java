@@ -1,5 +1,6 @@
 package tienda.discos.webservices;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.google.gson.Gson;
@@ -28,17 +31,26 @@ public class ServicioWebUsuarios {
 	@Autowired
 	private ServicioUsuarios servicioUsuarios;
 	
+	
+	
 	@RequestMapping("registrarUsuario")
 	public String registrarUsuario(@RequestParam Map<String, Object> formData,
-								@RequestParam("avatar") CommonsMultipartFile foto,
-								HttpServletRequest req){
+									MultipartHttpServletRequest req){
 		System.out.println("recibido formData: " + formData);
-		System.out.println("recibido foto: " + foto);
+		System.out.println("recibido foto: " + req.getFile("avatar"));
 		
 		Gson gson = new Gson();
 		JsonElement json = gson.toJsonTree(formData);
 		Usuario u = gson.fromJson(json, Usuario.class);
 		
+		
+		try {
+			u.setAvatar(req.getFile("avatar").getBytes());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("No puede asignar la foto al usuario");
+		}
 		servicioUsuarios.registarUsuario(u);
 		
 		String rutaRealDelProyecto = req.getServletContext().getRealPath("");

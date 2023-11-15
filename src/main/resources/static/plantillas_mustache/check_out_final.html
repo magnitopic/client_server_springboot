@@ -1,0 +1,49 @@
+<div>REALIZAR PEDIDO - PASO 3</div>
+
+<div>resumen del pedido:</div>
+
+<br/>
+
+<div>productos del pedido:</div>
+<div id="productos_pedido">
+	{{#libros}}
+		<div style="margin: 10px">
+			titulo: {{titulo}} <br>
+			<img height="60px" src="subidas/{{libro_id}}.jpg" /> <br>
+			cantidad: {{cantidad}} <br/>	
+			precio/unidad: {{precio_libro}}
+		</div>
+	{{/libros}}
+</div>
+
+<br/>
+
+<div>datos de envio:</div>
+<div style="margin: 10px;">
+	nombre completo: {{nombreCompleto}} <br>
+	direccion: {{direccion}} <br>
+	provincia: {{provincia}} <br>
+</div>
+
+<br/>
+
+<div>datos de pago:</div>
+<div style="margin: 10px">
+	tipo tarjeta: {{tipoTarjeta}} <br>
+	titular tarjeta: {{titularTarjeta}}	<br>
+	numero tarjeta: {{numeroTarjeta}} <br>
+</div>
+
+<div>Info adicional:</div>
+<div style="margin: 10px">
+	observaciones: {{observaciones}}	<br>
+	Regalo?: {{regalo}} <br>
+</div>
+
+<div>
+	<button style="margin:10px;padding: 10px;" id="boton_confirmar_pedido">CONFIRMAR PEDIDO</button>	
+</div>
+
+
+
+

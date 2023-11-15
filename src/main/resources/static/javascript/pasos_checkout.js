@@ -1,7 +1,7 @@
 let checkout_paso_zero = () => {
 	// mostrar al user un form donde mostrar la info del envÃ­o
 	$("contenedor").html(plantillaCheckoutUno);
-	$("aceptar_paso_1").click(checkout_paso_uno);
+	$("aceptar_paso_1").click(check_out_uno);
 };
 
 let check_out_uno = () => {
@@ -22,8 +22,8 @@ let check_out_uno = () => {
 		}
 	});
 };
-
-let checkout_paso_dos = () => {
+/*
+let checkout_paso_dos = () =>{
 	let tipo_tarjeta = $("#tipo_tarjeta").find(":selected").val();
 	let numero_tarjeta = $("#numero_tarjeta").val();
 	let titular_tarjeta = $("#titular_tarjeta").val();
@@ -32,6 +32,14 @@ let checkout_paso_dos = () => {
 		numero: numero_tarjeta,
 		titular: titular_tarjeta
 	}).done((res) => {
+		if (res == "ok")
+	}
+}
+
+
+let checkout_paso_dos = () => {
+	
+	
 		let resumen_pedido = res;
 		let html = Mustache.render(plantillaCheckoutTres, resumen_pedido);
 		$("contenedor").html(html);
@@ -39,4 +47,4 @@ let checkout_paso_dos = () => {
 			alert("Invocar una operación del servicio web de pedidos para confirmar el pedido, cambiando su estado por 'completado'");
 		});
 	});
-}
+}*/
