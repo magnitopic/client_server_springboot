@@ -1,0 +1,44 @@
+.shop {
+	border: 1px solid white;
+	width: fit-content;
+	margin: 1em;
+	padding: 1em;
+	color: white;
+}
+
+.shop-name {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+.shop-artist {
+	font-size: 1.2em;
+}
+.shop-img {
+	width: 5em;
+	height: auto;
+}
+.shop-price {
+	font-weight: bold;
+	color: #00ff00;
+	font-size: 1.2em;
+}
+.shop-item {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+}
+.shop-item > p {
+	margin: 0px;
+}
+
+.shop-data {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1em;
+}
+
+.shop-info{
+	display: flex;
+	gap: 2em;
+}

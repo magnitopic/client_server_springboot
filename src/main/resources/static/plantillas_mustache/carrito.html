@@ -1,16 +1,41 @@
-<div>
-	Carrito de la compra
-	{{#.}}
+<div style="display: flex;flex-direction: column;">
+	<h2>Carrito de la compra</h2>
 	<div>
-		Nombre: {{nombre}} <br>
-		<img src="subidas/{{libro_id}}.jpg" height="40px">
-		precio: {{precio_disco}}€ <br>
-		cantidad: <input type="number" value="{{cantidad}}"> <br>
-		<a href="#" >Borrar Producto</a>
+	{{#.}}
+	<div class="shop">
+		<div class="shop-top">
+			<span class="shop-name">{{nombre}}</span>
+			<span>•</span>
+			<span class="shop-artist">{{artista}}</span>
+		</div>
+		<div class="shop-data">
+			<img src="mostrar_imagen?id={{disco_id}}" alt="albumCover" class="shop-img" />
+
+			<div>
+				<div class="shop-info">
+					<div class="shop-item">
+						<p><b>Año:</b></p>
+						<p>{{ano}}</p>
+					</div>
+					<div class="shop-item">
+						<p>Discográfica:</p>
+						<p>{{discografica}}</p>
+					</div>
+					<div class="shop-item">
+						<p>Precio:</p>
+						<p class="shop-price">{{precio_disco}}<span>€</span></p>
+					</div>
+				</div>
+				<div class="shop-data">
+					<p>Cantidad:</p>
+					<input type="number" value="{{cantidad}}" />
+				</div>
+			</div>
+		</div>
 	</div>
 	{{/.}}
-</div>
-
+	</div>
 <div style="text-align: center; font-size: 1.5em;padding: 10px;">
 	<a href="#" id="realizar_pedido">Realizar pedido</a>
+</div>
 </div>
