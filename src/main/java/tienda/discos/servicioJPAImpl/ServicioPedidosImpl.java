@@ -75,6 +75,14 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 	}
 
 	@Override
+	public void procesarPaso3(String regalo, String observaciones, int idUsuario) {
+		Pedido p = obtenerPedidoActual(idUsuario);
+		p.setRegalo(regalo);
+		p.setObservaciones(observaciones);
+		entityManager.merge(p);
+	}
+
+	@Override
 	public ResumenPedido obtenerResumenDelPedido(int idUsuario) {
 		ResumenPedido resumen = new ResumenPedido();
 		Pedido p = obtenerPedidoActual(idUsuario);
@@ -84,6 +92,8 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 		resumen.setTipoTarjeta(p.getTipoTarjeta());
 		resumen.setTitularTarjeta(p.getTitularTargeta());
 		resumen.setNumeroTarjera(p.getNumeroTarjeta());
+		resumen.setRegalo(p.getRegalo());
+		resumen.setObservaciones(p.getObservaciones());
 		
 		resumen.setDiscos(servicioCarrito.obtenerProductosCarrito(idUsuario));
 		

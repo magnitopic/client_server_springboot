@@ -33,6 +33,10 @@ public class Pedido {
 	private String numeroTarjeta;
 	private String tipoTarjeta;
 	
+	// se pide en paso 3:
+	private String regalo;
+	private String observaciones;
+	
 	public String getEstado() {
 		return estado;
 	}
@@ -99,7 +103,18 @@ public class Pedido {
 	public void setTipoTarjeta(String tipoTarjeta) {
 		this.tipoTarjeta = tipoTarjeta;
 	}
-	
+	public String getRegalo() {
+		return regalo;
+	}
+	public void setRegalo(String regalo) {
+		this.regalo = regalo;
+	}
+	public String getObservaciones() {
+		return observaciones;
+	}
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
 	@Override
 	public String toString() {
 		return "Pedido [productoPedido=" + productoPedido + ", usuario=" + usuario + ", id=" + id + ", nombreCompleto="

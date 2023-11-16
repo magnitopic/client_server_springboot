@@ -35,13 +35,11 @@ let checkout_paso_dos = () =>{
 		if (res == "ok"){
 			$("#contenedor").html(plantillaCheckoutTres);
 			$("#aceptar_paso_3").click(checkout_paso_tres);
-		}else{			
+		}else{
 			alert(res);
 		}
 	})
 }
-
-
 
 let checkout_paso_tres = () => {
 		let regalo = $("#regalo").is(":checked");
@@ -50,8 +48,9 @@ let checkout_paso_tres = () => {
 			regalo:regalo,
 			observaciones: observaciones
 		}).done((res)=>{
+			console.log(JSON.parse(res));
 			let resumen_pedido = JSON.parse(res);
-			var html = Mustache.render(plantillaCheckoutFinal, resumen_pedido);
+			let html = Mustache.render(plantillaCheckoutFinal, resumen_pedido);
 			$("#contenedor").html(html);
 			$("#boton_confirmar_pedido").click(()=>{
 				$.ajax("servicioWebPedidos/FinalPedido",{
@@ -63,3 +62,6 @@ let checkout_paso_tres = () => {
 			});
 		});
 }
+
+
+

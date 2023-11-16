@@ -20,6 +20,11 @@ public class ResumenPedido {
 	private String titularTarjeta;
 	private String numeroTarjera;
 	private String tipoTarjeta;
+
+	// se pide en paso 3:
+	private String regalo;
+	private String observaciones;
+	
 	public java.util.List<Map<String, Object>> getDiscos() {
 		return Discos;
 	}
@@ -61,6 +66,18 @@ public class ResumenPedido {
 	}
 	public void setTipoTarjeta(String tipoTarjeta) {
 		this.tipoTarjeta = tipoTarjeta;
+	}
+	public String getRegalo() {
+		return regalo;
+	}
+	public void setRegalo(String regalo) {
+		this.regalo = regalo;
+	}
+	public String getObservaciones() {
+		return observaciones;
+	}
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
 	}
 	
 	

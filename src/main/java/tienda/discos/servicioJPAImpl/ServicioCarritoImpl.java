@@ -93,13 +93,13 @@ public class ServicioCarritoImpl implements ServicioCarrito {
 		Usuario u = (Usuario)entityManager.find(Usuario.class, idUsuario);
 		Carrito c = u.getCarrito();
 		List<Map<String, Object>> res = null;
-		if (c != null) {
+		if(c != null ) {
 			Query query = entityManager.createNativeQuery(
 					ConstantesSQL.SQL_OBTENER_PRODUCTOS_CARRITO);
 			query.setParameter("par_variable", c.getId());
 			NativeQueryImpl nativeQuery = (NativeQueryImpl) query;
 			nativeQuery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
-			res = nativeQuery.getResultList();
+			res = nativeQuery.getResultList(); 
 		}
 		return res;
 	}

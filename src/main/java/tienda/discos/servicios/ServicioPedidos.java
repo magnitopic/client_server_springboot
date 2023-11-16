@@ -18,6 +18,7 @@ public interface ServicioPedidos {
 	// metodos para Ajax
 	void procesarPaso1(String nombre, String direccion, String provincia, int idUsuario);
 	void procesarPaso2(String titular, String numero, String tipoTarjeta, int idUsuario);
+	void procesarPaso3(String regalo, String observaciones, int idUsuario);
 	ResumenPedido obtenerResumenDelPedido(int idUsuario);
 	void confirmarPedido(int idUsuario);
 }

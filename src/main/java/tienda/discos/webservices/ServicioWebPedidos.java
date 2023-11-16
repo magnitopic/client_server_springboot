@@ -45,16 +45,16 @@ public class ServicioWebPedidos {
 		return new ResponseEntity<String>(resp, HttpStatus.OK);
 	}
 	
-	/*@RequestMapping("paso3")
+	@RequestMapping("paso3")
 	public ResumenPedido paso3(String regalo, String observaciones, HttpServletRequest req){
 		Usuario u = (Usuario)req.getSession().getAttribute("usuario_identificado");
 		servicioPedidos.procesarPaso3(regalo, observaciones, u.getId());
 		ResumenPedido resumen = servicioPedidos.obtenerResumenDelPedido(u.getId());
 		return resumen;
-	}*/
+	}
 	
-	@RequestMapping("paso3")
-	public ResponseEntity<String> paso3(HttpServletRequest req){
+	@RequestMapping("FinalPedido")
+	public ResponseEntity<String> FinalPedido(HttpServletRequest req){
 		String resp = "";
 		Usuario usuario = (Usuario)req.getSession().getAttribute("usuario_identificado");
 		servicioPedidos.confirmarPedido(usuario.getId());

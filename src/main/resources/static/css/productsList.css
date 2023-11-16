@@ -1,9 +1,13 @@
 .shop {
-	border: 1px solid white;
 	width: fit-content;
 	margin: 1em;
 	padding: 1em;
 	color: white;
+	border-radius: 10px;
+	border: 1px solid #252525;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background-color: #151515;
+	min-width: 70vh;
 }
 
 .shop-name {
