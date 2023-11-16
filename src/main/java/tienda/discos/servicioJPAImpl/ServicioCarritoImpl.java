@@ -77,8 +77,15 @@ public class ServicioCarritoImpl implements ServicioCarrito {
 
 	@Override
 	public void borrarProductoCarrito(int idUsuario, int idProducto) {
-		// TODO Auto-generated method stub
-		
+		Usuario u = entityManager.find(Usuario.class, idUsuario);
+		Carrito c = u.getCarrito();
+		if (c != null) {
+			Query query = entityManager.createNativeQuery(
+					ConstantesSQL.SQL_BORRAR_PRODUCTO_CARRITO);
+			query.setParameter("carrito_id", c.getId());
+			query.setParameter("id_disco", idProducto);
+			query.executeUpdate();
+		}
 	}
 
 	@Override

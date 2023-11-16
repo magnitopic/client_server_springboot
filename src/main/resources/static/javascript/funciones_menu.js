@@ -120,6 +120,19 @@ $("#carrito").click(function () {
 						res
 					);
 					$("#contenedor").html(html);
+					$(".shop-can").click(function(e){
+						let id_disco = $(this).attr("id-disco");
+						$.post("servicioWebCarrito/borrarProducto",{
+							id: id_disco
+						}).done((res)=>{
+							if (res == "ok"){
+								$("#div-producto-"+id_disco).hide();
+							}else{
+								alert(res);
+							}
+						});
+						e.preventDefault();
+					});
 					$("#realizar_pedido").click(checkout_paso_zero);
 				}
 			}).fail(()=>{

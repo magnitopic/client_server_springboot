@@ -2,7 +2,7 @@
 	<h2>Carrito de la compra</h2>
 	<div>
 	{{#.}}
-	<div class="shop">
+	<div class="shop" id="div-producto-{{disco_id}}">
 			<div class="shop-top">
 				<span class="shop-name">{{nombre}}</span>
 				<span>•</span>
@@ -28,9 +28,9 @@
 					</div>
 					<div class="shop-data">
 						<p class="shop-title">Cantidad:</p>
-						<input type="number" value="{{cantidad}}" />
+						<input type="number" value="{{cantidad}}" id-disco="{{disco_id}}" class="shop-amount" />
 						<img
-							onclick="alert('To Do')"
+							id-disco="{{disco_id}}"
 							src="imgs/trashCan.png"
 							alt=""
 							class="shop-can"
@@ -43,7 +43,7 @@
 	
 	{{/.}}
 	</div>
-<div style="text-align: center; font-size: 1.5em;padding: 10px;">
-	<a href="#" id="realizar_pedido">Realizar pedido</a>
-</div>
+	<div style="text-align: center; font-size: 1.5em;padding: 10px;">
+		<a href="#" id="realizar_pedido">Realizar pedido</a>
+	</div>
 </div>

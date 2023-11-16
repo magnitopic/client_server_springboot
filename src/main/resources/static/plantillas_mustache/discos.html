@@ -1,5 +1,6 @@
 <!-- la manera de indicar a mustache que haga lo indicado con cada elemento de un array que vamos a darle -->
 <!-- enlace_comprar_listado_principal-->
+<div style="display: flex; flex-wrap: wrap">
 {{#.}}
 <div class="card" id-producto="{{id}}">
 	<img src="mostrar_imagen?id={{id}}" alt="albumCover" />
@@ -18,3 +19,4 @@
 	</div>
 </div>
 {{/.}}
+</div>

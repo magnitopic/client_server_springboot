@@ -1,40 +1,11 @@
-<div>
-	REALIZAR PEDIDO - PASO 3
-</div>
+<div>REALIZAR PEDIDO - PASO 3</div>
+<div>Información adicional del pedido:</div>
 
-<div>resumen del pedido:</div>
-<div>
-	productos del pedido:
-</div>
-<br>
-<div id="productos_pedido">
-	{{#discos}}
-		<div>
-			{{nombre}} - {{precio}} - {{cantidad}}
-			<img height="60x" src="subidas/{{disco_id}}.jpg">
+Observaciones:<br> 
+<textarea id="observaciones" name="observaciones" rows="5" cols="20"></textarea><br/>
+<input type="checkbox" id="regalo" name="regalo">
+<label for="regalo"> El envío es de regalo?</label> <br/>
 
-		</div>
-	{{/discos}}
-</div>
+<br/>
 
-<div>datos de envío:</div>
-
-<div style="margin: 10px;">
-	nombre completo: {{nombre_completo}} <br>
-	dirección: {{direccion}} <br>
-	provincia: {{provincia}} <br>
-</div>
-
-<div>
-	datos de pago:
-</div>
-
-<div>
-	tipo de tarjeta: {{tipo_tarjeta}} <br>
-	titular de la tarjeta: {{titular_tarjeta}} <br>
-	numero de tarjeta: {{numero_tarjeta}} <br>
-</div>
-
-<div>
-	<button id="boton_confirmat_pedido">Confirmar pedido</button>
-</div>
+<button style="padding: 10px;" id="checkout3_aceptar" >Completar pedido</button>

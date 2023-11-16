@@ -34,10 +34,30 @@
 	
 	<br>
 	
+	<input type="hidden" id="id_pedido"  th:field="${pedido.id}"/>
+	
 	<div style="margin: 15px">Estado del pedido</div>
-	<select th:field="${pedido.estado}" id="select_estado" onchange="alert('por hacer... actualizar el estado')">
-		<option th:each="e : ${estados}" th:text="${e}" th:value="${e}"/>
+	<select th:field="${pedido.estado}" id="select_estado">
+		<option th:each="e : ${estados}" th:text="${e}" th:value="${e.key}"/>
 	</select>
 	
+	<script src="../librerias_js/jquery.js"></script>
+	<script>
+		$("#select_estado").change((e)=>{
+			let estado = $("#select_estado").find(":selected").val();
+			let idPedido = $("#id_pedido").val();
+			alert("estado: "+ estado + ". Para la id de pedido: "+ idPedido);
+			$.post("servicioWebPedidos/actualizarEstadoPedido", 
+			{
+				id: idPedido,
+				estado: estado	
+			}
+			).done((res)=>{
+				if (res != "ok"){
+					alert(res);
+				}
+			});
+		});
+	</script>
 </body>
 </html>

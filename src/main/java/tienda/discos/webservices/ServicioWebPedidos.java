@@ -21,6 +21,7 @@ import tienda.discos.servicios.ServicioPedidos;
 
 @Controller
 @RestController
+@RequestMapping("servicioWebPedidos/")
 public class ServicioWebPedidos {
 
 	@Autowired
@@ -36,12 +37,21 @@ public class ServicioWebPedidos {
 	}
 	
 	@RequestMapping("paso2")
-	public ResumenPedido paso2(String tarjeta, String numero, String titular, HttpServletRequest req){
+	public ResponseEntity<String> paso2(String tarjeta, String numero, String titular, HttpServletRequest req){
+		String resp = "";
 		Usuario u = (Usuario)req.getSession().getAttribute("usuario_identificado");
 		servicioPedidos.procesarPaso2(titular, numero, tarjeta, u.getId());
+		resp = "ok";
+		return new ResponseEntity<String>(resp, HttpStatus.OK);
+	}
+	
+	/*@RequestMapping("paso3")
+	public ResumenPedido paso3(String regalo, String observaciones, HttpServletRequest req){
+		Usuario u = (Usuario)req.getSession().getAttribute("usuario_identificado");
+		servicioPedidos.procesarPaso3(regalo, observaciones, u.getId());
 		ResumenPedido resumen = servicioPedidos.obtenerResumenDelPedido(u.getId());
 		return resumen;
-	}
+	}*/
 	
 	@RequestMapping("paso3")
 	public ResponseEntity<String> paso3(HttpServletRequest req){

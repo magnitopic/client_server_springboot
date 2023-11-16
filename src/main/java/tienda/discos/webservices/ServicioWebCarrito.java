@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import tienda.discos.model.Usuario;
@@ -49,5 +50,12 @@ public class ServicioWebCarrito {
 		}else { 
 			throw new Exception("** USUARIO NO IDENTIFICADO **");
 		}
+	}
+	
+	@RequestMapping("borrarProducto")
+	public String borrarProducto(@RequestParam("id") int id, HttpServletRequest req) {
+		servicioCarrito.borrarProductoCarrito(
+				((Usuario)req.getSession().getAttribute("usuario_identificado")).getId(), id);
+		return "ok";
 	}
 }

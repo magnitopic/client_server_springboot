@@ -25,4 +25,6 @@ public class ConstantesSQL {
 	public static final String SQL_BORRAR_PRODUCTOS_CARRITO = 
 			"delete from producto_carrito where carrito_id = :carrito_id ";
 
+	public static final String SQL_BORRAR_PRODUCTO_CARRITO = 
+			"delete from producto_carrito where carrito_id = :carrito_id and disco_id= :id_disco";
 }
