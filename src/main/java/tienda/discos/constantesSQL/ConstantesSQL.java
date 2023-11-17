@@ -5,7 +5,7 @@ public class ConstantesSQL {
 	public final static String SQL_OBTENER_DISCOS_JSON = 
 			"SELECT d.id, d.ano, d.artista, d.discografica, d.nombre, d.precio, g.nombre AS nombre_genero "
 			+ "FROM disco as d, genero as g "
-			+ "WHERE d.genero_id = g.id "
+			+ "WHERE d.genero_id = g.id and d.alta = 1 "
 			+ "ORDER BY d.id DESC";
 
 	public static final String SQL_OBTENER_GENEROS_PARA_DESPLEGABLE = 

@@ -22,6 +22,8 @@ public class Disco {
 	private String ano;
 	private Double precio;
 	
+	private boolean alta = true;
+	
 	@Lob
 	@Column(name ="imagen_portada")
 	private byte[] imagenPortada;
@@ -64,6 +66,14 @@ public class Disco {
 		this.ano = ano;
 		this.precio = precio;
 		this.id = id;
+	}
+
+	public boolean isAlta() {
+		return alta;
+	}
+
+	public void setAlta(boolean alta) {
+		this.alta = alta;
 	}
 
 	public String getNombre() {

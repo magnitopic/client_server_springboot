@@ -57,22 +57,27 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			// Crear registros de discos
 			Disco d1 = new Disco("Comedown Machine", "The Strokes", "RCA", "2013", 27.99);
 			d1.setGenero(indie);
+			d1.setAlta(true);
 			d1.setImagenPortada(copiarImagenBase("http://localhost:8080/imagenes_base/1.jpg"));
 			////copiarImagenBase(rutaReal, "/imagenes_base/1.jpg", "/subidas/1.jpg");
 			Disco d2 = new Disco("The New Abnormal", "The Strokes", "RCA", "2020", 19.99);
 			d2.setGenero(indie);
+			d2.setAlta(true);
 			d2.setImagenPortada(copiarImagenBase("http://localhost:8080/imagenes_base/2.jpg"));
 			//copiarImagenBase(rutaReal, "/imagenes_base/2.jpg", "/subidas/2.jpg");
 			Disco d3 = new Disco("Tranquility Base Hotel & Casino", "The Arctic Monkeys", "Domino", "2018", 21.99);
 			d3.setGenero(rock);
+			d3.setAlta(true);
 			d3.setImagenPortada(copiarImagenBase("http://localhost:8080/imagenes_base/3.jpg"));
 			//copiarImagenBase(rutaReal, "/imagenes_base/3.jpg", "/subidas/3.jpg");
 			Disco d4 = new Disco("Blue Album", "Weezer", "DGC", "1994", 21.99);
 			d4.setGenero(indie);
+			d4.setAlta(true);
 			d4.setImagenPortada(copiarImagenBase("http://localhost:8080/imagenes_base/4.jpg"));
 			//copiarImagenBase(rutaReal, "/imagenes_base/4.jpg", "/subidas/4.jpg");
 			Disco d5 = new Disco("Stadium Arcadium", "Red Hot Chili Peppers", "Warner", "2006", 21.99);
 			d5.setGenero(rock);
+			d5.setAlta(true);
 			d5.setImagenPortada(copiarImagenBase("http://localhost:8080/imagenes_base/5.jpg"));
 			//copiarImagenBase(rutaReal, "/imagenes_base/5.jpg", "/subidas/5.jpg");
 			entityManager.persist(d1);

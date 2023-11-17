@@ -136,7 +136,7 @@ $("#carrito").click(function () {
 					$("#realizar_pedido").click(checkout_paso_zero);
 				}
 			}).fail(()=>{
-				alert("Error: Prueba a identificarte");
+				alert("El carrito está vacio");
 			});
 	} else {
 		alert("debes identificarte para acceder al carrito");
@@ -156,3 +156,12 @@ $("#logout").click(() => {
 		},
 	});
 });
+
+$("#mispedidos").click((e)=>{
+	alert("todo");
+})
+
+
+$("#misdatos").click((e)=>{
+	alert("todo");
+})

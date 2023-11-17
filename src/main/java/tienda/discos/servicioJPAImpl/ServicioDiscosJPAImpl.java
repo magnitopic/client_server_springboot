@@ -42,14 +42,15 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 	@Override
 	public List<Disco> obtenerDiscos() {
 		// TODO Auto-generated method stub
-		return entityManager.createQuery("select d from Disco d order by d.id desc").getResultList();
+		return entityManager.createQuery("select d from Disco d where d.alta = true order by d.id desc").getResultList();
 	}
 
 	@Override
 	public void borrarDisco(int id) {
+		// Ya no borramos el producto si no que lo damos de baja
 		Disco d = entityManager.find(Disco.class, id);
-		if (d != null)
-			entityManager.remove(d);
+		d.setAlta(false);
+		entityManager.merge(d);
 	}
 
 	@Override
