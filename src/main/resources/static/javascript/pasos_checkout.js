@@ -47,9 +47,9 @@ let checkout_paso_tres = () => {
 		$.post("servicioWebPedidos/paso3",{
 			regalo:regalo,
 			observaciones: observaciones
-		}).done((res)=>{
-			console.log(JSON.parse(res));
-			let resumen_pedido = JSON.parse(res);
+		}).done(function(res){
+			console.log(res);
+			let resumen_pedido = res;
 			let html = Mustache.render(plantillaCheckoutFinal, resumen_pedido);
 			$("#contenedor").html(html);
 			$("#boton_confirmar_pedido").click(()=>{

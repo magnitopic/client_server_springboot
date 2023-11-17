@@ -33,3 +33,7 @@ $.get("plantillas_mustache/check_out_2.html", (data) => {
 $.get("plantillas_mustache/check_out_3.html", (data) => {
 	plantillaCheckoutTres = data;
 });
+
+$.get("plantillas_mustache/check_out_final.html", (data) => {
+	plantillaCheckoutFinal = data;
+});
