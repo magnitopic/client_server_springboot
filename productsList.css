@@ -1,0 +1,64 @@
+body {
+	background-color: black;
+}
+
+.shop {
+	width: fit-content;
+	margin: 1em;
+	padding: 1em;
+	color: white;
+	border-radius: 10px;
+	border: 1px solid #252525;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background-color: #151515;
+	min-width: 100em;
+}
+
+.shop-name {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+.shop-artist {
+	font-size: 1.2em;
+}
+.shop-img {
+	width: 5em;
+	height: auto;
+}
+.shop-price {
+	font-weight: bold;
+	color: #00ff00;
+	font-size: 1.2em;
+}
+.shop-item {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+}
+.shop-item > p {
+	margin: 0px;
+}
+
+.shop-data {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1em;
+}
+
+.shop-title {
+	font-weight: bold;
+}
+
+.shop-info {
+	display: flex;
+	gap: 2em;
+}
+
+.shop-can {
+	width: 1.5em;
+}
+.shop-can:hover {
+	cursor: pointer;
+	scale: 1.1;
+}
