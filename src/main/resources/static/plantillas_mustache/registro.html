@@ -1,11 +1,28 @@
 <div>
-	introduce tus datos para registrarte:<br/>
-	<form id="form_registro_usuario">
-		nombre: <input type="text" name="nombre" id="nombre" /> <br/>
-		email: <input type="text" name="email" id="email" /> <br/>
-		pass: <input type="password" name="pass" id="pass" /> <br/>
-		avatar (opcional): <input type="file" name="avatar" id="avatar" />	<br/>
-		<input type="submit" value="REGISTRARME"/>
+	<form id="form_register">
+		<p>Registrarse</p>
+		<div id="form_register_inputs">
+			<div>
+				<label for="nombre">Nombre:</label>
+				<input type="text" name="nombre" id="nombre" />
+			</div>
+			<div>
+				<label for="emal">Correo Electrónico:</label>
+				<input type="text" name="email" id="email" />
+			</div>
+			<div>
+				<label for="pass">Contraseña:</label>
+				<input type="password" name="pass" id="pass" />
+			</div>
+			<div>
+				Avatar(opcional):
+				<input type="file" name="avatar" id="avatar" />
+			</div>
+		</div>
+		<div>
+			<span>Ya tienes cuneta?</span>
+			<a id="goToLogIn" href=""> Ir a LogIn</a>
+		</div>
+		<input id="registerButton" type="submit" value="Crear Cuenta" />
 	</form>
-	
 </div>

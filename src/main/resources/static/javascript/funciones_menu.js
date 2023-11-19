@@ -51,7 +51,7 @@ $("#discos").click(mostrar_discos);
 
 $("#registrarme").click(() => {
 	$("#contenedor").html(plantillaRegistro);
-	$("#form_registro_usuario").submit((e) => {
+	$("#form_register").submit((e) => {
 		let formulario = document.forms[0];
 		let formData = new FormData(formulario);
 		$.ajax("servicioWebUsuarios/registrarUsuario", {
@@ -127,6 +127,8 @@ $("#carrito").click(function () {
 						}).done((res)=>{
 							if (res == "ok"){
 								$("#div-producto-"+id_disco).hide();
+							}else if (res == "empty"){
+								 mostrar_discos();
 							}else{
 								alert(res);
 							}

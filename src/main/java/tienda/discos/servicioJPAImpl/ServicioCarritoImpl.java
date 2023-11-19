@@ -103,4 +103,12 @@ public class ServicioCarritoImpl implements ServicioCarrito {
 		}
 		return res;
 	}
+
+	@Override
+	public boolean checkCarritoVacio(int idUsuario) {
+		Usuario u = (Usuario)entityManager.find(Usuario.class, idUsuario);
+		if (u.getCarrito() == null)
+			return true;
+		return u.getCarrito().getProductosCarrito().isEmpty();
+	}
 }
