@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Register</title>
+		<link rel="stylesheet" href="register.css" />
+	</head>
+	<body>
+		<div>
+			<form id="form_register">
+				<p>Crear Cuenta</p>
+				<div id="form_register_inputs">
+					<div>
+						<label for="nombre">Nombre:</label>
+						<input type="text" name="nombre" id="nombre" />
+					</div>
+					<div>
+						<label for="emal">Correo Electrónico:</label>
+						<input type="text" name="email" id="email" />
+					</div>
+					<div>
+						<label for="pass">Contraseña:</label>
+						<input type="password" name="pass" id="pass" />
+					</div>
+					<div>
+						Avatar(opcional):
+						<input type="file" name="avatar" id="avatar" />
+					</div>
+				</div>
+				<div id="form_register_redirect">
+					<span>Ya tienes cuneta?</span>
+					<a id="goToLogIn" href=""> Ir a LogIn</a>
+				</div>
+				<input id="registerButton" type="submit" value="Crear Cuenta" />
+			</form>
+		</div>
+	</body>
+</html>

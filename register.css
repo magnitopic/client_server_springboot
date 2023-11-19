@@ -6,7 +6,7 @@ body {
 	padding: 0px;
 }
 
-#form_login {
+#form_register {
 	width: fit-content;
 	border: 1px solid #252525;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -17,26 +17,28 @@ body {
 	color: white;
 	min-width: 22em;
 }
-#form_login > p {
+#form_register > p {
 	margin: 0px;
 	padding-bottom: 1em;
 	font-size: 1.5em;
 	font-weight: bold;
 }
 
-#form_login_inputs {
+#form_register_inputs {
 	display: flex;
 	justify-content: center;
 	gap: 1em;
 	flex-direction: column;
 }
-#form_login_inputs > div {
+
+#form_register_inputs > div {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	margin: 0px;
 }
-#form_login_inputs > div > input {
+
+#form_register_inputs > div > input {
 	padding: 0.5em;
 	border-radius: 5px;
 	border: 1px solid #252525;
@@ -45,22 +47,20 @@ body {
 	margin-top: 0.5em;
 }
 
-#form-checkbox {
-	display: flex;
-	flex-direction: row !important;
-	justify-content: flex-start !important;
-	align-items: center !important;
-	gap: 0.5em;
-}
-#form-checkbox > input {
-	margin: 0px !important;
+input[type="file"]::file-selector-button {
+	border: 1px solid #252525;
+	border-radius: 5px;
+	background: #084cdf;
+	color: white;
+	padding: 0.5em;
+	cursor: pointer;
 }
 
-#form-redirect {
+#form_register_redirect {
 	margin: 1em 0px 1em 0px;
 }
 
-#logInButton {
+#registerButton {
 	width: 100%;
 	background-color: lightblue;
 	border: none;
