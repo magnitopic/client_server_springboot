@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>LogIn</title>
+		<link rel="stylesheet" href="LogIn.css" />
+	</head>
+	<body>
+		<div>
+			<form id="form_login">
+				<p>Log In</p>
+				<div id="form_login_inputs">
+					<div>
+						<label for="email">Correo Electrónico:</label>
+						<input type="text" name="email" id="email" />
+					</div>
+					<div>
+						<label for="pass">Contraseña:</label>
+						<input type="password" name="pass" id="pass" />
+					</div>
+					<div id="form-checkbox">
+						<input
+							type="checkbox"
+							checked="checked"
+							id="recordar_datos"
+							name="recordar_datos"
+						/>
+						<label for="recordar_datos">Recordar mis datos</label>
+					</div>
+					<input id="logInButton" type="submit" value="LogIn" />
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
