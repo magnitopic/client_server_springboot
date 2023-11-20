@@ -5,38 +5,48 @@
 		<link rel="stylesheet" href="css/productsList.css" />
 		<link rel="stylesheet" href="css/logIn.css" />
 		<link rel="stylesheet" href="css/register.css" />
+		<link rel="stylesheet" href="css/header.css" />
 		<meta charset="ISO-8859-1" />
 		<link rel="icon" type="image/x-icon" href="/imgs/favicon.ico" />
-		<title>Vinil Os | Tu tienda de discos</title>
+		<title>Vinilo Os | Tu tienda de música</title>
 	</head>
 	<body>
-		<a href="admin/obtenerDiscos"
-			>Acceso a la administración de la pagina</a
-		>
-		<h1 style="background-color: #d3d3d3">Parte publica de la tienda</h1>
-		<div style="margin: 15px; text-align: center" id="mensaje_login">
-			Usuario no identificado
-		</div>
-		<h1>Bienvenido a la tienda de Discos</h1>
+		<a href="admin/obtenerDiscos">
+			Acceso a la administración de la pagina
+		</a>
+		<header>
+			<div id="top_header">
+				<div id="user-msg-div">
+					<p id="user-msg-main" class="user-msg-loged">Bienvenido</p>
+					<p id="user-msg">Alaparic</p>
+				</div>
+				<div>
+					<div id="logIn">
+						<div id="user-msg-div">
+							<p id="user-msg-main">Bienvenido</p>
+							<p id="user-msg">Alaparic</p>
+						</div>
+						<img src="imgs/userIcon.png" alt="" id="userPfp" />
+					</div>
+					<img src="imgs/search.png" alt="" id="search" />
+					<img
+						src="imgs/shopingCart.png"
+						alt="shopingCart"
+						id="shopingCart"
+					/>
+				</div>
+			</div>
+			<div id="bottom-header">
+				<a class="tab selected" href="#" id="inicio">Inicio</a>
+				<a class="tab" href="#" id="discos">Discos</a>
+				<a class="tab" href="#" id="registrarme">Registro</a>
+				<a class="tab" href="#" id="carrito">Carrito</a>
+				<a class="tab" href="#" id="mispedidos">Ver Pedidos</a>
+				<a class="tab" href="#" id="misdatos">Mis datos</a>
+				<a class="tab" href="#" id="logout">Cerrar sesión</a>
+			</div>
+		</header>
 
-		<div
-			style="
-				display: flex;
-				align-items: center;
-				flex-wrap: wrap;
-				justify-content: space-between;
-				flex-direction: row;
-			"
-		>
-			<a href="#" id="inicio">Inicio</a>
-			<a href="#" id="discos">Discos</a>
-			<a href="#" id="registrarme">Registro</a>
-			<a href="#" id="logIn">Identificarse</a>
-			<a href="#" id="carrito">Carrito</a>
-			<a href="#" id="mispedidos">Ver Pedidos</a>
-			<a href="#" id="misdatos">Mis datos</a>
-			<a href="#" id="logout">Cerrar sesión</a>
-		</div>
 		<div id="contenedor"></div>
 		<script src="librerias_js/jquery.js"></script>
 		<script src="librerias_js/mustache.js"></script>

@@ -1,4 +1,3 @@
-
 #form_login {
 	width: fit-content;
 	border: 1px solid #252525;
@@ -20,43 +19,45 @@
 #form_login_inputs {
 	display: flex;
 	justify-content: center;
-	gap: .5em;
+	gap: 1em;
 	flex-direction: column;
 }
-#form_login_inputs > div{
+#form_login_inputs > div {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin: .5em 0px;
+	margin: 0px;
 }
 #form_login_inputs > div > input {
-	padding: .5em;
+	padding: 0.5em;
 	border-radius: 5px;
 	border: 1px solid #252525;
 	background-color: #151515;
 	color: white;
-	margin-top: .5em;
+	margin-top: 0.5em;
 }
-
 
 #form-checkbox {
 	display: flex;
 	flex-direction: row !important;
-	justify-content: center !important;
+	justify-content: flex-start !important;
 	align-items: center !important;
-
-	gap: .5em;
+	gap: 0.5em;
 }
 #form-checkbox > input {
 	margin: 0px !important;
 }
 
-#logInButton{
+#form-redirect {
+	margin: 1em 0px 1em 0px;
+}
+
+#logInButton {
 	width: 100%;
 	background-color: lightblue;
 	border: none;
 	border-radius: 5px;
-	padding: .5em;
+	padding: 0.5em;
 	font-weight: bold;
 	font-size: 1.2em;
 	cursor: pointer;

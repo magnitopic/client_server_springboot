@@ -19,7 +19,7 @@
 #form_register_inputs {
 	display: flex;
 	justify-content: center;
-	gap: 0.5em;
+	gap: 1em;
 	flex-direction: column;
 }
 
@@ -27,7 +27,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin: 0.5em 0px;
+	margin: 0px;
 }
 
 #form_register_inputs > div > input {
@@ -48,6 +48,10 @@ input[type="file"]::file-selector-button {
 	cursor: pointer;
 }
 
+#form_register_redirect {
+	margin: 1em 0px 1em 0px;
+}
+
 #registerButton {
 	width: 100%;
 	background-color: lightblue;
@@ -58,5 +62,4 @@ input[type="file"]::file-selector-button {
 	font-size: 1.2em;
 	cursor: pointer;
 	height: 2.5em;
-	margin-top: 1em;
 }
