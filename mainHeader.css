@@ -1,0 +1,105 @@
+body {
+	background-color: black;
+	font-family: "Roboto", sans-serif;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+header {
+	background-color: #121212;
+	color: white;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 0.5em 1em 0px 1em;
+}
+
+#top_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin: 0px;
+}
+#top_header div {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+#bottom-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin: 0px;
+	margin-top: 0.7em;
+}
+
+#logo {
+	width: 6em;
+	height: 6em;
+	margin-right: 10px;
+}
+
+#main-title {
+	font-size: 1.5em;
+	font-family: "Rockwell", sans-serif;
+	font-weight: bold;
+}
+
+#user-msg-div {
+	flex-direction: column !important;
+	align-items: flex-end !important;
+}
+#user-msg-div p {
+	margin: 0px;
+}
+
+#user-msg-main {
+	font-weight: bold;
+	font-size: 1.1em;
+}
+#user-msg {
+	/* display: none; */
+}
+
+.user-msg-loged {
+	margin-bottom: 10px !important;
+}
+
+#shopingCart {
+	width: 2.5em;
+	height: 2.5em;
+	margin-left: 10px;
+}
+
+#search {
+	width: 2em;
+	height: 2em;
+	margin-left: 10px;
+}
+
+#userPfp {
+	width: 2.5em;
+	height: 2.5em;
+	border-radius: 50%;
+	margin-left: 10px;
+}
+
+.tab {
+	text-decoration: none;
+	color: rgb(209, 188, 188);
+	padding: 0.5em 1em 0.1em 1em;
+	border-radius: 5px 5px 0px 0px;
+	z-index: 1;
+	font-size: 1.1em;
+}
+
+.selected {
+	color: white !important;
+	background-color: black !important;
+	border: solid white !important;
+	border-width: 1px 1px 0 1px !important;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/card.css" />
+		<link rel="stylesheet" href="css/productsList.css" />
+		<link rel="stylesheet" href="css/logIn.css" />
+		<link rel="stylesheet" href="css/register.css" />
+		<link rel="stylesheet" href="mainHeader.css" />
+		<meta charset="ISO-8859-1" />
+		<link rel="icon" type="image/x-icon" href="/imgs/favicon.ico" />
+		<title>Vinilo Os | Tu tienda de discos</title>
+	</head>
+	<body>
+		<header>
+			<div id="top_header">
+				<div>
+					<img src="img/vinilos.png" alt="" id="logo" />
+					<p id="main-title">Vinilo O's</p>
+				</div>
+				<div>
+					<div id="logIn">
+						<div id="user-msg-div">
+							<p id="user-msg-main" class="user-msg-loged">Bienvenido</p>
+							<p id="user-msg">Alaparic</p>
+						</div>
+						<img src="img/userIcon.png" alt="" id="userPfp" />
+					</div>
+					<img src="img/search.png" alt="" id="search"/>
+					<img
+						src="img/shopingCart.png"
+						alt="shopingCart"
+						id="shopingCart"
+					/>
+				</div>
+			</div>
+			<div id="bottom-header">
+				<a class="tab selected" href="#" id="inicio">Inicio</a>
+				<a class="tab" href="#" id="discos">Discos</a>
+				<a class="tab" href="#" id="registrarme">Registro</a>
+				<a class="tab" href="#" id="carrito">Carrito</a>
+				<a class="tab" href="#" id="mispedidos">Ver Pedidos</a>
+				<a class="tab" href="#" id="misdatos">Mis datos</a>
+				<a class="tab" href="#" id="logout">Cerrar sesión</a>
+			</div>
+		</header>
+
+		<div id="contenedor"></div>
+		<script src="librerias_js/jquery.js"></script>
+		<script src="librerias_js/mustache.js"></script>
+		<script src="librerias_js/js.cookie.js"></script>
+		<script src="javascript/constantes.js"></script>
+		<script src="javascript/carga_plantillas.js"></script>
+		<script src="javascript/funciones_menu.js"></script>
+		<script src="javascript/pasos_checkout.js"></script>
+	</body>
+</html>
