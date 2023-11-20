@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,14 @@ import tienda.discos.servicios.ServicioDiscos;
 @RestController
 @RequestMapping("servicioWebDiscos/")
 public class ServicioWebDiscos {
+	
+	// como pedir una bean de spring cuyo nombre de clase se usa en varios paquetes
+	// ej.
+	//webservices.ServiciosWEBPedidos
+	//webservices.admin.ServiciosWEBPedidos
+//	@Autowired
+//	@Qualifier("servicioWebAdmin")
+//	private ServicioWebDiscos servicioWebDiscos;
 	
 	@Autowired
 	private ServicioDiscos servicioDiscos;

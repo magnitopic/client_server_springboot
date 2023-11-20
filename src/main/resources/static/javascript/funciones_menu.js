@@ -1,8 +1,16 @@
+var selectedElement = $("#inicio");
+
 $("#inicio").click(() => {
+	selectedElement.removeClass("selected");
+	selectedElement = $("#inicio");
+	selectedElement.addClass("selected");
 	$("#contenedor").html(plantillaInicio);
 });
 
 function mostrar_discos(){
+	selectedElement.removeClass("selected");
+	selectedElement = $("#discos");
+	selectedElement.addClass("selected");
 	$.getJSON("servicioWebDiscos/obtenerDiscos", (res) => {
 		//alert("respuesta del servidor: \n"+res);
 		let texto_html = "";
@@ -120,6 +128,9 @@ $("#carrito").click(function () {
 						res
 					);
 					$("#contenedor").html(html);
+					selectedElement.removeClass("selected");
+					selectedElement = $("#carrito");
+					selectedElement.addClass("selected");
 					$(".shop-can").click(function(e){
 						let id_disco = $(this).attr("id-disco");
 						$.post("servicioWebCarrito/borrarProducto",{
@@ -160,10 +171,16 @@ $("#logout").click(() => {
 });
 
 $("#mispedidos").click((e)=>{
+	selectedElement.removeClass("selected");
+	selectedElement = $("#mispedidos");
+	selectedElement.addClass("selected");
 	alert("todo");
 })
 
 
 $("#misdatos").click((e)=>{
+	selectedElement.removeClass("selected");
+	selectedElement = $("#discos");
+	selectedElement.addClass("selected");
 	alert("todo");
 })
