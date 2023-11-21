@@ -1,5 +1,6 @@
 $.get("plantillas_mustache/inicio.html", (data) => {
 	plantillaInicio = data;
+	$(document).trigger('htmlLoader', [plantillaInicio]);
 });
 
 $.get("plantillas_mustache/discos.html", (data) => {

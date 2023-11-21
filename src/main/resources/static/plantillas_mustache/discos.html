@@ -1,5 +1,12 @@
 <!-- la manera de indicar a mustache que haga lo indicado con cada elemento de un array que vamos a darle -->
 <!-- enlace_comprar_listado_principal-->
+<form id="search_form">
+	<input
+		type="text"
+		id="nombre_buscador"
+		placeholder="Buscar discos..."
+	/>
+</form>
 <div style="display: flex; flex-wrap: wrap">
 {{#.}}
 <div class="card" id-producto="{{id}}">

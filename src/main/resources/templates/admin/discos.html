@@ -10,6 +10,14 @@
 	<div th:insert="fragments/general.html :: menu"></div>
 	
 	<a href="registrarDisco">Registar disco nuevo</a>
+	<br>
+	Buscador:
+	<form action="obtenerDiscos">
+		titulo: <input type="text" name="nombre" th:value="${nombre}"></input>
+		<input type="submit" value="Buscar">
+	</form>
+	<br>
+	
 	
 	<p>Listado de los discos:</p>
 	
@@ -25,5 +33,11 @@
 		<a th:href="@{${'borrarDisco?id='+ disco.id}}" onclick="return confirm('¿seguro?')" >borrar</a> 
 		<a th:href="@{${'editarDisco?id='+ disco.id}}">modificar</a>
 	</div>
+	
+	<div th:if="${#lists.isEmpty(discos)}">
+		<h3>No se han encontrado discos con ese nombre</h3>
+	</div>
+
+	
 </body>
 </html>

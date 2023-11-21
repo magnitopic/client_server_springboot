@@ -15,6 +15,10 @@ header {
 	padding: 0.5em 1em 0px 1em;
 }
 
+#logIn{
+	cursor: pointer;
+}
+
 #top_header {
 	display: flex;
 	justify-content: space-between;
@@ -35,6 +39,10 @@ header {
 	width: 100%;
 	margin: 0px;
 	margin-top: 0.7em;
+}
+
+#logo-container{
+	cursor: pointer;
 }
 
 #logo {

@@ -79,10 +79,11 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 	}
 
 	@Override
-	public List<Map<String, Object>> obtenerDiscosParaFormatJSON() {
+	public List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre) {
 		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_DISCOS_JSON);
 		NativeQueryImpl nativequery = (NativeQueryImpl)query;
 		nativequery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
+		nativequery.setParameter("nombre", "%" + nombre + "%");
 		return nativequery.getResultList();
 	}
 	
@@ -94,5 +95,15 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 		nativeQuery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 		return (Map<String, Object>) nativeQuery.getResultList().get(0);
 	}
+
+	@Override
+	public List<Disco> obtenerDiscosPorNombre(String nombre) {
+		return entityManager.createQuery("select d from Disco d where d.alta = true and lower(d.nombre) like lower(:nombre) order by d.id desc")
+				.setParameter("nombre", "%"+ nombre + "%")
+				.getResultList();
+		
+	}
+	//Future implementations:
+	// select d from Disco d where d.alta = true and (l.nombre = :nombre or ) order by d.id desc
 	
 }

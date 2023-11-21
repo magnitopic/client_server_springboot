@@ -1,17 +1,19 @@
 var selectedElement = $("#inicio");
 
-$("#inicio").click(() => {
+let mostrar_inicio = () => {
 	selectedElement.removeClass("selected");
 	selectedElement = $("#inicio");
 	selectedElement.addClass("selected");
 	$("#contenedor").html(plantillaInicio);
-});
+};
+
+var nombre_a_buscar ="";
 
 function mostrar_discos(){
 	selectedElement.removeClass("selected");
 	selectedElement = $("#discos");
 	selectedElement.addClass("selected");
-	$.getJSON("servicioWebDiscos/obtenerDiscos", (res) => {
+	$.getJSON("servicioWebDiscos/obtenerDiscos",{nombre: nombre_a_buscar}).done((res) => {
 		//alert("respuesta del servidor: \n"+res);
 		let texto_html = "";
 		/*res.forEach((e)=>{
@@ -24,6 +26,17 @@ function mostrar_discos(){
 		});
 		texto_html = Mustache.render(plantillaDiscos, res);
 		$("#contenedor").html(texto_html);
+		
+		// indicar que hace el buscador
+		
+		$("#contenedor").html(texto_html);
+		$("#nombre_buscador").val(nombre_a_buscar);
+		$("#nombre_buscador").focus();
+		$("#nombre_buscador").keyup(function(e){
+			nombre_a_buscar = $(this).val();
+			mostrar_discos();
+		});
+		
 		$(".enlace_comprar_listado_principal").click(function(res){
 			if ( nombre_login != "" ){
 				var id_producto = $(this).attr("id-producto");
@@ -55,7 +68,15 @@ function mostrar_discos(){
 	});
 }
 
+$(document).on('htmlLoaded', function (event, platillaInicioLoaded) {
+    $('#contenedor').html(platillaInicioLoaded);
+    console.log("Yes");
+});
+
+
 $("#discos").click(mostrar_discos);
+$("#logo-container").click(mostrar_inicio);
+$("#inicio").click(mostrar_inicio);
 
 $("#registrarme").click(() => {
 	$("#contenedor").html(plantillaRegistro);

@@ -31,8 +31,8 @@ public class ServicioWebDiscos {
 	private ServicioDiscos servicioDiscos;
 	
 	@RequestMapping("obtenerDiscos")
-	public List<Map<String, Object>> obtenerDiscos(){
-		return servicioDiscos.obtenerDiscosParaFormatJSON();
+	public List<Map<String, Object>> obtenerDiscos(@RequestParam(name = "nombre", defaultValue = "")String titulo ){
+		return servicioDiscos.obtenerDiscosParaFormatJSON(titulo);
 	}
 	
 	@RequestMapping("obtenerDiscoDetalles")

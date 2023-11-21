@@ -12,6 +12,8 @@ public interface ServicioDiscos {
 	
 	List<Disco> obtenerDiscos();
 	
+	List<Disco> obtenerDiscosPorNombre(String nombre);
+	
 	void borrarDisco(int id);
 	
 	Disco obtenerDiscoPorId(int id);
@@ -20,6 +22,6 @@ public interface ServicioDiscos {
 
 	Map<String, Object> obtenerDetallesDisco(int idDisco);
 
-	List<Map<String, Object>> obtenerDiscosParaFormatJSON();
+	List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre);
 	
 }
