@@ -68,17 +68,51 @@ function mostrar_discos(){
 	});
 }
 
-$(document).on('htmlLoaded', function (event, platillaInicioLoaded) {
-    $('#contenedor').html(platillaInicioLoaded);
-    console.log("Yes");
-});
-
-
 $("#discos").click(mostrar_discos);
 $("#logo-container").click(mostrar_inicio);
 $("#inicio").click(mostrar_inicio);
 
-$("#registrarme").click(() => {
+let logIn = () => {
+	$("#contenedor").html(plantillaLogIn);
+	if (typeof Cookies.get("email") !== "undefined")
+		$("#email").val(Cookies.get("email"));
+	if (typeof Cookies.get("pass") !== "undefined")
+		$("#pass").val(Cookies.get("pass"));
+	$("#registrarme").click(registarme);
+	$("#form_login").submit((e) => {
+		$.post("servicioWebUsuarios/identificarUsuario", {
+			email: $("#email").val(),
+			pass: $("#pass").val(),
+		}).done((res) => {
+			if (res.split(",")[0] == "ok") {
+				nombre_login = res.split(",")[1];
+				$("#user-msg-main").html(
+					"Bienvenido"
+				);
+				$("#user-msg-main").addClass("user-msg-loged");
+				$("#user-msg").html(
+					nombre_login.charAt(0).toUpperCase() +
+					nombre_login.slice(1));
+				if ($("#recordar_datos").prop("checked")) {
+					Cookies.set("email", $("#email").val(), {
+						expires: 7,
+					});
+					Cookies.set("pass", $("#pass").val(), {
+						expires: 7,
+					});
+				}
+				mostrar_discos();
+			} else {
+				alert(res);
+			}
+		});
+		e.preventDefault();
+	});
+};
+$("#logIn").click(logIn);
+
+
+let registarme = () => {
 	$("#contenedor").html(plantillaRegistro);
 	$("#form_register").submit((e) => {
 		let formulario = document.forms[0];
@@ -91,48 +125,14 @@ $("#registrarme").click(() => {
 			processData: false,
 			success: (res) => {
 				alert(res);
+				logIn();
 			}, //end success
 		}); //end ajax
 		e.preventDefault(); //evitamos envio de form, ya que todo en cliente
 		//lo gestionamos con javascript
+		
 	}); //end submit
-});
-
-$("#logIn").click(() => {
-	$("#contenedor").html(plantillaLogIn);
-	if (typeof Cookies.get("email") !== "undefined")
-		$("#email").val(Cookies.get("email"));
-	if (typeof Cookies.get("pass") !== "undefined")
-		$("#pass").val(Cookies.get("pass"));
-	$("#form_login").submit((e) => {
-		$.post("servicioWebUsuarios/identificarUsuario", {
-			email: $("#email").val(),
-			pass: $("#pass").val(),
-		}).done((res) => {
-			if (res.split(",")[0] == "ok") {
-				console.log("Yes");
-				nombre_login = res.split(",")[1];
-				$("#mensaje_login").html(
-					"¡Bienvenido de nuevo " +
-						nombre_login.charAt(0).toUpperCase() +
-						nombre_login.slice(1) +
-						"!"
-				);
-				if ($("#recordar_datos").prop("checked")) {
-					Cookies.set("email", $("#email").val(), {
-						expires: 7,
-					});
-					Cookies.set("pass", $("#pass").val(), {
-						expires: 7,
-					});
-				}
-			} else {
-				alert(res);
-			}
-		});
-		e.preventDefault();
-	});
-});
+};
 
 $("#carrito").click(function () {
 	if (nombre_login != "") {
@@ -178,17 +178,19 @@ $("#carrito").click(function () {
 });
 
 $("#logout").click(() => {
-	$.ajax("servicioWebUsuarios/logout", {
-		success: (res) => {
-			if (res == "ok") {
-				$("#contenedor").html(
-					"hasta pronto " + nombre_login
-				);
-				$("#mensaje_login").html("No estás identificado");
-				nombre_login = "";
-			}
-		},
-	});
+	if (nombre_login != "") {
+		$.ajax("servicioWebUsuarios/logout", {
+			success: (res) => {
+				if (res == "ok") {
+					$("#contenedor").html(
+						"" + nombre_login
+					);
+					$("#mensaje_login").html("No estás identificado");
+					nombre_login = "";
+				}
+			},
+		});
+	}
 });
 
 $("#mispedidos").click((e)=>{
