@@ -90,6 +90,7 @@ let logIn = () => {
 					"Bienvenido"
 				);
 				$("#user-msg-main").addClass("user-msg-loged");
+				$("#userPfp").attr("src","mostrar_imagen_user?id="+res.split(",")[2]);
 				$("#user-msg").html(
 					nombre_login.charAt(0).toUpperCase() +
 					nombre_login.slice(1));
@@ -114,6 +115,7 @@ $("#logIn").click(logIn);
 
 let registarme = () => {
 	$("#contenedor").html(plantillaRegistro);
+	$("#goToLogIn").click(logIn);
 	$("#form_register").submit((e) => {
 		let formulario = document.forms[0];
 		let formData = new FormData(formulario);
@@ -140,9 +142,7 @@ $("#carrito").click(function () {
 			"servicioWebCarrito/obtenerProductosCarrito",
 			(res) => {
 				if (res == null) {
-					alert(
-						"Aun no has agregado ningún producto al carrito"
-					);
+					alert("Aun no has agregado ningún producto al carrito");
 				} else {
 					var html = Mustache.render(
 						plantillaCarrito,
@@ -159,8 +159,6 @@ $("#carrito").click(function () {
 						}).done((res)=>{
 							if (res == "ok"){
 								$("#div-producto-"+id_disco).hide();
-							}else if (res == "empty"){
-								 mostrar_discos();
 							}else{
 								alert(res);
 							}
@@ -168,12 +166,13 @@ $("#carrito").click(function () {
 						e.preventDefault();
 					});
 					$("#realizar_pedido").click(checkout_paso_zero);
-				}
-			}).fail(()=>{
-				alert("El carrito está vacio");
-			});
+				}}).fail(()=>{alert("El carrito está vacio");});
 	} else {
-		alert("debes identificarte para acceder al carrito");
+		alert("Debes iniciar sesión antes de ver tu carrito");
+		selectedElement.removeClass("selected");
+		selectedElement = $("#carrito");
+		selectedElement.addClass("selected");
+		logIn();
 	}
 });
 
@@ -182,11 +181,11 @@ $("#logout").click(() => {
 		$.ajax("servicioWebUsuarios/logout", {
 			success: (res) => {
 				if (res == "ok") {
-					$("#contenedor").html(
-						"" + nombre_login
-					);
-					$("#mensaje_login").html("No estás identificado");
+					$("#user-msg").html("");
+					$("#user-msg-main").html("Iniciar Sesión");
+					$("#user-msg-main").removeClass("user-msg-loged");
 					nombre_login = "";
+					mostrar_inicio();
 				}
 			},
 		});
@@ -197,13 +196,25 @@ $("#mispedidos").click((e)=>{
 	selectedElement.removeClass("selected");
 	selectedElement = $("#mispedidos");
 	selectedElement.addClass("selected");
-	alert("todo");
+	if (nombre_login != "") {
+		$.getJSON("servicioWebPedidos/obtenerPedidos", (res)=>{
+			console.log(res);
+		}).fail(()=>{alert("Error of some sort")});
+	}else{
+		alert("Debes iniciar sesión antes de ver tus pediddos");
+		logIn();
+	}
 })
 
 
 $("#misdatos").click((e)=>{
 	selectedElement.removeClass("selected");
-	selectedElement = $("#discos");
+	selectedElement = $("#misdatos");
 	selectedElement.addClass("selected");
-	alert("todo");
+	if (nombre_login != "") {
+		
+	}else{
+		alert("Debes iniciar sesión antes de ver tus datos");
+		logIn();
+	}
 })

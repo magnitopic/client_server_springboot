@@ -1,5 +1,8 @@
 package tienda.discos.webservices;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.ws.Response;
 
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 
 import tienda.discos.datos.serviciosWeb.ResumenPedido;
+import tienda.discos.model.Pedido;
 import tienda.discos.model.Usuario;
 import tienda.discos.servicios.ServicioPedidos;
 
@@ -60,5 +64,15 @@ public class ServicioWebPedidos {
 		servicioPedidos.confirmarPedido(usuario.getId());
 		resp = "pedido completado";
 		return new ResponseEntity<String>(resp, HttpStatus.OK);
+	}
+
+	@RequestMapping("obtenerPedidos")
+	public List<Pedido> obtenerPedidos(HttpServletRequest req) throws Exception{
+		if (req.getSession().getAttribute("usuario_identificado") != null){
+			int id = ((Usuario)req.getSession().getAttribute("usuario_identificado")).getId();
+			return servicioPedidos.obtenerPedidosDeCliente(id);
+		}else { 
+			throw new Exception("** USUARIO NO IDENTIFICADO **");
+		}
 	}
 }

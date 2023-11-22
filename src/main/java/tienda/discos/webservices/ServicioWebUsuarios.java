@@ -66,11 +66,14 @@ public class ServicioWebUsuarios {
 		String resp= "";
 		if (u != null) {
 			req.getSession().setAttribute("usuario_identificado", u);
-			resp = "ok,"+u.getNombre();
+			resp = "ok,"+u.getNombre()+","+u.getId();
 		} else
 			resp = "Email o pass incorrecto";
 		return new ResponseEntity<String>(resp, HttpStatus.OK);
 	}
+	
+//	@RequestMapping("imagenPerfilUsuario")
+//	public 
 	
 	@RequestMapping("logout")
 	public ResponseEntity<String> logout(HttpServletRequest req){

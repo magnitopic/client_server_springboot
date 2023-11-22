@@ -47,8 +47,6 @@ public class ServicioWebCarrito {
 	public List<Map<String, Object>> obtenerProductosCarrito(HttpServletRequest req) throws Exception{
 		if (req.getSession().getAttribute("usuario_identificado") != null){
 			int id = ((Usuario)req.getSession().getAttribute("usuario_identificado")).getId();
-			if (servicioCarrito.checkCarritoVacio(id))
-				return null;
 			return servicioCarrito.obtenerProductosCarrito(id);
 		}else { 
 			throw new Exception("** USUARIO NO IDENTIFICADO **");
@@ -59,9 +57,6 @@ public class ServicioWebCarrito {
 	public String borrarProducto(@RequestParam("id") int id, HttpServletRequest req) {
 		servicioCarrito.borrarProductoCarrito(
 				((Usuario)req.getSession().getAttribute("usuario_identificado")).getId(), id);
-		System.out.println(servicioCarrito.checkCarritoVacio(id));
-		if (servicioCarrito.checkCarritoVacio(id))
-			return "empty";
 		return "ok";
 	}
 }

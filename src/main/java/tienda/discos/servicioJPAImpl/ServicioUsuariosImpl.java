@@ -41,4 +41,11 @@ public class ServicioUsuariosImpl implements ServicioUsuarios {
 			return resultado.get(0);
 	}
 
+	@Override
+	public Usuario obtenerUserPorId(int id) {
+		return (Usuario) entityManager.createQuery("select u from Usuario u where u.id = :user_id")
+				.setParameter("user_id", id)
+				.getResultList().get(0);
+	}
+
 }

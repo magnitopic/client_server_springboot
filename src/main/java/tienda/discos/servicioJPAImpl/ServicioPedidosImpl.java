@@ -44,6 +44,8 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 	public Pedido obtenerPedidoPorId(int idPedido) {
 		return (Pedido)entityManager.find(Pedido.class, idPedido);
 	}
+	
+	
 
 	@Override
 	public void actualizarEstadoPedido(int idPedido, String estado) {
@@ -145,6 +147,15 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 			p.setUsuario(uBaseDatos);
 		}
 		return p;
+	}
+
+	@Override
+	public List<Pedido> obtenerPedidosDeCliente(int idUsuario) {
+		List<Pedido> resultadosConsulta = entityManager.createQuery(
+				"select p from Pedido p where p.usuario.id = :usuario_id")
+				.setParameter("usuario_id", idUsuario)
+				.getResultList();
+		return resultadosConsulta;
 	}
 
 }

@@ -9,7 +9,6 @@ public interface ServicioCarrito {
 	void agreggarProducto(int idUsuario, int idProducto, int cantidad);
 	void actualizarProductoCarrito(int idUsuario, int idProducto, int cantidad);
 	void borrarProductoCarrito(int idUsuario, int idProducto);
-	boolean checkCarritoVacio(int idUsuaro);
 	
 	// Operaciones Ajax
 	

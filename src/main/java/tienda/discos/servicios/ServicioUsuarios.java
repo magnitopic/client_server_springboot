@@ -8,4 +8,5 @@ public interface ServicioUsuarios {
 	void registarUsuario(Usuario u);
 	
 	Usuario obtenerUserPorMailYpass(String email, String pass);
+	Usuario obtenerUserPorId(int id);
 }
