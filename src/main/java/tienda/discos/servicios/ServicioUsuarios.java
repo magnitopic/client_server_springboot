@@ -1,5 +1,7 @@
 package tienda.discos.servicios;
 
+import java.util.List;
+
 import tienda.discos.model.Usuario;
 
 public interface ServicioUsuarios {
@@ -9,4 +11,5 @@ public interface ServicioUsuarios {
 	
 	Usuario obtenerUserPorMailYpass(String email, String pass);
 	Usuario obtenerUserPorId(int id);
+	List<Usuario> obtenerUsuarios();
 }

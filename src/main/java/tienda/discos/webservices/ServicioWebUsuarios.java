@@ -81,8 +81,6 @@ public class ServicioWebUsuarios {
 		if (req.getSession().getAttribute("usuario_identificado") != null) {
 			int id = ((Usuario) req.getSession().getAttribute("usuario_identificado")).getId();
 			Usuario testUsuario =  servicioUsuarios.obtenerUserPorId(id);
-			System.out.println(testUsuario);
-			System.out.println("test");
 			return testUsuario;
 		} else {
 			throw new Exception("** USUARIO NO IDENTIFICADO **");

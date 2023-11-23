@@ -30,4 +30,6 @@ public class ConstantesSQL {
 			"delete from producto_carrito where carrito_id = :carrito_id and disco_id= :id_disco";
 	
 	public static final String SQL_OBTENER_PEDIDOS_POR_ID_USUARIO = "SELECT * FROM pedido where pedido.usuario_id = :id_usuario";
+	
+	public static final String SQL_OBTENER_USUARIO_POR_ID = "select * from usuario where usuario.id = :user_id";
 }
