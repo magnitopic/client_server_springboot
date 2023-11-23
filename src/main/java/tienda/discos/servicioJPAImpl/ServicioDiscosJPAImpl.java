@@ -36,6 +36,7 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 			System.out.println("No se puede procesar la foto subida.");
 			e.printStackTrace();
 		}
+		d.setAlta(true);
 		entityManager.persist(d);
 	}
 
@@ -103,7 +104,22 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 				.getResultList();
 		
 	}
-	//Future implementations:
-	// select d from Disco d where d.alta = true and (l.nombre = :nombre or ) order by d.id desc
+
+	@Override
+	public List<Disco> obtenerDiscosPorNombreComienzoFin(String nombre, int comienzo, int resultadosPorPagina) {
+		return entityManager.createQuery("select d from Disco d where d.alta = true and lower(d.nombre) like lower(:nombre) order by d.id desc")
+				.setParameter("nombre", "%"+ nombre + "%")
+				.setFirstResult(comienzo)
+				.setMaxResults(resultadosPorPagina)
+				.getResultList();
+	}
+
+	@Override
+	public int obtenerTotalDiscos(String nombre) {
+		Query q = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_TOTAL_DISCOS);
+		q.setParameter("nombre", "%" + nombre + "%");
+		int totalDiscos = Integer.parseInt(q.getSingleResult().toString());
+		return totalDiscos;
+	}
 	
 }

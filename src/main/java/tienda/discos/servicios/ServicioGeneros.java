@@ -10,4 +10,6 @@ public interface ServicioGeneros {
 	
 	Map<String, String> obtenerGenerosParaDesplegable();
 	
+	void registrarGenero(Genero g); 
+	
 }

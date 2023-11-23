@@ -153,7 +153,6 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 
 	@Override
 	public List<Pedido> obtenerPedidosDeCliente(int idUsuario) {
-		System.out.println(idUsuario);
 		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_PEDIDOS_POR_ID_USUARIO);
 		NativeQueryImpl nativequery = (NativeQueryImpl)query;
 		nativequery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);

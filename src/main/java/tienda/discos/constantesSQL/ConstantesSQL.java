@@ -1,5 +1,7 @@
 package tienda.discos.constantesSQL;
 
+import org.hibernate.engine.internal.StatisticalLoggingSessionEventListener;
+
 public class ConstantesSQL {
 
 	public final static String SQL_OBTENER_DISCOS_JSON = 
@@ -32,4 +34,6 @@ public class ConstantesSQL {
 	public static final String SQL_OBTENER_PEDIDOS_POR_ID_USUARIO = "SELECT * FROM pedido where pedido.usuario_id = :id_usuario";
 	
 	public static final String SQL_OBTENER_USUARIO_POR_ID = "select * from usuario where usuario.id = :user_id";
+	
+	public static final String SQL_OBTENER_TOTAL_DISCOS = "select count(id) from disco where alta = 1 and nombre like :nombre"; 
 }

@@ -30,9 +30,12 @@ public class DiscosController {
 	private ServicioGeneros servicioGeneros;
 	
 	@RequestMapping("obtenerDiscos")
-	public String obtenerDiscos(@RequestParam(name = "nombre", defaultValue = "") String nombre,Model model) {
-		model.addAttribute("discos", servicioDiscos.obtenerDiscosPorNombre(nombre));
+	public String obtenerDiscos(@RequestParam(name = "nombre", defaultValue = "") String nombre, @RequestParam(name = "comienzo", defaultValue = "0") Integer comienzo, Model model) {
+		model.addAttribute("discos", servicioDiscos.obtenerDiscosPorNombreComienzoFin(nombre, comienzo, 10));
 		model.addAttribute("nombre", nombre);
+		model.addAttribute("siguiente", comienzo + 10);
+		model.addAttribute("anterior", comienzo - 10);
+		model.addAttribute("total", servicioDiscos.obtenerTotalDiscos(nombre));
 		return "admin/discos";
 	}
 
@@ -60,7 +63,7 @@ public class DiscosController {
 	@RequestMapping("borrarDisco")
 	public String borrarDisco(@RequestParam("id") Integer id, Model model)  {
 		servicioDiscos.borrarDisco(id);
-		return obtenerDiscos("", model);
+		return obtenerDiscos("", 0, model);
 	}
 	
 	@RequestMapping("editarDisco")
@@ -76,6 +79,6 @@ public class DiscosController {
 	@RequestMapping("guardarCambiosDisco")
 	public String guardarCambiosDisco(Disco disco, Model model) {
 		servicioDiscos.gurdarCambioDisco(disco);
-		return obtenerDiscos("", model);
+		return obtenerDiscos("", 0, model);
 	}
 }

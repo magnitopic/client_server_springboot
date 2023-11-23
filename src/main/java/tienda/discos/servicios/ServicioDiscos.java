@@ -14,6 +14,10 @@ public interface ServicioDiscos {
 	
 	List<Disco> obtenerDiscosPorNombre(String nombre);
 	
+	List<Disco> obtenerDiscosPorNombreComienzoFin(String nombre, int comienzo, int resultadosPorPagina);
+	
+	int obtenerTotalDiscos(String nombre);
+	
 	void borrarDisco(int id);
 	
 	Disco obtenerDiscoPorId(int id);

@@ -133,6 +133,15 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			entityManager.persist(pp2);
 			
 			
+			// registro de 100 discos de prueba para la paginación
+			
+			for (int i = 0; i < 1000; i++) {
+				Disco d = new Disco("TestDisk" + i, "Artist", "RecordLabel", "1999", 20.99);
+				d.setAlta(true);
+				d.setGenero(rock);
+				entityManager.persist(d);
+			}
+			
 			// una vez realizado los registros iniciales marcaremos el setup como completado
 			SetUp registroSetUp = new SetUp();
 			registroSetUp.setCompletado(true);

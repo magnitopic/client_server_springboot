@@ -28,4 +28,10 @@ public class ServicioGenerosJPAImpl implements ServicioGeneros {
 	public List<Genero> obtenerGeneros() {
 		return entityManager.createQuery("select g from Genero g").getResultList();
 	}
+
+	@Override
+	public void registrarGenero(Genero g) {
+		// TODO Auto-generated method stub
+		
+	}
 }
