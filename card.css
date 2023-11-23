@@ -57,6 +57,7 @@ body {
 	font-size: 1.2em;
 	font-weight: bold;
 	color: #00ff00;
+	margin: 0px;
 }
 
 .card-album {
@@ -80,4 +81,23 @@ body {
 	top: 1.2em;
 	right: 0;
 	transition: all 0.5s ease-in-out;
+}
+
+.card-bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+	flex-direction: row;
+}
+
+.enlace_comprar_listado_principal {
+	border: none;
+	background-color: #00ff00;
+	color: black;
+	padding: 10px;
+	border-radius: 5px;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: .9em;
 }

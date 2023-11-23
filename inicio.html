@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="inicio.css" />
+		<title>Inicio</title>
+	</head>
+	<body>
+		<div>
+			<!-- Image carrusel -->
+			<div class="carrusel-container">
+				<img
+					src="img/promotional/promotion1.webp"
+					alt="banner image"
+					class="carrusel-img"
+				/>
+			</div>
+		</div>
+	</body>
+	<script>
+		var num = 1;
+		setInterval(() => {
+			const imgElement = document.querySelector(".carrusel-img");
+			imgElement.classList.add("fade-out"); // add the fade-out class
+
+
+			imgElement.addEventListener("animationend", (e) => {
+				if (e.animationName === "fadeOut") {
+					imgElement.classList.remove("fade-out"); // remove the fade-out class
+					num > 2 ? num = 1 : num++;
+
+					imgElement.src = `img/promotional/promotion${num}.webp`;
+					imgElement.classList.add("fade-in"); // add the fade-in class
+				}
+
+				if (e.animationName === "fadeIn") {
+					imgElement.classList.remove("fade-in"); // remove the fade-in class
+				}
+			});
+		}, 5000);
+	</script>
+</html>
