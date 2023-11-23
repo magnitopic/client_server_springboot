@@ -14,7 +14,6 @@ public interface ServicioPedidos {
 	List<Pedido> obtenerPedidos();
 	Pedido obtenerPedidoPorId(int idPedido);
 	void actualizarEstadoPedido(int idPedido, String estado);
-	List<Pedido> obtenerPedidosDeCliente(int idUsuario);
 
 	// metodos para Ajax
 	void procesarPaso1(String nombre, String direccion, String provincia, int idUsuario);
@@ -22,4 +21,5 @@ public interface ServicioPedidos {
 	void procesarPaso3(String regalo, String observaciones, int idUsuario);
 	ResumenPedido obtenerResumenDelPedido(int idUsuario);
 	void confirmarPedido(int idUsuario);
+	List<Pedido> obtenerPedidosDeCliente(int idUsuario);
 }

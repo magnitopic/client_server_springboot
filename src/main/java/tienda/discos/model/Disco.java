@@ -10,41 +10,54 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-@Table(name="disco")
+@Table(name = "disco")
 public class Disco {
+	@Size(min = 3, max = 10, message = "Nombre debe tener entre 3 y 10 caracteres")
+	@NotEmpty(message = "Nombre no puede estar vacio")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóúÁÉÍÓÚñÑ]+", message = "Titulo solo puede contener numero, letras y espacios")
 	private String nombre;
+
+	@NotNull(message = "Debes insertar un precio")
+	@Min(value = 1, message = "el precio mínimo es un euro")
+	@Max(value = 999, message = "el precio maximo es 999€")
 	private String artista;
 	private String discografica;
 	private String ano;
 	private Double precio;
-	
+
 	private boolean alta = true;
-	
+
 	@Lob
-	@Column(name ="imagen_portada")
+	@Column(name = "imagen_portada")
 	private byte[] imagenPortada;
-	
+
 	@OneToOne
 	private ProductoCarrito productoCarrito;
-	
+
 	// vamos a indicar la associación entre disco y genero
 	@ManyToOne
 	private Genero genero;
 
 	@Transient
 	private int idGenero;
-	
+
 	@Transient
 	private MultipartFile fotoSubida;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	public Disco() {
 		// TODO Auto-generated constructor stub
 	}
@@ -155,7 +168,7 @@ public class Disco {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public byte[] getImagenPortada() {
 		return imagenPortada;
 	}
@@ -170,5 +183,5 @@ public class Disco {
 				+ ", precio=" + precio + ", productoCarrito=" + productoCarrito + ", genero=" + genero + ", idGenero="
 				+ idGenero + ", fotoSubida=" + fotoSubida + ", id=" + id + "]";
 	}
-	
+
 }

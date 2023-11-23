@@ -9,6 +9,8 @@ import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.internal.NativeQueryImpl;
+import org.hibernate.transform.AliasToEntityMapResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -151,11 +153,12 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 
 	@Override
 	public List<Pedido> obtenerPedidosDeCliente(int idUsuario) {
-		List<Pedido> resultadosConsulta = entityManager.createQuery(
-				"select p from Pedido p where p.usuario.id = :usuario_id")
-				.setParameter("usuario_id", idUsuario)
-				.getResultList();
-		return resultadosConsulta;
+		System.out.println(idUsuario);
+		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_PEDIDOS_POR_ID_USUARIO);
+		NativeQueryImpl nativequery = (NativeQueryImpl)query;
+		nativequery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
+		nativequery.setParameter("id_usuario", idUsuario);
+		return nativequery.getResultList();
 	}
 
 }

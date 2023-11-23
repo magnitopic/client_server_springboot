@@ -91,6 +91,17 @@ body {
 	transition: all 0.5s ease-in-out;
 }
 
+.enlace_comprar_listado_principal {
+	border: none;
+	background-color: #FFD814;
+	color: black;
+	padding: 10px;
+	border-radius: 5px;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: .9em;
+}
+
 #search_form{
 	display: flex;
 	flex-direction: column;

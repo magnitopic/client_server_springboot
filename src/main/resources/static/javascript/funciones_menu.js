@@ -7,13 +7,13 @@ let mostrar_inicio = () => {
 	$("#contenedor").html(plantillaInicio);
 };
 
-var nombre_a_buscar ="";
+var nombre_a_buscar = "";
 
-function mostrar_discos(){
+function mostrar_discos() {
 	selectedElement.removeClass("selected");
 	selectedElement = $("#discos");
 	selectedElement.addClass("selected");
-	$.getJSON("servicioWebDiscos/obtenerDiscos",{nombre: nombre_a_buscar}).done((res) => {
+	$.getJSON("servicioWebDiscos/obtenerDiscos", { nombre: nombre_a_buscar }).done((res) => {
 		//alert("respuesta del servidor: \n"+res);
 		let texto_html = "";
 		/*res.forEach((e)=>{
@@ -26,30 +26,30 @@ function mostrar_discos(){
 		});
 		texto_html = Mustache.render(plantillaDiscos, res);
 		$("#contenedor").html(texto_html);
-		
+
 		// indicar que hace el buscador
-		
+
 		$("#contenedor").html(texto_html);
 		$("#nombre_buscador").val(nombre_a_buscar);
 		$("#nombre_buscador").focus();
-		$("#nombre_buscador").keyup(function(e){
+		$("#nombre_buscador").keyup(function(e) {
 			nombre_a_buscar = $(this).val();
 			mostrar_discos();
 		});
-		
-		$(".enlace_comprar_listado_principal").click(function(res){
-			if ( nombre_login != "" ){
+
+		$(".enlace_comprar_listado_principal").click(function(res) {
+			if (nombre_login != "") {
 				var id_producto = $(this).attr("id-producto");
 				alert("agregar producto de id: " + id_producto + " al carrito del usuario");
 				$.post("servicioWebCarrito/agregarDisco",
-						{
-							id: id_producto,
-							cantidad: 1
-						}
-				).done(function(res){
-					alert(res);					
+					{
+						id: id_producto,
+						cantidad: 1
+					}
+				).done(function(res) {
+					alert(res);
 				});
-			}else{
+			} else {
 				alert("tienes que identificarte para poder comprar productos");
 			}
 		});
@@ -90,7 +90,7 @@ let logIn = () => {
 					"Bienvenido"
 				);
 				$("#user-msg-main").addClass("user-msg-loged");
-				$("#userPfp").attr("src","mostrar_imagen_user?id="+res.split(",")[2]);
+				$("#userPfp").attr("src", "mostrar_imagen_user?id=" + res.split(",")[2]);
 				$("#user-msg").html(
 					nombre_login.charAt(0).toUpperCase() +
 					nombre_login.slice(1));
@@ -132,11 +132,11 @@ let registarme = () => {
 		}); //end ajax
 		e.preventDefault(); //evitamos envio de form, ya que todo en cliente
 		//lo gestionamos con javascript
-		
+
 	}); //end submit
 };
 
-$("#carrito").click(function () {
+$("#carrito").click(function() {
 	if (nombre_login != "") {
 		$.getJSON(
 			"servicioWebCarrito/obtenerProductosCarrito",
@@ -152,21 +152,22 @@ $("#carrito").click(function () {
 					selectedElement.removeClass("selected");
 					selectedElement = $("#carrito");
 					selectedElement.addClass("selected");
-					$(".shop-can").click(function(e){
+					$(".shop-can").click(function(e) {
 						let id_disco = $(this).attr("id-disco");
-						$.post("servicioWebCarrito/borrarProducto",{
+						$.post("servicioWebCarrito/borrarProducto", {
 							id: id_disco
-						}).done((res)=>{
-							if (res == "ok"){
-								$("#div-producto-"+id_disco).hide();
-							}else{
+						}).done((res) => {
+							if (res == "ok") {
+								$("#div-producto-" + id_disco).hide();
+							} else {
 								alert(res);
 							}
 						});
 						e.preventDefault();
 					});
 					$("#realizar_pedido").click(checkout_paso_zero);
-				}}).fail(()=>{alert("El carrito está vacio");});
+				}
+			}).fail(() => { alert("El carrito está vacio"); });
 	} else {
 		alert("Debes iniciar sesión antes de ver tu carrito");
 		selectedElement.removeClass("selected");
@@ -184,6 +185,7 @@ $("#logout").click(() => {
 					$("#user-msg").html("");
 					$("#user-msg-main").html("Iniciar Sesión");
 					$("#user-msg-main").removeClass("user-msg-loged");
+					$("#userPfp").attr("src", "imgs/userIcon.png");
 					nombre_login = "";
 					mostrar_inicio();
 				}
@@ -192,28 +194,35 @@ $("#logout").click(() => {
 	}
 });
 
-$("#mispedidos").click((e)=>{
+let mostrar_pedidos = (e) => {
 	selectedElement.removeClass("selected");
 	selectedElement = $("#mispedidos");
 	selectedElement.addClass("selected");
+	let texto_html = "";
 	if (nombre_login != "") {
-		$.getJSON("servicioWebPedidos/obtenerPedidos", (res)=>{
+		$.getJSON("servicioWebPedidos/obtenerPedidos", (res) => {
 			console.log(res);
-		}).fail(()=>{alert("Error of some sort")});
-	}else{
+			texto_html = Mustache.render(plantillaPedidos, res);
+			$("#contenedor").html(texto_html);
+		}).fail(() => { alert("Error of some sort") });
+	} else {
 		alert("Debes iniciar sesión antes de ver tus pediddos");
 		logIn();
 	}
-})
+};
+$("#mispedidos").click(mostrar_pedidos);
 
-
-$("#misdatos").click((e)=>{
+$("#misdatos").click((e) => {
 	selectedElement.removeClass("selected");
 	selectedElement = $("#misdatos");
 	selectedElement.addClass("selected");
 	if (nombre_login != "") {
-		
-	}else{
+		$.getJSON("servicioWebUsuarios/obtenerDatosUser", (res) => {
+			console.log(res);
+			texto_html = Mustache.render(plantillaPerfil, res);
+			$("#contenedor").html(texto_html);
+		}).fail(() => { alert("Error of some sort") });
+	} else {
 		alert("Debes iniciar sesión antes de ver tus datos");
 		logIn();
 	}

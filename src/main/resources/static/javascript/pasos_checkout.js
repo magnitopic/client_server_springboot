@@ -56,12 +56,9 @@ let checkout_paso_tres = () => {
 				$.ajax("servicioWebPedidos/FinalPedido",{
 					success: (res)=>{
 						alert("repuesta del servicio web: " + res);
-						mostrar_discos();
+						mostrar_pedidos();
 					}
 				});
 			});
 		});
 }
-
-
-

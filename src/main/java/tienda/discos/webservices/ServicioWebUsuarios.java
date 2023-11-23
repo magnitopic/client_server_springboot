@@ -30,9 +30,7 @@ public class ServicioWebUsuarios {
 	
 	@Autowired
 	private ServicioUsuarios servicioUsuarios;
-	
-	
-	
+
 	@RequestMapping("registrarUsuario")
 	public String registrarUsuario(@RequestParam Map<String, Object> formData,
 									MultipartHttpServletRequest req){
@@ -72,12 +70,23 @@ public class ServicioWebUsuarios {
 		return new ResponseEntity<String>(resp, HttpStatus.OK);
 	}
 	
-//	@RequestMapping("imagenPerfilUsuario")
-//	public 
-	
 	@RequestMapping("logout")
 	public ResponseEntity<String> logout(HttpServletRequest req){
 		req.getSession().invalidate();
 		return new ResponseEntity<String>("ok", HttpStatus.OK); 
 	}
+	
+	@RequestMapping("obtenerDatosUser")
+	public Usuario obtenerDatosUser(HttpServletRequest req) throws Exception{
+		if (req.getSession().getAttribute("usuario_identificado") != null) {
+			int id = ((Usuario) req.getSession().getAttribute("usuario_identificado")).getId();
+			Usuario testUsuario =  servicioUsuarios.obtenerUserPorId(id);
+			System.out.println(testUsuario);
+			System.out.println("test");
+			return testUsuario;
+		} else {
+			throw new Exception("** USUARIO NO IDENTIFICADO **");
+		}
+	}
+	
 }

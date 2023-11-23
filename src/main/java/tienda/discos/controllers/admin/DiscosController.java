@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -46,7 +48,10 @@ public class DiscosController {
 	}
 
 	@RequestMapping("guardarDisco")
-	public String guardarDisco(Disco nuevoDisco, Model model) {
+	public String guardarDisco(@Valid Disco nuevoDisco, Model model, BindingResult resultadoValidaciones) {
+		if (resultadoValidaciones.hasErrors()) {
+			return "admin/disco_registro";
+		}
 		System.out.println("id de genero seleccionado: "+ nuevoDisco.getIdGenero());
 		servicioDiscos.registrarDisco(nuevoDisco);
 		return "admin/discos_registro_ok";
