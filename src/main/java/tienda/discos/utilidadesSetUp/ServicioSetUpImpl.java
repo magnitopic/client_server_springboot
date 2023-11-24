@@ -135,7 +135,7 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			
 			// registro de 100 discos de prueba para la paginación
 			
-			for (int i = 0; i < 1000; i++) {
+			for (int i = 0; i < 100; i++) {
 				Disco d = new Disco("TestDisk" + i, "Artist", "RecordLabel", "1999", 20.99);
 				d.setAlta(true);
 				d.setGenero(rock);

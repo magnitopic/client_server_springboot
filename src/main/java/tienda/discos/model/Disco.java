@@ -22,17 +22,22 @@ import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name = "disco")
 public class Disco {
-	@Size(min = 3, max = 10, message = "Nombre debe tener entre 3 y 10 caracteres")
+	@Size(min = 3, max = 40, message = "Nombre debe tener entre 3 y 40 caracteres")
 	@NotEmpty(message = "Nombre no puede estar vacio")
 	@Pattern(regexp = "[A-Za-z0-9 áéíóúÁÉÍÓÚñÑ]+", message = "Titulo solo puede contener numero, letras y espacios")
 	private String nombre;
 
+	@NotEmpty(message = "Debes introducir un artista")
+	@Size(min = 3, max = 40, message = "El artista debe tener entre 3 y 40 caracteres")
+	private String artista;
+	@NotEmpty(message = "La discográfica no puede estar vacía")
+	private String discografica;
+	@NotNull(message = "Debes intoducir un año")
+	@Pattern(regexp = "\\d{4}$", message = "Se debe introducir una fecha valida")
+	private String ano;
 	@NotNull(message = "Debes insertar un precio")
 	@Min(value = 1, message = "el precio mínimo es un euro")
 	@Max(value = 999, message = "el precio maximo es 999€")
-	private String artista;
-	private String discografica;
-	private String ano;
 	private Double precio;
 
 	private boolean alta = true;

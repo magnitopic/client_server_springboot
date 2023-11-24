@@ -1,19 +1,26 @@
 {{#.}}
 <div>
 	<div class="card-info">
+		<form>
 		<div>
-			<span>User name:</span>
-			<p>{{nombre}}</p>
+			<img style="width: 10em; border-radius: 50%;" src="mostrar_imagen_user?id={{id}}">
 		</div>
 		<div>
-			<span>Password:</span>
-			<p>{{pass}}</p>
+			<div>
+				<span>User name:</span>
+				<input name="nombre" value="{{nombre}}">
+			</div>
+			<div>
+				<span>Password:</span>
+				<input name="pass" value="{{pass}}">
+			</div>
+			<div>
+				<span>Email:</span>
+				<span>{{email}}</span>
+			</div>
 		</div>
-		<div>
-			<span>Email:</span>
-			<p>{{email}}</p>
-		</div>
-		
+		<input type="button" value="Actualizar perfil">
+		</form>
 	</div>
 </div>
 {{/.}}
