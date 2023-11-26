@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+ <meta charset="ISO-8859-1"> 
 <title>Insert title here</title>
 </head>
 <body>
 
 <div th:fragment="menu">
 	<div>
-		<a href="../">Volver a la parte de cliente</a>
+		<a href="../" th:text="#{admin.volverCliente}"></a>
 	</div>
 	<div>
-		<div style="text-align: center; font-size: 2em; background-color: lightgoldenrodyellow;">
-			BIENVENIDO A LA PARTE DE ADMINISTRACION DE LA TIENDA
+		<div style="text-align: center; font-size: 2em; background-color: lightgoldenrodyellow;" th:text="#{admin.tituloPrincipal}">
 		</div>
 	</div>
 	<div style="text-align: center;">
-		<a href="obtenerDiscos">Gestionar discos</a>
-		<a href="obtenerGeneros">Gestionar Generos</a>
-		<a href="obtenerUsuarios">Gestionar usuarios</a>
-		<a href="obtenerPedidos">Gestionar pedidos</a>
-		<a href="../logoutAdmin">Cerrar sesión</a>
+		<a href="obtenerDiscos" th:text="#{admin.gestionarDiscos}"></a>
+		<a href="obtenerGeneros" th:text="#{admin.gestionarGeneros}"></a>
+		<a href="obtenerUsuarios"  th:text="#{admin.gestionarUsuarios}"></a>
+		<a href="obtenerPedidos"  th:text="#{admin.gestionarPedidos}"></a>
+		<a href="../logoutAdmin"   th:text="#{admin.logut}"></a>
+	</div>
+	<div>
+		<span th:text="#{admin.cambiaridoma}"></span>
+		<a href="?idioma=es">🇪🇸</a>
+		<a href="?idioma=en">🇬🇧</a>
 	</div>
 </div>
 

@@ -13,37 +13,37 @@
 
 	<a href="registrarDisco">Registar disco nuevo</a>
 	<br>
-	Buscador:
 	<form action="obtenerDiscos">
-		titulo: <input type="text" name="nombre" th:value="${nombre}"></input>
+		<span th:text="#{admin.buscador}"></span>
+		<input type="text" name="nombre" th:value="${nombre}"></input>
 		<input type="submit" value="Buscar">
 	</form>
 	<br>
 
 
-	<p>Listado de los discos:</p>
+	<p th:text="#{admin.listadoDiscos}"></p>
 
 	<div>
 		<a th:if="${ anterior >= 0 }" 
-			th:href="@{${ 'obtenerDiscos?comienzo=' + anterior + '&titulo=' + titulo }}">Anteriror</a>
+			th:href="@{${ 'obtenerDiscos?comienzo=' + anterior + '&nombre=' + nombre }}">Anteriror</a>
 		<div>
 			Total de resultados: <span th:text="${total}">
 		</div>
 		<a th:if="${ siguiente < total }"
-			th:href="@{#{'obtenerDiscos?comienzo=' + siguiente + '&titulo=' + titulo }}">Siguiente</a>
+			th:href="@{${ 'obtenerDiscos?comienzo=' + siguiente + '&nombre=' + nombre }}">Siguiente</a>
 	</div>
 
 	<div th:each="disco : ${discos}" style="margin: 15px;">
-		Nombre: <span th:text="${disco.nombre}"></span> <br>
-		Artista: <span th:text="${disco.artista}"></span> <br>
-		Discográfica: <span th:text="${disco.discografica}"></span>
-		Año: <span th:text="${disco.ano}"></span>
-		Precio: <span th:text="${disco.precio}"></span>
-		Genero: <span th:text="${disco.genero.nombre}"></span> <br>
-		Portada: <br>
-		<img height="80px" th:src="@{${'../mostrar_imagen?id='+ disco.id}}" alt="albumCover" /><br>
-		<a th:href="@{${'borrarDisco?id='+ disco.id}}" onclick="return confirm('¿seguro?')">borrar</a>
-		<a th:href="@{${'editarDisco?id='+ disco.id}}">modificar</a>
+		<span th:text="#{admin.nombre}"></span> <span th:text="${disco.nombre}"></span> <br>
+		<span th:text="#{admin.artista}"></span> <span th:text="${disco.artista}"></span> <br>
+		<span th:text="#{admin.Discografica}"></span> <span th:text="${disco.discografica}"></span>
+		<span th:text="#{admin.ano}"></span> <span th:text="${disco.ano}"></span>
+		<span th:text="#{admin.precio}"></span> <span th:text="${disco.precio}"></span>
+		<span th:text="#{admin.genero}"></span> <span th:text="${disco.genero.nombre}"></span> <br>
+		<span th:text="#{admin.portada}"></span> <br>
+		<img height="80px" th:src="@{${ '../mostrar_imagen?id=' + disco.id }}" alt="albumCover" /><br>
+		<a th:text="#{admin.borrar}" th:href="@{${'borrarDisco?id='+ disco.id}}" onclick="return confirm('¿seguro?')"></a>
+		<a th:text="#{admin.modificar}" th:href="@{${'editarDisco?id='+ disco.id}}"></a>
 	</div>
 
 	<div th:if="${#lists.isEmpty(discos)}">
