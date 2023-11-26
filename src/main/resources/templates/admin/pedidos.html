@@ -12,10 +12,10 @@
 	<p>Listado de pedidos:</p>
 	
 	<div th:each="pedido : ${pedidos}" style="margin: 15px;" >
-		Nombre: <span th:text="${pedido.nombreCompleto}" ></span> <br>
-		Dirección: <span th:text="${pedido.direccion}" ></span> <br>
-		Estado: <span th:text="${pedido.estado}" ></span> <br>
-		<a th:href="@{${ 'verDetallesPedido?id=' + pedido.id }}" >Ver detalles</a> 
+		<span th:text="#{admin.nombre}"></span> <span th:text="${pedido.nombreCompleto}" ></span> <br>
+		<span th:text="#{admin.direccion}"></span> <span th:text="${pedido.direccion}" ></span> <br>
+		<span th:text="#{admin.estado}"></span> <span th:text="${pedido.estado}" ></span> <br>
+		<a th:href="@{${ 'verDetallesPedido?id=' + pedido.id }}" th:text="#{admin.verDetalles}"></a> 
 	</div>
 </body>
 </html>

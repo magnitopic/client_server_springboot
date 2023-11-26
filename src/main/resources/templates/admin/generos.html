@@ -9,13 +9,14 @@
 
 	<div th:insert="fragments/general.html :: menu"></div>
 	
-	<a href="registrarGenero">Registar genero nuevo</a>
+	<a href="registrarGenero" th:text="#{admin.nuevoGenero}"></a>
 	<br>
 
-	<p>Listado de generos:</p>
+
+	<p th:text="#{admin.generosListado}"></p>
 	
 	<div th:each="genero : ${generos}" style="margin: 15px;" >
-		<div><span>Nombre:</span> <span th:text="${genero.nombre}" ></span> </div><br>
+		<div><span th:text="#{admin.nombre}"></span> <span th:text="${genero.nombre}" ></span> </div><br>
 	</div>
 </body>
 </html>

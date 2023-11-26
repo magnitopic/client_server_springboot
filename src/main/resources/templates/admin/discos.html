@@ -11,7 +11,7 @@
 
 	<div th:insert="fragments/general.html :: menu"></div>
 
-	<a href="registrarDisco">Registar disco nuevo</a>
+	<a href="registrarDisco" th:text="#{admin.registarDiscos}"></a>
 	<br>
 	<form action="obtenerDiscos">
 		<span th:text="#{admin.buscador}"></span>
@@ -24,13 +24,15 @@
 	<p th:text="#{admin.listadoDiscos}"></p>
 
 	<div>
-		<a th:if="${ anterior >= 0 }" 
-			th:href="@{${ 'obtenerDiscos?comienzo=' + anterior + '&nombre=' + nombre }}">Anteriror</a>
+		<a th:if="${ anterior >= 0 }"
+			th:text="#{admin.anterior}"
+			th:href="@{${ 'obtenerDiscos?comienzo=' + anterior + '&nombre=' + nombre }}"></a>
 		<div>
-			Total de resultados: <span th:text="${total}">
+			<span th:text="#{admin.totalResultados}"></span> <span th:text="${total}">
 		</div>
 		<a th:if="${ siguiente < total }"
-			th:href="@{${ 'obtenerDiscos?comienzo=' + siguiente + '&nombre=' + nombre }}">Siguiente</a>
+			th:text="#{admin.siguiente}"
+			th:href="@{${ 'obtenerDiscos?comienzo=' + siguiente + '&nombre=' + nombre }}"></a>
 	</div>
 
 	<div th:each="disco : ${discos}" style="margin: 15px;">
@@ -47,7 +49,7 @@
 	</div>
 
 	<div th:if="${#lists.isEmpty(discos)}">
-		<h3>No se han encontrado discos con ese nombre</h3>
+		<h3  th:text="#{admin.busquedaError}"></h3>
 	</div>
 
 
