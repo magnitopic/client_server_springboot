@@ -96,10 +96,6 @@ public class ServicioWebUsuarios {
 		Integer id = Integer.parseInt( req.getParameter("id"));
 		String userName = req.getParameter("userName");
 		String pass = req.getParameter("pass");
-		System.out.println("____________________");
-		System.out.println(id);
-		System.out.println(userName);
-		System.out.println(pass);
 		if (id != null && userName != null && pass != null) {
 			servicioUsuarios.actualizarDatos(id, userName, pass);
 			return "ok";	

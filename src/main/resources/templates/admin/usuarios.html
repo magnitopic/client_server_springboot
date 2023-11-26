@@ -3,6 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin - Listado discos</title>
+<link rel="stylesheet" href="../css/profile.css" />
 </head>
 <body>
 	
@@ -11,8 +12,34 @@
 	
 	<p>Listado de usuarios:</p>
 	
-	<div th:each="usuario : ${usuarios}" style="margin: 15px;" >
-		Nombre: <span th:text="${usuario.nombre}" ></span> <br>
+
+	<div th:each="usuario : ${usuarios}">
+		<div id="profile-main">
+			<div>
+				<img
+					style="width: 10em; border-radius: 50%"
+					th:src="@{${ '../mostrar_imagen_user?id=' + usuario.id }}"
+				/>
+			</div>
+			<div id="profile-data">
+				<div id="profile-element">
+					<span th:text="#{admin.nombre}"></span>
+					<p th:text="${usuario.nombre}" id="userName"/>
+				</div>
+				<div id="profile-element">
+					<span th:text="#{admin.pass}"></span>
+					<p
+						th:text="${usuario.pass}"
+						id="pass"
+					/>
+				</div>
+				<div id="profile-element">
+					<span th:text="#{admin.email}"></span>
+					<p th:text="${usuario.email}"></p>
+				</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
