@@ -4,7 +4,6 @@ body {
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 0px;
-	/*  Slide animation */
 }
 
 .carrusel-img {
@@ -37,4 +36,34 @@ body {
 	100% {
 		opacity: 1;
 	}
+}
+
+#inicioButtons{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	padding: 1em 0px;
+	width: 100%;
+	align-items: center;
+}
+
+
+#GoToDiscos{
+	display: flex;
+	color: black;
+	font-weight: bold;
+	font-size: 1.2em;
+	background-color: rgb(255, 156, 118);
+	border-radius: 5px;
+	padding: 2em 5em;
+}
+
+#registrarme{
+	display: flex;
+	color: black;
+	font-weight: bold;
+	font-size: 1.2em;
+	background-color: lightblue;
+	border-radius: 5px;
+	padding: 2em 5em;
 }

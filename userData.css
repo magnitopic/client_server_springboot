@@ -1,0 +1,69 @@
+body {
+	background-color: black;
+	font-family: "Roboto", sans-serif;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+#profile-main {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: fit-content;
+	gap: 1em;
+	margin: 1em auto;
+	padding: 1em;
+	color: white;
+	border-radius: 10px;
+	border: 1px solid #252525;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background-color: #151515;
+	max-width: 50em;
+	width: auto;
+}
+
+#profile-data {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: fit-content;
+	gap: 2em;
+	margin: 1em;
+	padding: 1em;
+	color: white;
+	border-radius: 10px;
+	border: 1px solid #252525;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background-color: #3e3d3d;
+}
+.profile-input {
+	padding: 0.5em;
+	border-radius: 5px;
+	border: 1px solid #252525;
+	background-color: #151515;
+	color: white;
+	margin-top: 0.5em;
+}
+
+#profile-element {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+}
+
+#updateUserData {
+	width: 100%;
+	background-color: lightblue;
+	border: none;
+	border-radius: 5px;
+	padding: 0.5em;
+	font-weight: bold;
+	font-size: 1.2em;
+	cursor: pointer;
+	height: 2.5em;
+}

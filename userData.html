@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>UserData</title>
+		<link rel="stylesheet" href="userData.css" />
+	</head>
+	<body>
+		<div>
+			<form>
+				<div id="profile-main">
+					<div>
+						<img
+							style="width: 10em; border-radius: 50%"
+							src="img/3.jpg"
+						/>
+					</div>
+					<div id="profile-data">
+						<div id="profile-element">
+							<span>User name:</span>
+							<input
+								class="profile-input"
+								name="nombre"
+								value="testName"
+								id="userName"
+							/>
+						</div>
+						<div id="profile-element">
+							<span>Password:</span>
+							<input
+								class="profile-input"
+								name="pass"
+								value="123"
+								id="pass"
+							/>
+						</div>
+						<div id="profile-element">
+							<span>Email:</span>
+							<p>test@mail.com</p>
+						</div>
+						<input
+							id="updateUserData"
+							type="button"
+							value="Actualizar perfil"
+						/>
+					</div>
+				</div>
+				<input type="hidden" value="{{id}}" id="identifier" />
+			</form>
+		</div>
+	</body>
+</html>
