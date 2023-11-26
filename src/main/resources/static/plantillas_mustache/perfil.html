@@ -8,18 +8,19 @@
 		<div>
 			<div>
 				<span>User name:</span>
-				<input name="nombre" value="{{nombre}}">
+				<input name="nombre" value="{{nombre}}" id="userName">
 			</div>
 			<div>
 				<span>Password:</span>
-				<input name="pass" value="{{pass}}">
+				<input name="pass" value="{{pass}}" id="pass">
 			</div>
 			<div>
 				<span>Email:</span>
 				<span>{{email}}</span>
 			</div>
 		</div>
-		<input type="button" value="Actualizar perfil">
+		<input type="hidden" value="{{id}}" id="identifier">
+		<input id="updateUserData" type="button" value="Actualizar perfil">
 		</form>
 	</div>
 </div>

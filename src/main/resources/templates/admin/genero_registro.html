@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin - Registrar nuevo disco</title>
+</head>
+<body>
+
+<div th:insert="fragments/general.html :: menu"></div>
+
+<h1>Introducir los datos del nuevo genero:</h1>
+
+<form action="#" th:action="guardarGenero" th:object="${nuevoGenero}" method="post" enctype="multipart/form-data" >
+	Nombre: <input type="text" th:field="*{nombre}" /> <br>
+	<span style="color: red" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span><br>
+
+	<input type="submit" value="Registrar nuevo genero"/>
+</form>
+
+</body>
+</html>

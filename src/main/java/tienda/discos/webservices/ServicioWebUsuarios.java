@@ -1,9 +1,11 @@
 package tienda.discos.webservices;
 
+import java.io.Console;
 import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.plaf.synth.SynthScrollPaneUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -85,6 +87,24 @@ public class ServicioWebUsuarios {
 		} else {
 			throw new Exception("** USUARIO NO IDENTIFICADO **");
 		}
+	}
+	
+	
+	@RequestMapping("editarDatos")
+	public String editarDatos(HttpServletRequest req) {
+		System.out.println("------------------------Datos usuario:");
+		Integer id = Integer.parseInt( req.getParameter("id"));
+		String userName = req.getParameter("userName");
+		String pass = req.getParameter("pass");
+		System.out.println("____________________");
+		System.out.println(id);
+		System.out.println(userName);
+		System.out.println(pass);
+		if (id != null && userName != null && pass != null) {
+			servicioUsuarios.actualizarDatos(id, userName, pass);
+			return "ok";	
+		}
+		return "Error";
 	}
 	
 }

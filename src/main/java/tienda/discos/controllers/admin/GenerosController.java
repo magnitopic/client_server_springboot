@@ -21,7 +21,7 @@ public class GenerosController {
 		return "admin/generos";
 	}
 	
-	@RequestMapping("registarGenero")
+	@RequestMapping("registrarGenero")
 	public String registarGenero(Model model) {
 		Genero g = new Genero();
 		model.addAttribute("nuevoGenero", g);
@@ -31,6 +31,7 @@ public class GenerosController {
 	@RequestMapping("guardarGenero")
 	public String guardarGenero(Genero nuevoGenero, Model model) {
 		servicioGeneros.registrarGenero(nuevoGenero);
+		System.out.println(nuevoGenero.getNombre());
 		return "admin/genero_registro_ok";
 	}
 }

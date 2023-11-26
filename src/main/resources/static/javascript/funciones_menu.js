@@ -1,12 +1,4 @@
 var selectedElement = $("#inicio");
-
-let mostrar_inicio = () => {
-	selectedElement.removeClass("selected");
-	selectedElement = $("#inicio");
-	selectedElement.addClass("selected");
-	$("#contenedor").html(plantillaInicio);
-};
-
 var nombre_a_buscar = "";
 
 function mostrar_discos() {
@@ -69,8 +61,6 @@ function mostrar_discos() {
 }
 
 $("#discos").click(mostrar_discos);
-$("#logo-container").click(mostrar_inicio);
-$("#inicio").click(mostrar_inicio);
 
 let logIn = () => {
 	$("#contenedor").html(plantillaLogIn);
@@ -86,9 +76,7 @@ let logIn = () => {
 		}).done((res) => {
 			if (res.split(",")[0] == "ok") {
 				nombre_login = res.split(",")[1];
-				$("#user-msg-main").html(
-					"Bienvenido"
-				);
+				$("#user-msg-main").html("Bienvenido");
 				$("#user-msg-main").addClass("user-msg-loged");
 				$("#userPfp").attr("src", "mostrar_imagen_user?id=" + res.split(",")[2]);
 				$("#user-msg").html(
@@ -135,6 +123,19 @@ let registarme = () => {
 
 	}); //end submit
 };
+
+let mostrar_inicio = () => {
+	selectedElement.removeClass("selected");
+	selectedElement = $("#inicio");
+	selectedElement.addClass("selected");
+	$("#contenedor").html(plantillaInicio);
+	$("#inicioRegistrarme").click(registarme);
+	$("#GoToDiscos").click(mostrar_discos);
+	carrusel();
+};
+
+$("#logo-container").click(mostrar_inicio);
+$("#inicio").click(mostrar_inicio);
 
 $("#carrito").click(function() {
 	if (nombre_login != "") {
@@ -212,7 +213,7 @@ let mostrar_pedidos = (e) => {
 };
 $("#mispedidos").click(mostrar_pedidos);
 
-$("#misdatos").click((e) => {
+let mostrarMisDatos= (e) => {
 	selectedElement.removeClass("selected");
 	selectedElement = $("#misdatos");
 	selectedElement.addClass("selected");
@@ -221,9 +222,31 @@ $("#misdatos").click((e) => {
 			console.log(res);
 			texto_html = Mustache.render(plantillaPerfil, res);
 			$("#contenedor").html(texto_html);
+			
+			$("#updateUserData").click((e)=>{
+				let userName = $("#userName").val();
+				let pass = $("#pass").val();
+				let id = $("#identifier").val();
+				$.post("servicioWebUsuarios/editarDatos", {
+					id: id,
+					userName: userName,
+					pass: pass
+				}).done((res) => {
+					if (res == "ok") {
+						alert("Datos de usuario actualizados")
+						$("#user-msg").html(userName.charAt(0).toUpperCase() +
+					userName.slice(1));
+						mostrarMisDatos();
+					} else {
+						alert(res);
+					}
+				});
+			})
 		}).fail(() => { alert("Error of some sort") });
 	} else {
 		alert("Debes iniciar sesión antes de ver tus datos");
 		logIn();
 	}
-})
+};
+
+$("#misdatos").click(mostrarMisDatos);

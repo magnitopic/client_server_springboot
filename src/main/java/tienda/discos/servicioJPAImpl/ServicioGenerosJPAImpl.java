@@ -1,5 +1,6 @@
 package tienda.discos.servicioJPAImpl;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +32,6 @@ public class ServicioGenerosJPAImpl implements ServicioGeneros {
 
 	@Override
 	public void registrarGenero(Genero g) {
-		// TODO Auto-generated method stub
-		
+		entityManager.persist(g);
 	}
 }

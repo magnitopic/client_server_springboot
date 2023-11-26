@@ -12,4 +12,5 @@ public interface ServicioUsuarios {
 	Usuario obtenerUserPorMailYpass(String email, String pass);
 	Usuario obtenerUserPorId(int id);
 	List<Usuario> obtenerUsuarios();
+	void actualizarDatos(Integer id, String nombreUsuario, String pass);
 }

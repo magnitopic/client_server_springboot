@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tienda.discos.constantesSQL.ConstantesSQL;
+import tienda.discos.model.Disco;
+import tienda.discos.model.Genero;
 import tienda.discos.model.Usuario;
 import tienda.discos.servicios.ServicioUsuarios;
 
@@ -67,5 +69,13 @@ public class ServicioUsuariosImpl implements ServicioUsuarios {
 	public List<Usuario> obtenerUsuarios() {
 		return entityManager.createQuery("select u from Usuario u")
 				.getResultList();
+	}
+
+	@Override
+	public void actualizarDatos(Integer id, String nombreUsuario, String pass) {
+		Usuario u = entityManager.find(Usuario.class, id);
+		u.setNombre(nombreUsuario);
+		u.setPass(pass);
+		entityManager.merge(u);
 	}
 }

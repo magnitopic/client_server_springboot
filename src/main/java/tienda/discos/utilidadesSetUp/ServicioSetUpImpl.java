@@ -65,7 +65,7 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			d2.setAlta(true);
 			d2.setImagenPortada(copiarImagenBase("http://localhost:8080/imagenes_base/2.jpg"));
 			//copiarImagenBase(rutaReal, "/imagenes_base/2.jpg", "/subidas/2.jpg");
-			Disco d3 = new Disco("Tranquility Base Hotel & Casino", "The Arctic Monkeys", "Domino", "2018", 21.99);
+			Disco d3 = new Disco("Tranquility Base Hotel and Casino", "The Arctic Monkeys", "Domino", "2018", 21.99);
 			d3.setGenero(rock);
 			d3.setAlta(true);
 			d3.setImagenPortada(copiarImagenBase("http://localhost:8080/imagenes_base/3.jpg"));
@@ -135,7 +135,7 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			
 			// registro de 100 discos de prueba para la paginación
 			
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 10; i++) {
 				Disco d = new Disco("TestDisk" + i, "Artist", "RecordLabel", "1999", 20.99);
 				d.setAlta(true);
 				d.setGenero(rock);
