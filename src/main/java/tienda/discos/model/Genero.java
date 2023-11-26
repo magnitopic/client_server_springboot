@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Genero {
@@ -21,6 +22,7 @@ public class Genero {
 	@GeneratedValue
 	private int id;
 	
+	@NotEmpty(message = "Nombre de genero no puede estar vacío")
 	private String nombre;
 	
 	public Genero() {

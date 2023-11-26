@@ -23,7 +23,7 @@
 	<span style="color: red" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></span><br>
 	Genero: 
 	<select th:field="*{idGenero}">
-		<option th:each="g : ${generos}" th:text="${g.nombre}" th:value="${g.id}"/>		
+		<option th:each="g : ${generos}" th:text="${g.nombre}" th:value="${g.id}"/>
 	</select>
 	<br>
 	

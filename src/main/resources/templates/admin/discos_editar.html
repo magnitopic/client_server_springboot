@@ -12,10 +12,15 @@
 	
 <form action="#" th:action="guardarCambiosDisco" th:object="${discoEditar}" method="post" enctype="multipart/form-data" >
 	Nombre: <input type="text" th:field="*{nombre}" /> <br>
+	<span style="color: red" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span><br>
 	Artista: <input type="text" th:field="*{artista}" /> <br>
+	<span style="color: red" th:if="${#fields.hasErrors('artista')}" th:errors="*{artista}"></span><br>
 	Discografica: <input type="text" th:field="*{discografica}" /> <br>
+	<span style="color: red" th:if="${#fields.hasErrors('discografica')}" th:errors="*{discografica}"></span><br>
 	Año: <input type="text" th:field="*{ano}" /> <br>
+	<span style="color: red" th:if="${#fields.hasErrors('ano')}" th:errors="*{ano}"></span><br>
 	Precio: <input type="number" step=".01" th:field="*{precio}" /> <br>
+	<span style="color: red" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></span><br>
 	Genero: 
 	<select th:field="*{idGenero}">
 		<option th:each="g : ${generos}" th:text="${g.nombre}" th:value="${g.id}"/>		

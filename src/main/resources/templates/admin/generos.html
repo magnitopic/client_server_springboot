@@ -4,6 +4,35 @@
 <meta charset="ISO-8859-1">
 <title>Admin - Listado discos</title>
 </head>
+	<style>
+		.genre-container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-image: url(https://picsum.photos/500);
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			border-radius: 30px;
+			height: 10em;
+			width: 20em;
+		}
+		.genre-container > p {
+			font-size: 1.5em;
+			font-weight: bold;
+			font-family: 'Roboto', sans-serif;
+			background-color: white;
+			padding: .5em;
+			border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+			background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, .7), rgba(255, 255, 255, 0));
+		}
+		.genres{
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+			gap: 1em;
+		}
+	</style>
 <body>
 	
 
@@ -15,8 +44,19 @@
 
 	<p th:text="#{admin.generosListado}"></p>
 	
-	<div th:each="genero : ${generos}" style="margin: 15px;" >
-		<div><span th:text="#{admin.nombre}"></span> <span th:text="${genero.nombre}" ></span> </div><br>
+	<div class="genres">
+		<div th:each="genero : ${generos}" style="margin: 15px;" >
+			<div class="genre-container">
+				<p th:text="${genero.nombre}"></p>
+			</div>
+		</div>
 	</div>
+	<script>
+		let genres = document.querySelectorAll('.genre-container');
+		genres.forEach(genre => {
+			let rnd = Math.floor(Math.random() * 1084) + 1;
+			genre.style.backgroundImage = "url('https://picsum.photos/id/" + rnd + "/300/200')";
+		})
+	</script>
 </body>
 </html>

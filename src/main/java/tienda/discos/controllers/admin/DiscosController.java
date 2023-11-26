@@ -69,7 +69,7 @@ public class DiscosController {
 	}
 	
 	@RequestMapping("editarDisco")
-	public String editarDisco(@RequestParam("id") Integer id, Model model)  {
+	public String editarDisco(@RequestParam("id") @Valid Integer id, Model model)  {
 		Disco d = servicioDiscos.obtenerDiscoPorId(id);
 		d.setIdGenero(d.getGenero().getId());
 		model.addAttribute("discoEditar", d);
