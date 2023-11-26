@@ -1,0 +1,27 @@
+.genre-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: url(https://picsum.photos/500);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 30px;
+	height: 10em;
+	width: 20em;
+}
+.genre-container > p {
+	font-size: 1.5em;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+	background-color: white;
+	padding: .5em;
+	border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+	background: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, .7), rgba(255, 255, 255, 0));
+}
+.genres{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 1em;
+}

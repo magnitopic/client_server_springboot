@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="genre.css">
+</head>
+<body>
+	<div class="genres">
+		<div class="genre-container">
+			<p>Rock</p>
+		</div>
+		<div class="genre-container">
+			<p>Pop</p>
+		</div>
+		<div class="genre-container">
+			<p>Indie</p>
+		</div>
+		<div class="genre-container">
+			<p>Rock</p>
+		</div>
+		<div class="genre-container">
+			<p>Rock</p>
+		</div>
+	</div>
+	<script>
+		let genres = document.querySelectorAll('.genre-container');
+		genres.forEach(genre => {
+			let rnd = Math.floor(Math.random() * 1084) + 1;
+			genre.style.backgroundImage = "url('https://picsum.photos/id/" + rnd + "/300/200')";
+		})
+	</script>
+</body>
+</html>
