@@ -1,21 +1,29 @@
-<div>Mostrar toda la info del producto, así como sus imagenes o extras</div>
-
-<div id="title">
-	<img src="img/Blue.png" alt="disk">
-	<div>
-		<h2>{{nombre}}</h2>
-		<h5>{{artista}}</h5>
+<div id="details-main">
+	<div id="details-header">
+		<img src="mostrar_imagen?id={{id}}" alt="" />
+		<div>
+			<h1>{{nombre}}</h1>
+			<h2>{{artista}}</h2>
+		</div>
 	</div>
-</div>
-<div id="spacer" />
-<div id="data">
-	<h2>Disk data</h1>
-	<p>Artist: {{artista}}</p>
-	<p>Discography: {{discografica}}</p>
-	<p>Year: {{ano}}</p>
-	<p>Genre: {{genero}}</p>
-	<p>Price: <span id="price">{{precio}} €</span></p>
-</div>
-<div>
-	<a href="#">comprar</a>
+	<div id="buffer"></div>
+	<div id="details-body">
+		<div>
+			<p>Año:</p>
+			<p>{{ano}}</p>
+		</div>
+		<div>
+			<p>Discográfica:</p>
+			<p>{{discografica}}</p>
+		</div>
+		<div>
+			<p>Genero:</p>
+			<p>{{genero}}</p>
+		</div>
+		<div>
+			<p>Precio:</p>
+			<p id="details-price">{{precio}} €</p>
+		</div>
+		<input type="button" class="details-comprar" id-producto="{{id}}" value="Añadir al carrito">
+	</div>
 </div>

@@ -92,7 +92,7 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 	public Map<String, Object> obtenerDetallesDisco(int idDisco) {
 		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_DETALLES_DISCO);
 		NativeQueryImpl nativeQuery = (NativeQueryImpl)query;
-		nativeQuery.setParameter(":id", idDisco);
+		nativeQuery.setParameter("id", idDisco);
 		nativeQuery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 		return (Map<String, Object>) nativeQuery.getResultList().get(0);
 	}

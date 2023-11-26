@@ -1,6 +1,24 @@
 var selectedElement = $("#inicio");
 var nombre_a_buscar = "";
 
+function addToCartDisk(res) {
+	if (nombre_login != "") {
+		var id_producto = $(this).attr("id-producto");
+		alert("agregar producto de id: " + id_producto + " al carrito del usuario");
+		$.post("servicioWebCarrito/agregarDisco",
+			{
+				id: id_producto,
+				cantidad: 1
+			}
+		).done(function(res) {
+			alert(res);
+		});
+	} else {
+		alert("tienes que identificarte para poder comprar productos");
+	}
+};
+
+
 function mostrar_discos() {
 	selectedElement.removeClass("selected");
 	selectedElement = $("#discos");
@@ -29,33 +47,21 @@ function mostrar_discos() {
 			mostrar_discos();
 		});
 
-		$(".enlace_comprar_listado_principal").click(function(res) {
-			if (nombre_login != "") {
-				var id_producto = $(this).attr("id-producto");
-				alert("agregar producto de id: " + id_producto + " al carrito del usuario");
-				$.post("servicioWebCarrito/agregarDisco",
-					{
-						id: id_producto,
-						cantidad: 1
-					}
-				).done(function(res) {
-					alert(res);
+		$(".enlace_comprar_listado_principal").click(addToCartDisk);
+		$(".card").on('click', function(){
+			if (!$(event.target).is('input[type="button"]')) {
+				let idProducto = $(this).attr("id-producto");
+				$.getJSON("servicioWebDiscos/obtenerDiscoDetalles", {
+					id: idProducto,
+				}).done((res) => {
+					var html = Mustache.render(
+						plantillaDetallesDisco,
+						res
+					);
+					$("#contenedor").html(html);
+					$(".details-comprar").click(addToCartDisk);
 				});
-			} else {
-				alert("tienes que identificarte para poder comprar productos");
 			}
-		});
-		$(".enlace_ver_detalles").click(() => {
-			let id_disco = $(this).attr("id-producto");
-			$.getJSON("servicioWebDiscos/obtenerDiscoDetalles", {
-				id: id_producto,
-			}).done((res) => {
-				var html = Mustache.render(
-					plantillaDetallesDisco,
-					res
-				);
-				$("#contenedor").html(html);
-			});
 		});
 	});
 }
