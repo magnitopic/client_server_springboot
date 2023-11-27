@@ -69,7 +69,7 @@ public class DiscosController {
 	}
 	
 	@RequestMapping("editarDisco")
-	public String editarDisco(@RequestParam("id") @Valid Integer id, Model model)  {
+	public String editarDisco(@RequestParam("id")Integer id, Model model)  {
 		Disco d = servicioDiscos.obtenerDiscoPorId(id);
 		d.setIdGenero(d.getGenero().getId());
 		model.addAttribute("discoEditar", d);
@@ -78,7 +78,11 @@ public class DiscosController {
 	}
 
 	@RequestMapping("guardarCambiosDisco")
-	public String guardarCambiosDisco(Disco disco, Model model) {
+	public String guardarCambiosDisco(@ModelAttribute("discoEditar") @Valid Disco disco, BindingResult resultadoValidaciones, Model model) {
+		if (resultadoValidaciones.hasErrors()) {
+			model.addAttribute("generos", servicioGeneros.obtenerGeneros());
+			return "admin/discos_editar";
+		}
 		servicioDiscos.gurdarCambioDisco(disco);
 		return obtenerDiscos("", 0, model);
 	}

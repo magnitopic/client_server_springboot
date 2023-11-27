@@ -23,6 +23,9 @@ public interface ServicioDiscos {
 	Disco obtenerDiscoPorId(int id);
 	
 	void gurdarCambioDisco(Disco d);
+	
+	
+	
 
 	Map<String, Object> obtenerDetallesDisco(int idDisco);
 
