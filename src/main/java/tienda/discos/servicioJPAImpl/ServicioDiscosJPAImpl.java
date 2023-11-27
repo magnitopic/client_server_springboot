@@ -80,11 +80,12 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 	}
 
 	@Override
-	public List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre) {
+	public List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre, int comienzo) {
 		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_DISCOS_JSON);
 		NativeQueryImpl nativequery = (NativeQueryImpl)query;
 		nativequery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 		nativequery.setParameter("nombre", "%" + nombre + "%");
+		nativequery.setParameter("comienzo", comienzo);
 		return nativequery.getResultList();
 	}
 	

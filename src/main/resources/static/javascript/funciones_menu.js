@@ -1,5 +1,6 @@
 var selectedElement = $("#inicio");
 var nombre_a_buscar = "";
+var comienzo_resulatdos = 0;
 
 function addToCartDisk(res) {
 	if (nombre_login != "") {
@@ -23,18 +24,15 @@ function mostrar_discos() {
 	selectedElement.removeClass("selected");
 	selectedElement = $("#discos");
 	selectedElement.addClass("selected");
-	$.getJSON("servicioWebDiscos/obtenerDiscos", { nombre: nombre_a_buscar }).done((res) => {
-		//alert("respuesta del servidor: \n"+res);
+	$.getJSON("servicioWebDiscos/obtenerDiscos", { nombre: nombre_a_buscar, comienzo: comienzo_resulatdos }).done((res) => {
 		let texto_html = "";
-		/*res.forEach((e)=>{
-		e.fecha_hora_actual = new Date();
-		e.precio = e.precio.toString().replace(".",",");
-	})*/
-		res.forEach((e) => {
+		let discos = res.discos;
+		let totalDiscos = res.totalDiscos;
+		discos.forEach((e) => {
 			e.fecha_hora_actual = new Date();
 			e.precio = e.precio.toString().replace(".", ",");
 		});
-		texto_html = Mustache.render(plantillaDiscos, res);
+		texto_html = Mustache.render(plantillaDiscos, discos);
 		$("#contenedor").html(texto_html);
 
 		// indicar que hace el buscador
@@ -44,6 +42,26 @@ function mostrar_discos() {
 		$("#nombre_buscador").focus();
 		$("#nombre_buscador").keyup(function(e) {
 			nombre_a_buscar = $(this).val();
+			comienzo_resulatdos = 0;
+			mostrar_discos();
+		});
+		
+		//paginacion de los discos
+		$("#total_resultados").html((comienzo_resulatdos + comienzo_resulatdos + 10 < totalDiscos? 10 : totalDiscos) +"/"+totalDiscos)
+		if (comienzo_resulatdos <= 0)
+			$("#enlace_anterior").hide();
+		else
+			$("#enlace_anterior").show();
+		if (comienzo_resulatdos + 10 < totalDiscos)
+			$("#enlace_siguiente").show();
+		else
+			$("#enlace_siguiente").hide();
+		$("#enlace_anterior").click((e)=>{
+			comienzo_resulatdos -= 10;
+			mostrar_discos();
+		});
+		$("#enlace_siguiente").click((e)=>{
+			comienzo_resulatdos += 10;
 			mostrar_discos();
 		});
 
@@ -111,6 +129,13 @@ let registarme = () => {
 	$("#contenedor").html(plantillaRegistro);
 	$("#goToLogIn").click(logIn);
 	$("#form_register").submit((e) => {
+		e.preventDefault(); //evitamos envio de form, ya que todo en cliente
+		if (!validarNombre($("#nombre").val()) ||
+			!validarEmail($("#email").val()) ||
+			!validarPass($("#pass").val()))			
+			return;
+			
+		
 		let formulario = document.forms[0];
 		let formData = new FormData(formulario);
 		$.ajax("servicioWebUsuarios/registrarUsuario", {
@@ -124,7 +149,6 @@ let registarme = () => {
 				logIn();
 			}, //end success
 		}); //end ajax
-		e.preventDefault(); //evitamos envio de form, ya que todo en cliente
 		//lo gestionamos con javascript
 
 	}); //end submit

@@ -7,6 +7,15 @@
 		placeholder="Buscar discos..."
 	/>
 </form>
+<div>
+	Paginación: <br>
+	<a id="enlace_anterior" href="#">Anterior</a>
+	<span id="total_resultados"> </span>
+	<a id="enlace_siguiente" href="#">Siguiente</a>
+	
+</div>
+
+
 <div style="display: flex; flex-wrap: wrap">
 {{#.}}
 <div class="card" id-producto="{{id}}">

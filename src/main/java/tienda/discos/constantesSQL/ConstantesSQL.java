@@ -9,7 +9,8 @@ public class ConstantesSQL {
 			+ "FROM disco as d, genero as g "
 			+ "WHERE d.genero_id = g.id and d.alta = 1 "
 			+ "and (d.nombre like :nombre or d.artista like :nombre or d.discografica like :nombre or g.nombre like :nombre ) "
-			+ "ORDER BY d.id DESC";
+			+ "ORDER BY d.id DESC "
+			+ "limit :comienzo, 10";
 
 	public static final String SQL_OBTENER_GENEROS_PARA_DESPLEGABLE = 
 			"select id, nombre from genero order by id asc";

@@ -4,6 +4,7 @@ $.get("plantillas_mustache/inicio.html", (data) => {
 
 $.get("plantillas_mustache/discos.html", (data) => {
 	plantillaDiscos = data;
+	setTimeout(mostrar_inicio(), 500);
 });
 
 $.get("plantillas_mustache/registro.html", (data) => {

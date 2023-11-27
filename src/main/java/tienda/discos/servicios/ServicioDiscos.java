@@ -26,6 +26,6 @@ public interface ServicioDiscos {
 
 	Map<String, Object> obtenerDetallesDisco(int idDisco);
 
-	List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre);
+	List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre, int comienzo);
 	
 }

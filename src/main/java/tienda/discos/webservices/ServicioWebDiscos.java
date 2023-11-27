@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import tienda.discos.datos.serviciosWeb.InfoDiscos;
 import tienda.discos.servicios.ServicioDiscos;
 
 @Controller
@@ -31,8 +32,14 @@ public class ServicioWebDiscos {
 	private ServicioDiscos servicioDiscos;
 	
 	@RequestMapping("obtenerDiscos")
-	public List<Map<String, Object>> obtenerDiscos(@RequestParam(name = "nombre", defaultValue = "")String titulo ){
-		return servicioDiscos.obtenerDiscosParaFormatJSON(titulo);
+	public InfoDiscos obtenerDiscos(
+			@RequestParam(name = "nombre", defaultValue = "")String titulo,
+			@RequestParam(name = "comienzo", defaultValue = "0") int comienzo ){
+		//return servicioDiscos.obtenerDiscosParaFormatJSON(titulo, comienzo);
+		InfoDiscos info = new InfoDiscos();
+		info.setDiscos(servicioDiscos.obtenerDiscosParaFormatJSON(titulo, comienzo));
+		info.setTotalDiscos(servicioDiscos.obtenerTotalDiscos(titulo));
+		return info;
 	}
 	
 	@RequestMapping("obtenerDiscoDetalles")
