@@ -1,6 +1,7 @@
 package tienda.discos.servicios;
 
 import java.util.List;
+import java.util.Map;
 
 import tienda.discos.model.Usuario;
 
@@ -13,4 +14,7 @@ public interface ServicioUsuarios {
 	Usuario obtenerUserPorId(int id);
 	List<Usuario> obtenerUsuarios();
 	void actualizarDatos(Integer id, String nombreUsuario, String pass);
+	
+	// metodos web
+	Map<String, Object> nativeObtenerUserPorId(int id);
 }

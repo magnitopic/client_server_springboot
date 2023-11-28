@@ -54,6 +54,16 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			Genero country = new Genero("Country");
 			entityManager.persist(country);
 			
+			
+			// registro de 20 discos de prueba para la paginación
+			
+			for (int i = 0; i < 20; i++) {
+				Disco d = new Disco("TestDisk" + i, "Artist", "RecordLabel", "1999", 20.99);
+				d.setAlta(true);
+				d.setGenero(rock);
+				entityManager.persist(d);
+			}
+			
 			// Crear registros de discos
 			Disco d1 = new Disco("Comedown Machine", "The Strokes", "RCA", "2013", 27.99);
 			d1.setGenero(indie);
@@ -132,15 +142,6 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			pp2.setCantidad(2);
 			entityManager.persist(pp2);
 			
-			
-			// registro de 100 discos de prueba para la paginación
-			
-			for (int i = 0; i < 20; i++) {
-				Disco d = new Disco("TestDisk" + i, "Artist", "RecordLabel", "1999", 20.99);
-				d.setAlta(true);
-				d.setGenero(rock);
-				entityManager.persist(d);
-			}
 			
 			// una vez realizado los registros iniciales marcaremos el setup como completado
 			SetUp registroSetUp = new SetUp();

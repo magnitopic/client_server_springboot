@@ -1,27 +1,43 @@
 {{#.}}
 <div>
-	<div class="card-info">
-		<form>
-		<div>
-			<img style="width: 10em; border-radius: 50%;" src="mostrar_imagen_user?id={{id}}">
-		</div>
-		<div>
-			<div>
-				<span>User name:</span>
-				<input name="nombre" value="{{nombre}}" id="userName">
-			</div>
-			<div>
-				<span>Password:</span>
-				<input name="pass" value="{{pass}}" id="pass">
-			</div>
-			<div>
-				<span>Email:</span>
-				<span>{{email}}</span>
-			</div>
-		</div>
-		<input type="hidden" value="{{id}}" id="identifier">
-		<input id="updateUserData" type="button" value="Actualizar perfil">
-		</form>
-	</div>
-</div>
+			<form>
+				<div id="profile-main">
+					<div>
+						<img
+							style="width: 10em; border-radius: 50%"
+							src="mostrar_imagen_user?id={{id}}"
+						/>
+					</div>
+					<div id="profile-data">
+						<div id="profile-element">
+							<span>User name:</span>
+							<input
+								class="profile-input"
+								name="nombre"
+								value="{{nombre}}"
+								id="userName"
+							/>
+						</div>
+						<div id="profile-element">
+							<span>Password:</span>
+							<input
+								class="profile-input"
+								name="pass"
+								value="{{pass}}"
+								id="pass"
+							/>
+						</div>
+						<div id="profile-element">
+							<span>Email:</span>
+							<span>{{email}}</span>
+						</div>
+						<input
+							id="updateUserData"
+							type="button"
+							value="Actualizar perfil"
+						/>
+					</div>
+				</div>
+				<input type="hidden" value="{{id}}" id="identifier" />
+			</form>
 {{/.}}

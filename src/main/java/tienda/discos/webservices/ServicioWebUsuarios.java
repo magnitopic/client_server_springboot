@@ -79,10 +79,10 @@ public class ServicioWebUsuarios {
 	}
 	
 	@RequestMapping("obtenerDatosUser")
-	public Usuario obtenerDatosUser(HttpServletRequest req) throws Exception{
+	public Map<String, Object> obtenerDatosUser(HttpServletRequest req) throws Exception{
 		if (req.getSession().getAttribute("usuario_identificado") != null) {
 			int id = ((Usuario) req.getSession().getAttribute("usuario_identificado")).getId();
-			Usuario testUsuario =  servicioUsuarios.obtenerUserPorId(id);
+			Map<String, Object> testUsuario =  servicioUsuarios.nativeObtenerUserPorId(id);
 			return testUsuario;
 		} else {
 			throw new Exception("** USUARIO NO IDENTIFICADO **");

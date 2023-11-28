@@ -1,6 +1,7 @@
 package tienda.discos.servicioJPAImpl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -54,15 +55,14 @@ public class ServicioUsuariosImpl implements ServicioUsuarios {
 				.getResultList().get(0);
 	}
 	
-	public Usuario newObtenerUserPorId(int id) {
-		Query query = entityManager.createQuery("select u from Usuario u where u.id = :user_id");
+	@Override
+	public Map<String, Object> nativeObtenerUserPorId(int id) {
+		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_USUARIO_POR_ID);
 		query.setParameter("user_id", id);
-
-		List<Usuario> resultado = query.getResultList();
-		if (resultado.size() == 0) {
-			return null;
-		} else
-			return resultado.get(0);
+		NativeQueryImpl nativequery = (NativeQueryImpl)query;
+		nativequery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
+		List<Map<String, Object>> test = nativequery.getResultList();
+		return test.get(0);
 	}
 
 	@Override

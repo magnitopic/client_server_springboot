@@ -47,7 +47,7 @@ function mostrar_discos() {
 		});
 		
 		//paginacion de los discos
-		$("#total_resultados").html((comienzo_resulatdos + comienzo_resulatdos + 10 < totalDiscos? 10 : totalDiscos) +"/"+totalDiscos)
+		$("#total_resultados").html((comienzo_resulatdos + 10 < totalDiscos? comienzo_resulatdos + 10 : totalDiscos) +"/"+totalDiscos)
 		if (comienzo_resulatdos <= 0)
 			$("#enlace_anterior").hide();
 		else
@@ -232,7 +232,6 @@ let mostrar_pedidos = (e) => {
 	let texto_html = "";
 	if (nombre_login != "") {
 		$.getJSON("servicioWebPedidos/obtenerPedidos", (res) => {
-			console.log(res);
 			texto_html = Mustache.render(plantillaPedidos, res);
 			$("#contenedor").html(texto_html);
 		}).fail(() => { alert("Error of some sort") });
