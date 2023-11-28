@@ -3,22 +3,28 @@
 <div>(no introducir datos reales, aplicacion en pruebas)</div>
 
 <div>
-	tipo tarjeta <select id="tipo_tarjeta">
-					<option value="0">Elegir tipo</option>
-					<option value="visa">VISA</option>
-					<option value="master_card">MASTER CARD</option>
-				 </select>	
+	tipo tarjeta
+	<select id="tipo_tarjeta">
+		<option value="0">Elegir tipo</option>
+		<option value="visa">VISA</option>
+		<option value="master_card">MASTER CARD</option>
+	</select>
+	<br />
+	<span id="errorTipoTarjeta" style="color: red"></span>
 </div>
 
 <div>
-	numero de la tarjeta: <input type="text" id="numero_tarjeta" />
+	numero de la tarjeta: <input type="text" id="numero_tarjeta" /><br />
+	<span id="errorNumeroTarjeta" style="color: red"></span>
 </div>
 
 <div>
-	titular de la tarjeta: <input type="text" id="titular_tarjeta" />
+	titular de la tarjeta: <input type="text" id="titular_tarjeta" /><br />
+	<span id="errorTitularTarjeta" style="color: red"></span>
 </div>
 
-
 <div>
-	<button style="margin:10px;padding: 10px;" id="aceptar_paso_2">ACEPTAR</button>
+	<button style="margin: 10px; padding: 10px" id="aceptar_paso_2">
+		ACEPTAR
+	</button>
 </div>

@@ -4,15 +4,17 @@
 
 <div>
 	<label for="nombre">Nombre</label>
-	<input type="text" name="nombre" id="campo_nombre">
+	<input type="text" name="nombre" id="campo_nombre"><br>
+	<span id="errorNombre" style="color: red;"></span>
 </div>
 <div>
 	<label for="direccion">Direccion</label>
-	<input type="text" name="direccion" id="campo_direccion">
+	<input type="text" name="direccion" id="campo_direccion"><br>
+	<span id="errorDireccion" style="color: red;"></span>
 </div>
 <div>
 	<label for="provincia">Provincia</label>
-	<select name="provincia" id="campo_provincia"></select>
+	<select name="provincia" id="campo_provincia"></select><br>
 </div>
 
 <br/>
@@ -21,8 +23,6 @@
 
 <script>
 	// script que llena el select de las provincias con los valores del array de provincias
-	let provincias = ["Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "Cuenca", "Girona", "Granada", "Guadalajara", "Guipúzcoa", "Huelva", "Huesca", "Islas Baleares", "Jaén", "A Coruña", "La Rioja", "Las Palmas", "León", "Lleida", "Lugo", "Madrid", "Málaga", "Murcia", "Navarra", "Ourense", "Palencia", "Pontevedra", "Salamanca", "Segovia", "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza"];
-
 	let select_provincias = document.getElementById("campo_provincia");
 	for (let i = 0; i < provincias.length; i++) {
 		let option = document.createElement("option");

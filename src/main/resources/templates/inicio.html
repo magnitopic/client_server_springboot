@@ -24,6 +24,11 @@
 					<p id="main-title">Vinilo O's</p>
 				</div>
 				<div>
+					<div>
+						<span th:text="#{admin.cambiaridoma}"></span>
+						<a href="?idioma=es">🇪🇸</a>
+						<a href="?idioma=en">🇬🇧</a>
+					</div>
 					<div id="logIn">
 						<div id="user-msg-div">
 							<p id="user-msg-main" class="">Iniciar Sesión</p>
@@ -35,7 +40,7 @@
 			</div>
 			<div id="bottom-header">
 				<a class="tab selected" href="#" id="inicio">Inicio</a>
-				<a class="tab" href="#" id="discos">Discos</a>
+				<a class="tab" href="#" id="discos" th:text="#{client.disk}"></a>
 				<a class="tab" href="#" id="carrito">Carrito</a>
 				<a class="tab" href="#" id="mispedidos">Ver Pedidos</a>
 				<a class="tab" href="#" id="misdatos">Mis datos</a>
@@ -50,6 +55,7 @@
 		<script defer src="javascript/constantes.js"></script>
 		<script defer src="javascript/carga_plantillas.js"></script>
 		<script defer src="javascript/funciones_menu.js"></script>
+		<script defer src="javascript/validaciones_pasos_checkout.js"></script>
 		<script defer src="javascript/pasos_checkout.js"></script>
 		<script defer src="javascript/validaciones.js"></script>
 		<script defer src="javascript/inicioCarrusel.js"></script>
