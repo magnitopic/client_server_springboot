@@ -232,6 +232,7 @@ let mostrar_pedidos = (e) => {
 	let texto_html = "";
 	if (nombre_login != "") {
 		$.getJSON("servicioWebPedidos/obtenerPedidos", (res) => {
+			console.log(res);
 			texto_html = Mustache.render(plantillaPedidos, res);
 			$("#contenedor").html(texto_html);
 		}).fail(() => { alert("Error of some sort") });

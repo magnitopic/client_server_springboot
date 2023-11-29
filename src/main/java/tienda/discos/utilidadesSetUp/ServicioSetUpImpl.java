@@ -133,7 +133,7 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			p2.setTipoTarjeta("VISA");
 			p2.setNumeroTarjeta("123 456 789");
 			p2.setTitularTargeta("Info Titular");
-			p2.setUsuario(u2);
+			p2.setUsuario(u3);
 			p2.setEstado(EstadosPedido.TERMINADO);
 			entityManager.persist(p2);
 			ProductoPedido pp2 = new ProductoPedido();
@@ -142,6 +142,22 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			pp2.setCantidad(2);
 			entityManager.persist(pp2);
 			
+
+			Pedido p3 = new Pedido();
+			p3.setNombreCompleto("N. Completo");
+			p3.setDireccion("Info Dirección");
+			p3.setProvincia("Info Provincia");
+			p3.setTipoTarjeta("VISA");
+			p3.setNumeroTarjeta("123 456 789");
+			p3.setTitularTargeta("Info Titular");
+			p3.setUsuario(u3);
+			p3.setEstado(EstadosPedido.TERMINADO);
+			entityManager.persist(p3);
+			ProductoPedido pp3 = new ProductoPedido();
+			pp3.setPedido(p3);
+			pp3.setDisco(d1);
+			pp3.setCantidad(2);
+			entityManager.persist(pp3);
 			
 			// una vez realizado los registros iniciales marcaremos el setup como completado
 			SetUp registroSetUp = new SetUp();
