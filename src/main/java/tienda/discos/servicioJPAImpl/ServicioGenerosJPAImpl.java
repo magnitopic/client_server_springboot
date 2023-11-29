@@ -15,7 +15,7 @@ import tienda.discos.servicios.ServicioGeneros;
 
 @Service
 @Transactional
-public class ServicioGenerosJPAImpl implements ServicioGeneros {
+public class  ServicioGenerosJPAImpl implements ServicioGeneros {
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -33,5 +33,21 @@ public class ServicioGenerosJPAImpl implements ServicioGeneros {
 	@Override
 	public void registrarGenero(Genero g) {
 		entityManager.persist(g);
+	}
+
+	@Override
+	public Genero obtenerGeneroPorId(Integer id){
+		return entityManager.find(Genero.class, id);
+	}
+
+	@Override
+	public void guardarCambiosGenero(Genero generoEditar) {
+		entityManager.merge(generoEditar);
+	}
+
+	@Override
+	public void eliminarGenero(Integer id) {
+		Genero g = entityManager.find(Genero.class, id);
+		entityManager.remove(g);
 	}
 }

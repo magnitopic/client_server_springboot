@@ -49,6 +49,8 @@
 			<div class="genre-container">
 				<p th:text="${genero.nombre}"></p>
 			</div>
+			<a th:text="#{admin.modificar}" th:href="@{${'editarGenero?id='+ genero.id}}"></a>
+			<a th:text="#{admin.borrar}" th:href="@{${'borrarGenero?id='+ genero.id}}"></a>
 		</div>
 	</div>
 	<script>
