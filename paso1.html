@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Paso1</title>
+		<link rel="stylesheet" href="pasos.css" />
+	</head>
+	<body>
+		<div action="#" id="pasos_container">
+			<div>
+				<h2>REALIZAR PEDIDO - PASO 1</h2>
+				<h3>introduce tus datos de envio:</h3>
+			</div>
+			<div class="pasos_holder">
+				<label for="nombre">Nombre</label>
+				<input
+					class="pasos_input"
+					type="text"
+					name="nombre"
+					id="campo_nombre"
+				/><br />
+				<span class="errorIndicator" id="errorNombre"></span>
+			</div>
+			<div class="pasos_holder">
+				<label for="direccion">Direccion</label>
+				<input
+					class="pasos_input"
+					type="text"
+					name="direccion"
+					id="campo_direccion"
+				/><br />
+				<span id="errorDireccion" class="errorIndicator"></span>
+			</div>
+			<div class="pasos_holder">
+				<label for="provincia">Provincia</label>
+				<select
+					class="pasos_input"
+					name="provincia"
+					id="campo_provincia"
+				></select>
+				<br />
+			</div>
+			<br />
+			<button class="pasos-button" id="aceptar_paso_1">Continuar</button>
+		</div>
+	</body>
+</html>

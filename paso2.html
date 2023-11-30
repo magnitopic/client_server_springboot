@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="pasos.css" />
+	</head>
+	<body>
+		<div id="pasos_container">
+			<div>
+				<h2>REALIZAR PEDIDO - PASO 2</h2>
+				<h3>introduce los datos de pago</h3>
+				<div>(no introducir datos reales, aplicación en pruebas)</div>
+			</div>
+			<div class="pasos_holder">
+				<label for="tipo_tarjeta">Tipo de tarjeta:</label>
+				<select class="pasos_input" id="tipo_tarjeta">
+					<option value="0">Elegir tipo</option>
+					<option value="visa">VISA</option>
+					<option value="master_card">MASTER CARD</option>
+				</select>
+				<br />
+				<span id="errorTipoTarjeta" style="color: red"></span>
+			</div>
+			<div class="pasos_holder">
+				<label for="numero_tarjeta">Número de tarjeta:</label>
+				<input
+					class="pasos_input"
+					type="text"
+					id="numero_tarjeta"
+				/><br />
+				<span id="errorNumeroTarjeta" style="color: red"></span>
+			</div>
+			<div class="pasos_holder">
+				<label for="titular_tarjeta">Titular de la tarjeta:</label>
+				<input
+					class="pasos_input"
+					type="text"
+					id="titular_tarjeta"
+				/><br />
+				<span id="errorTitularTarjeta" style="color: red"></span>
+			</div>
+			<div>
+				<button class="pasos-button" id="aceptar_paso_2">
+					Continuar
+				</button>
+			</div>
+		</div>
+	</body>
+</html>
