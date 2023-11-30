@@ -27,16 +27,14 @@ import tienda.discos.servicios.ServicioPedidos;
 
 @Service
 @Transactional
-public class ServicioPedidosImpl implements ServicioPedidos{
+public class ServicioPedidosImpl implements ServicioPedidos {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
-	
+
 	@Autowired
 	private ServicioCarrito servicioCarrito;
 
-	
 	@Override
 	public List<Pedido> obtenerPedidos() {
 		return entityManager.createQuery("select p from Pedido p order by p.id desc").getResultList();
@@ -44,10 +42,8 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 
 	@Override
 	public Pedido obtenerPedidoPorId(int idPedido) {
-		return (Pedido)entityManager.find(Pedido.class, idPedido);
+		return (Pedido) entityManager.find(Pedido.class, idPedido);
 	}
-	
-	
 
 	@Override
 	public void actualizarEstadoPedido(int idPedido, String estado) {
@@ -59,14 +55,15 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 	@Override
 	public void procesarPaso1(String nombre, String direccion, String provincia, int idUsuario) {
 		// cada user solo podrá tener un pedido en estado "en proceso"
-		// si el usuario finaliza un pedido "en proceso" el estado de dicho pedido pasará a ser "terminado"
+		// si el usuario finaliza un pedido "en proceso" el estado de dicho pedido
+		// pasará a ser "terminado"
 		// puede haber tantos pedidios "terminado" como sea necesario
 		Pedido p = obtenerPedidoActual(idUsuario);
 		p.setNombreCompleto(nombre);
 		p.setDireccion(direccion);
 		p.setProvincia(provincia);
 		p.setEstado(EstadosPedido.EN_PROCESO);
-		entityManager.merge(p);		
+		entityManager.merge(p);
 	}
 
 	@Override
@@ -98,16 +95,16 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 		resumen.setNumeroTarjera(p.getNumeroTarjeta());
 		resumen.setRegalo(p.getRegalo());
 		resumen.setObservaciones(p.getObservaciones());
-		
+
 		resumen.setDiscos(servicioCarrito.obtenerProductosCarrito(idUsuario));
-		
+
 		return resumen;
 	}
 
 	@Override
 	public void confirmarPedido(int idUsuario) {
 		Pedido p = obtenerPedidoActual(idUsuario);
-		Usuario uBaseDatos = (Usuario)entityManager.find(
+		Usuario uBaseDatos = (Usuario) entityManager.find(
 				Usuario.class, idUsuario);
 		Carrito c = uBaseDatos.getCarrito();
 		if (c != null && c.getProductosCarrito().size() > 0) {
@@ -126,10 +123,9 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 		p.setEstado(EstadosPedido.TERMINADO);
 		entityManager.merge(p);
 	}
-	
-	
+
 	private Pedido obtenerPedidoActual(int idUsuario) {
-		Usuario uBaseDatos = (Usuario)entityManager.find(Usuario.class, idUsuario);
+		Usuario uBaseDatos = (Usuario) entityManager.find(Usuario.class, idUsuario);
 		Object pedidoEnProceso = null;
 		List<Pedido> resultadoConsulta = entityManager.createQuery(
 				"select p from Pedido p where p.estado = :estado and p.usuario.id = :usuario_id")
@@ -140,11 +136,11 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 			pedidoEnProceso = resultadoConsulta.get(0);
 		else
 			pedidoEnProceso = null;
-	
+
 		Pedido p = null;
 		if (pedidoEnProceso != null) {
-			p = (Pedido)pedidoEnProceso;
-		}else {
+			p = (Pedido) pedidoEnProceso;
+		} else {
 			p = new Pedido();
 			p.setUsuario(uBaseDatos);
 		}
@@ -154,7 +150,7 @@ public class ServicioPedidosImpl implements ServicioPedidos{
 	@Override
 	public List<Pedido> obtenerPedidosDeCliente(int idUsuario) {
 		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_PEDIDOS_POR_ID_USUARIO);
-		NativeQueryImpl nativequery = (NativeQueryImpl)query;
+		NativeQueryImpl nativequery = (NativeQueryImpl) query;
 		nativequery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 		nativequery.setParameter("id_usuario", idUsuario);
 		return nativequery.getResultList();

@@ -18,7 +18,6 @@ import tienda.discos.model.Disco;
 import tienda.discos.model.Genero;
 import tienda.discos.servicios.ServicioDiscos;
 
-
 @Service
 @Transactional
 public class ServicioDiscosJPAImpl implements ServicioDiscos {
@@ -43,7 +42,8 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 	@Override
 	public List<Disco> obtenerDiscos() {
 		// TODO Auto-generated method stub
-		return entityManager.createQuery("select d from Disco d where d.alta = true order by d.id desc").getResultList();
+		return entityManager.createQuery("select d from Disco d where d.alta = true order by d.id desc")
+				.getResultList();
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 			System.out.println("No se subio una nueva foto, tenemos que mantener la anterior");
 			Disco discoAnterior = entityManager.find(Disco.class, d.getId());
 			d.setImagenPortada(discoAnterior.getImagenPortada());
-		}else {
+		} else {
 			System.out.println("Asignar la nueva foto al registro");
 			try {
 				d.setImagenPortada(d.getFotoSubida().getBytes());
@@ -82,17 +82,17 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 	@Override
 	public List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre, int comienzo) {
 		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_DISCOS_JSON);
-		NativeQueryImpl nativequery = (NativeQueryImpl)query;
+		NativeQueryImpl nativequery = (NativeQueryImpl) query;
 		nativequery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 		nativequery.setParameter("nombre", "%" + nombre + "%");
 		nativequery.setParameter("comienzo", comienzo);
 		return nativequery.getResultList();
 	}
-	
+
 	@Override
 	public Map<String, Object> obtenerDetallesDisco(int idDisco) {
 		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_DETALLES_DISCO);
-		NativeQueryImpl nativeQuery = (NativeQueryImpl)query;
+		NativeQueryImpl nativeQuery = (NativeQueryImpl) query;
 		nativeQuery.setParameter("id", idDisco);
 		nativeQuery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 		return (Map<String, Object>) nativeQuery.getResultList().get(0);
@@ -100,16 +100,18 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 
 	@Override
 	public List<Disco> obtenerDiscosPorNombre(String nombre) {
-		return entityManager.createQuery("select d from Disco d where d.alta = true and lower(d.nombre) like lower(:nombre) order by d.id desc")
-				.setParameter("nombre", "%"+ nombre + "%")
+		return entityManager.createQuery(
+				"select d from Disco d where d.alta = true and lower(d.nombre) like lower(:nombre) order by d.id desc")
+				.setParameter("nombre", "%" + nombre + "%")
 				.getResultList();
-		
+
 	}
 
 	@Override
 	public List<Disco> obtenerDiscosPorNombreComienzoFin(String nombre, int comienzo, int resultadosPorPagina) {
-		return entityManager.createQuery("select d from Disco d where d.alta = true and lower(d.nombre) like lower(:nombre) order by d.id desc")
-				.setParameter("nombre", "%"+ nombre + "%")
+		return entityManager.createQuery(
+				"select d from Disco d where d.alta = true and lower(d.nombre) like lower(:nombre) order by d.id desc")
+				.setParameter("nombre", "%" + nombre + "%")
 				.setFirstResult(comienzo)
 				.setMaxResults(resultadosPorPagina)
 				.getResultList();
@@ -122,5 +124,5 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 		int totalDiscos = Integer.parseInt(q.getSingleResult().toString());
 		return totalDiscos;
 	}
-	
+
 }

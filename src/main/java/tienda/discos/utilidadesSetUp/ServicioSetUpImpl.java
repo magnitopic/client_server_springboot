@@ -96,13 +96,13 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			entityManager.persist(d4);
 			entityManager.persist(d5);
 			// Crear registros de usuarios
-			Usuario u1 = new Usuario("Magnitopic", "testMail@mail.com", "1234Password");
+			Usuario u1 = new Usuario("Magnitopic", "testMail@mail.com", "1234Password", "123456789", "España");
 			//copiarImagenBase(rutaReal, "/imagenes_base/u1.jpg", "/subidas/u1.jpg");
 			u1.setAvatar(copiarImagenBase("http://localhost:8080/imagenes_base_usuarios/1.jpg"));
-			Usuario u2 = new Usuario("user", "mailTest@mail.com", "123");
+			Usuario u2 = new Usuario("user", "mailTest@mail.com", "123", "123456789", "Canadá");
 			//copiarImagenBase(rutaReal, "/imagenes_base/u2.jpg", "/subidas/u2.jpg");
 			u2.setAvatar(copiarImagenBase("http://localhost:8080/imagenes_base_usuarios/2.jpg"));
-			Usuario u3 = new Usuario("mag", "mail@mail.com", "123");
+			Usuario u3 = new Usuario("mag", "mail@mail.com", "123", "123456789", "España");
 			//copiarImagenBase(rutaReal, "/imagenes_base/u3.jpg", "/subidas/u3.jpg");
 			u3.setAvatar(copiarImagenBase("http://localhost:8080/imagenes_base_usuarios/3.jpg"));
 			entityManager.persist(u1);

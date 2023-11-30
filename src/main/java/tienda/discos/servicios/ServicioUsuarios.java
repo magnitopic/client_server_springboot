@@ -13,7 +13,7 @@ public interface ServicioUsuarios {
 	Usuario obtenerUserPorMailYpass(String email, String pass);
 	Usuario obtenerUserPorId(int id);
 	List<Usuario> obtenerUsuarios();
-	void actualizarDatos(Integer id, String nombreUsuario, String pass);
+	void actualizarDatos(Integer id, String nombreUsuario, String pass, String telefono, String pais);
 	
 	// metodos web
 	Map<String, Object> nativeObtenerUserPorId(int id);

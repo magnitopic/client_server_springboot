@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Admin - Listado discos</title>
-<link rel="stylesheet" href="../css/profile.css" />
-</head>
-<body>
-	
+	<head>
+		<meta charset="ISO-8859-1" />
+		<title>Admin - Listado discos</title>
+		<link rel="stylesheet" href="../css/profile.css" />
+	</head>
+	<body>
+		<div th:insert="fragments/general.html :: menu"></div>
 
-	<div th:insert="fragments/general.html :: menu"></div>
-	
-	<p>Listado de usuarios:</p>
-	
+		<p>Listado de usuarios:</p>
 
-	<div th:each="usuario : ${usuarios}">
-		<div id="profile-main">
-			<div>
-				<img
-					style="width: 10em; border-radius: 50%"
-					th:src="@{${ '../mostrar_imagen_user?id=' + usuario.id }}"
-				/>
-			</div>
-			<div id="profile-data">
-				<div id="profile-element">
-					<span th:text="#{admin.nombre}"></span>
-					<p th:text="${usuario.nombre}" id="userName"/>
-				</div>
-				<div id="profile-element">
-					<span th:text="#{admin.pass}"></span>
-					<p
-						th:text="${usuario.pass}"
-						id="pass"
+		<div th:each="usuario : ${usuarios}">
+			<div id="profile-main">
+				<div>
+					<img
+						style="width: 10em; border-radius: 50%"
+						th:src="@{${ '../mostrar_imagen_user?id=' + usuario.id }}"
 					/>
 				</div>
-				<div id="profile-element">
-					<span th:text="#{admin.email}"></span>
-					<p th:text="${usuario.email}"></p>
-				</div>
+				<div id="profile-data">
+					<div id="profile-element">
+						<span th:text="#{admin.nombre}"></span>
+						<p th:text="${usuario.nombre}" id="userName" />
+					</div>
+					<div id="profile-element">
+						<span th:text="#{admin.pass}"></span>
+						<p th:text="${usuario.pass}" id="pass"></p>
+					</div>
+					<div id="profile-element">
+						<span>Telephone:</span>
+						<input
+							class="profile-input"
+							name="tel"
+							value="{{tel}}"
+							id="tel"
+						/>
+					</div>
+					<div>
+						<span>Country:</span>
+						<input
+							class="profile-input"
+							name="pais"
+							value="{{pais}}"
+							id="pais"
+						/>
+					</div>
+					<div id="profile-element">
+						<span th:text="#{admin.email}"></span>
+						<p th:text="${usuario.email}"></p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</body>
+	</body>
 </html>

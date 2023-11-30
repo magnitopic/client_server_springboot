@@ -54,12 +54,12 @@ public class ServicioUsuariosImpl implements ServicioUsuarios {
 				.setParameter("user_id", id)
 				.getResultList().get(0);
 	}
-	
+
 	@Override
 	public Map<String, Object> nativeObtenerUserPorId(int id) {
 		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_USUARIO_POR_ID);
 		query.setParameter("user_id", id);
-		NativeQueryImpl nativequery = (NativeQueryImpl)query;
+		NativeQueryImpl nativequery = (NativeQueryImpl) query;
 		nativequery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 		List<Map<String, Object>> test = nativequery.getResultList();
 		return test.get(0);
@@ -72,10 +72,12 @@ public class ServicioUsuariosImpl implements ServicioUsuarios {
 	}
 
 	@Override
-	public void actualizarDatos(Integer id, String nombreUsuario, String pass) {
+	public void actualizarDatos(Integer id, String nombreUsuario, String pass, String telefono, String pais) {
 		Usuario u = entityManager.find(Usuario.class, id);
 		u.setNombre(nombreUsuario);
 		u.setPass(pass);
+		u.setTel(telefono);
+		u.setPais(pais);
 		entityManager.merge(u);
 	}
 }
