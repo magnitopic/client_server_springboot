@@ -14,6 +14,7 @@ import org.hibernate.transform.AliasToEntityMapResultTransformer;
 import org.springframework.stereotype.Service;
 
 import tienda.discos.constantesSQL.ConstantesSQL;
+import tienda.discos.datos.serviciosWeb.InfoMainListDiscos;
 import tienda.discos.model.Disco;
 import tienda.discos.model.Genero;
 import tienda.discos.servicios.ServicioDiscos;
@@ -41,7 +42,7 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 
 	@Override
 	public List<Disco> obtenerDiscos() {
-		// TODO Auto-generated method stub
+		InfoMainListDiscos infoMainListDiscos = new InfoMainListDiscos();
 		return entityManager.createQuery("select d from Disco d where d.alta = true order by d.id desc")
 				.getResultList();
 	}
@@ -80,12 +81,19 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 	}
 
 	@Override
-	public List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre, int comienzo) {
+	public List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre, int comienzo, String artista,
+			int maxPrecio) {
 		Query query = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_DISCOS_JSON);
 		NativeQueryImpl nativequery = (NativeQueryImpl) query;
 		nativequery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 		nativequery.setParameter("nombre", "%" + nombre + "%");
 		nativequery.setParameter("comienzo", comienzo);
+		nativequery.setParameter("maxPrecio", maxPrecio);
+		nativequery.setParameter("artista", "%" + artista + "%");
+		System.out.println("nombre: " + nombre);
+		System.out.println("compiezo: " + comienzo);
+		System.out.println("artista: " + artista);
+		System.out.println("maxPrecio: " + maxPrecio);
 		return nativequery.getResultList();
 	}
 
@@ -123,6 +131,13 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 		q.setParameter("nombre", "%" + nombre + "%");
 		int totalDiscos = Integer.parseInt(q.getSingleResult().toString());
 		return totalDiscos;
+	}
+
+	@Override
+	public List<String> obtenerArtistasDiscos() {
+		return entityManager
+				.createQuery("select distinct d.artista from Disco d where d.alta = true order by d.artista")
+				.getResultList();
 	}
 
 }

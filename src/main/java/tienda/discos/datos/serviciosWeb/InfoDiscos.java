@@ -6,6 +6,7 @@ import java.util.Map;
 public class InfoDiscos {
 	private List<Map<String, Object>> discos;
 	private int totalDiscos;
+	private List<String> artistas;
 	
 
 	public List<Map<String, Object>> getDiscos() {
@@ -19,5 +20,11 @@ public class InfoDiscos {
 	}
 	public void setTotalDiscos(int totalDiscos) {
 		this.totalDiscos = totalDiscos;
+	}
+	public List<String> getArtistas() {
+		return artistas;
+	}
+	public void setArtistas(List<String> artistas) {
+		this.artistas = artistas;
 	}
 }

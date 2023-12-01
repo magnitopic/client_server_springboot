@@ -11,6 +11,8 @@ public interface ServicioDiscos {
 	void registrarDisco(Disco d);
 	
 	List<Disco> obtenerDiscos();
+
+	List<String> obtenerArtistasDiscos();
 	
 	List<Disco> obtenerDiscosPorNombre(String nombre);
 	
@@ -29,6 +31,9 @@ public interface ServicioDiscos {
 	// opreaciones para web
 	Map<String, Object> obtenerDetallesDisco(int idDisco);
 
-	List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre, int comienzo);
+	List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre, int comienzo, String artista, int maxPrecio);
 	
+	List<Map<String, Object>> obtener(String nombre, int comienzo, int resultadosPorPagina);
+	
+	List<Map<String, Object>> obtenerDiscosConFiltradoPorArtista(String nombre, String artista, int comienzo);
 }

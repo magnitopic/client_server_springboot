@@ -9,6 +9,8 @@ public class ConstantesSQL {
 			+ "FROM disco as d, genero as g "
 			+ "WHERE d.genero_id = g.id and d.alta = 1 "
 			+ "and (d.nombre like :nombre or d.artista like :nombre or d.discografica like :nombre or g.nombre like :nombre ) "
+			+ "and (d.precio <= :maxPrecio) "
+			+ "and (d.artista like :artista) "
 			+ "ORDER BY d.id DESC "
 			+ "limit :comienzo, 10";
 
@@ -36,5 +38,9 @@ public class ConstantesSQL {
 	
 	public static final String SQL_OBTENER_USUARIO_POR_ID = "select * from usuario where usuario.id = :user_id";
 	
-	public static final String SQL_OBTENER_TOTAL_DISCOS = "select count(id) from disco where alta = 1 and nombre like :nombre"; 
+	public static final String SQL_OBTENER_TOTAL_DISCOS = "select count(id) from disco where alta = 1 and nombre like :nombre";
+
+	public static final String SQL_OBTENER_ARTISTAS_DISCOS = "SELECT DISTINCT disco FROM artista;";
+
+	public static final String SQL_OBTENER_DISCOS_POR_ARTISTA = "SELECT * FROM disco WHERE artista = :artista";
 }

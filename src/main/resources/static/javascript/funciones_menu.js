@@ -1,6 +1,9 @@
 var selectedElement = $("#inicio");
 var nombre_a_buscar = "";
+var maxPrecio = 250;
+var artista = "";
 var comienzo_resulatdos = 0;
+var flag = 0;
 
 function addToCartDisk(res) {
 	if (nombre_login != "") {
@@ -26,32 +29,64 @@ function mostrar_discos() {
 	$.getJSON("servicioWebDiscos/obtenerDiscos", {
 		nombre: nombre_a_buscar,
 		comienzo: comienzo_resulatdos,
+		maxPrecio: maxPrecio,
+		artista: artista
 	}).done((res) => {
 		let texto_html = "";
 		let discos = res.discos;
 		let totalDiscos = res.totalDiscos;
+		let artistas = res.artistas;
 		discos.forEach((e) => {
 			e.fecha_hora_actual = new Date();
 			e.precio = e.precio.toString().replace(".", ",");
 		});
-		texto_html = Mustache.render(plantillaDiscos, discos);
+		texto_html = Mustache.render(plantillaDiscos, {
+			discos: discos,
+			artistas: artistas,
+		});
 		$("#contenedor").html(texto_html);
 
 		// indicar que hace el buscador
+		if (flag == 0)
+			$("#nombre_buscador").focus();
 		$("#contenedor").html(texto_html);
 		$("#nombre_buscador").val(nombre_a_buscar);
-		$("#nombre_buscador").focus();
 		$("#nombre_buscador").keyup(function (e) {
 			nombre_a_buscar = $(this).val();
 			comienzo_resulatdos = 0;
+			flag = 0;
 			mostrar_discos();
 		});
-
+		
 		// filtros del buscador
-		$("#max-price").on('input', function (e) {
+
+		// filtrar por precio
+		if (flag == 1){
+			$("#max-price").focus();
+			$('details').prop('open', true);
+		}
+		$('#max-price').val(maxPrecio);
+		$("#max-price-value").html(maxPrecio);
+		$("#max-price").on("input", function (e) {
 			$("#max-price-value").html($(this).val());
 		});
-
+		$("#max-price").on("change", function (e) {
+			maxPrecio = $(this).val();
+			flag = 1;
+			mostrar_discos();
+		});
+		// filtrar por artista
+		if (flag == 2){
+			$("#artistas").focus();
+			$('details').prop('open', true);
+		}
+		$("#artistas").val(artista);
+		$("#artistas").on("change", function (e) {
+			artista = $(this).val();
+			flag = 2;
+			mostrar_discos();
+		});
+		
 		// paginación de los discos
 		$("#total_resultados").html(
 			(comienzo_resulatdos + 10 < totalDiscos
@@ -307,3 +342,4 @@ let mostrarMisDatos = (e) => {
 };
 
 $("#misdatos").click(mostrarMisDatos);
+

@@ -1,56 +1,62 @@
 <!-- la manera de indicar a mustache que haga lo indicado con cada elemento de un array que vamos a darle -->
 <!-- enlace_comprar_listado_principal-->
 <form id="search_form">
-	<input
-		type="text"
-		id="nombre_buscador"
-		placeholder="Buscar discos..."
-	/>
+	<input type="text" id="nombre_buscador" placeholder="Buscar discos..." />
 	<details>
 		<summary>Filtros de busqueda</summary>
 		<div>
 			<label for="artista_buscador">Artista</label>
-			<input
-				type="text"
-				id="artista_buscador"
-				placeholder="Artista"
-			/>
+			<select name="artista" id="artistas">
+				<option value="">All</option>
+				{{#artistas}}
+				<option value="{{.}}">{{.}}</option>
+				{{/artistas}}
+			</select>
 		</div>
 		<div>
 			<label for="max-price">Precio máximo:</label>
 			<div>
 				<span id="max-price-value">250</span> €
-				<input type="range" min="1" max="250" value="250" id="max-price">
+				<input
+					type="range"
+					min="1"
+					max="250"
+					value="250"
+					id="max-price"
+				/>
 			</div>
 		</div>
 	</details>
 </form>
 <div>
-	Paginación: <br>
+	Paginación: <br />
 	<a id="enlace_anterior" href="#">Anterior</a>
 	<span id="total_resultados"> </span>
 	<a id="enlace_siguiente" href="#">Siguiente</a>
-	
 </div>
-
 
 <div style="display: flex; flex-wrap: wrap">
-{{#.}}
-<div class="card" id-producto="{{id}}">
-	<img src="mostrar_imagen?id={{id}}" alt="albumCover" />
-	<img src="imgs/disk.webp" alt="disk" class="card-disk" />
-	<div class="card-info">
-		<p class="card-title">{{nombre}}</p>
-		<div class="card-album">
-			<p>{{artista}}</p>
-			<p>•</p>
-			<p>{{nombre_genero}}</p>
-		</div>
-		<div class="card-bottom">
-			<p class="card-price">{{precio}} €</p>
-			<input type="button" class="enlace_comprar_listado_principal" id-producto="{{id}}" value="Añadir al carrito">
+	{{#discos}}
+	<div class="card" id-producto="{{id}}">
+		<img src="mostrar_imagen?id={{id}}" alt="albumCover" />
+		<img src="imgs/disk.webp" alt="disk" class="card-disk" />
+		<div class="card-info">
+			<p class="card-title">{{nombre}}</p>
+			<div class="card-album">
+				<p>{{artista}}</p>
+				<p>•</p>
+				<p>{{nombre_genero}}</p>
+			</div>
+			<div class="card-bottom">
+				<p class="card-price">{{precio}} €</p>
+				<input
+					type="button"
+					class="enlace_comprar_listado_principal"
+					id-producto="{{id}}"
+					value="Añadir al carrito"
+				/>
+			</div>
 		</div>
 	</div>
-</div>
-{{/.}}
+	{{/discos}}
 </div>

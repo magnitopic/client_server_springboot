@@ -34,11 +34,14 @@ public class ServicioWebDiscos {
 	@RequestMapping("obtenerDiscos")
 	public InfoDiscos obtenerDiscos(
 			@RequestParam(name = "nombre", defaultValue = "")String titulo,
-			@RequestParam(name = "comienzo", defaultValue = "0") int comienzo ){
+			@RequestParam(name = "comienzo", defaultValue = "0") int comienzo,
+			@RequestParam(name = "maxPrecio", defaultValue = "250") int maxPrecio,
+			@RequestParam(name = "artista", defaultValue = "") String artista ){
 		//return servicioDiscos.obtenerDiscosParaFormatJSON(titulo, comienzo);
 		InfoDiscos info = new InfoDiscos();
-		info.setDiscos(servicioDiscos.obtenerDiscosParaFormatJSON(titulo, comienzo));
+		info.setDiscos(servicioDiscos.obtenerDiscosParaFormatJSON(titulo, comienzo, artista, maxPrecio));
 		info.setTotalDiscos(servicioDiscos.obtenerTotalDiscos(titulo));
+		info.setArtistas(servicioDiscos.obtenerArtistasDiscos());
 		return info;
 	}
 	
