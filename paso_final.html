@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Paso final</title>
+		<link rel="stylesheet" href="paso_final.css" />
+		<link rel="stylesheet" href="pasos.css">
+	</head>
+	<body>
+		<div id="pasos_container">
+			<h1>REALIZAR PEDIDO - PASO 3</h1>
+			<h2>Resumen del pedido:</h2>
+			<h3>Productos del pedido:</h3>
+			<div id="productos_pedido">
+				{{#discos}}
+				<div class="disk-info">
+					<h3>{{nombre}}</h3>
+					<div class="disk-bottom">
+						<img
+							height="60px"
+							src="mostrar_imagen?id={{disco_id}}"
+						/>
+						<div>
+							Cantidad: {{cantidad}}<br />
+							<span id="productos-precio"
+								>{{precio_disco}} €</span
+							>
+						</div>
+					</div>
+				</div>
+				{{/discos}}
+			</div>
+			<h3>Datos de envío:</h3>
+			<div style="margin: 10px">
+				<p>Nombre completo: {{nombreCompleto}}</p>
+				<p>Dirección: {{direccion}}</p>
+				<p>Provincia: {{provincia}}</p>
+			</div>
+			<h3>Datos de pago:</h3>
+			<div style="margin: 10px">
+				<p>Tipo tarjeta: {{tipoTarjeta}}</p>
+				<p>Titular tarjeta: {{titularTarjeta}}</p>
+				<p>Numero tarjeta: {{numeroTarjeta}}</p>
+			</div>
+			<h3>Info adicional:</h3>
+			<div style="margin: 10px">
+				<p>Observaciones: {{observaciones}}</p>
+				<p>Regalo?: {{regalo}}</p>
+			</div>
+			<div>
+				<button id="boton_confirmar_pedido" class="pasos-button">
+					Confirmar pedido
+				</button>
+			</div>
+		</div>
+	</body>
+</html>

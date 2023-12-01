@@ -33,7 +33,7 @@ body {
 	justify-content: center;
 	margin: 0px;
 }
-.pasos_holder_checkbox{
+.pasos_holder_checkbox {
 	display: flex;
 	flex-direction: row;
 	align-items: center;

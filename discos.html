@@ -13,6 +13,35 @@
 				id="nombre_buscador"
 				placeholder="Buscar discos..."
 			/>
+			<details>
+				<summary>Filtros de busqueda</summary>
+				<div id="filters-container">
+					<div>
+						<label for="artista_buscador">Artista</label>
+						<select name="artista" id="artistas">
+							<option value="">All</option>
+						</select>
+					</div>
+					<div>
+						<label for="max-price">Precio máximo:</label>
+						<div id="filters-price-container">
+							<input
+							type="range"
+							min="1"
+							max="250"
+							value="250"
+							id="max-price"
+							/>
+							<p><span id="max-price-value">250</span> €</p>
+						</div>
+					</div>
+				</div>
+			</details>
 		</form>
 	</body>
+	<script>
+		document.querySelector("#max-price").addEventListener("input", (e) => {
+			document.querySelector("#max-price-value").textContent = e.target.value;
+		});
+	</script>
 </html>
