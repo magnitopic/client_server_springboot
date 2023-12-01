@@ -80,4 +80,9 @@ public class ServicioUsuariosImpl implements ServicioUsuarios {
 		u.setPais(pais);
 		entityManager.merge(u);
 	}
+
+	@Override
+	public void guardarCambiosUsuario(Usuario usuarioEditar) {
+		entityManager.merge(usuarioEditar);
+	}
 }

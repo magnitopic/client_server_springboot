@@ -60,7 +60,7 @@ body {
 	margin: 0px;
 }
 
-.card-bottom{
+.card-bottom {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -93,16 +93,16 @@ body {
 
 .enlace_comprar_listado_principal {
 	border: none;
-	background-color: #FFD814;
+	background-color: #ffd814;
 	color: black;
 	padding: 10px;
 	border-radius: 5px;
 	font-weight: bold;
 	cursor: pointer;
-	font-size: .9em;
+	font-size: 0.9em;
 }
 
-#search_form{
+#search_form {
 	display: flex;
 	flex-direction: column;
 	margin: 2em 0px;
@@ -112,8 +112,43 @@ body {
 	margin: 0 auto;
 	width: 80%;
 	padding: 1em 10px;
-	max-width: 1200px;
+	max-width: 1000px;
 	font-size: 1.3em;
 	border-radius: 5px;
 }
 
+details {
+	border: 1px solid #ccc;
+	padding: 1em;
+	border-radius: 5px;
+	width: 80%;
+	margin: 2em auto;
+	max-width: 1000px;
+}
+
+summary {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#filters-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 2em 0px 1em 0px;
+	gap: 2em;
+}
+
+#filters-price-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#filters-price-container input {
+	width: 100%;
+}
+
+#filters-price-container p {
+	margin: 0;
+}

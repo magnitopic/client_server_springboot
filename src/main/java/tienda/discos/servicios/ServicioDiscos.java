@@ -18,6 +18,8 @@ public interface ServicioDiscos {
 	
 	List<Disco> obtenerDiscosPorNombreComienzoFin(String nombre, int comienzo, int resultadosPorPagina);
 	
+	int obtenerTotalDiscos(String nombre, String artista, int maxPrecio);
+
 	int obtenerTotalDiscos(String nombre);
 	
 	void borrarDisco(int id);
@@ -34,6 +36,4 @@ public interface ServicioDiscos {
 	List<Map<String, Object>> obtenerDiscosParaFormatJSON(String nombre, int comienzo, String artista, int maxPrecio);
 	
 	List<Map<String, Object>> obtener(String nombre, int comienzo, int resultadosPorPagina);
-	
-	List<Map<String, Object>> obtenerDiscosConFiltradoPorArtista(String nombre, String artista, int comienzo);
 }

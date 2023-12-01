@@ -14,7 +14,6 @@ import org.hibernate.transform.AliasToEntityMapResultTransformer;
 import org.springframework.stereotype.Service;
 
 import tienda.discos.constantesSQL.ConstantesSQL;
-import tienda.discos.datos.serviciosWeb.InfoMainListDiscos;
 import tienda.discos.model.Disco;
 import tienda.discos.model.Genero;
 import tienda.discos.servicios.ServicioDiscos;
@@ -42,7 +41,6 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 
 	@Override
 	public List<Disco> obtenerDiscos() {
-		InfoMainListDiscos infoMainListDiscos = new InfoMainListDiscos();
 		return entityManager.createQuery("select d from Disco d where d.alta = true order by d.id desc")
 				.getResultList();
 	}
@@ -126,8 +124,18 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 	}
 
 	@Override
-	public int obtenerTotalDiscos(String nombre) {
+	public int obtenerTotalDiscos(String nombre, String artista, int maxPrecio) {
 		Query q = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_TOTAL_DISCOS);
+		q.setParameter("nombre", "%" + nombre + "%");
+		q.setParameter("artista", "%" + artista + "%");
+		q.setParameter("maxPrecio", maxPrecio);
+		int totalDiscos = Integer.parseInt(q.getSingleResult().toString());
+		return totalDiscos;
+	}
+
+	@Override
+	public int obtenerTotalDiscos(String nombre) {
+		Query q = entityManager.createNativeQuery(ConstantesSQL.SQL_OBTENER_TOTAL_DISCOS_ADMIN);
 		q.setParameter("nombre", "%" + nombre + "%");
 		int totalDiscos = Integer.parseInt(q.getSingleResult().toString());
 		return totalDiscos;
@@ -138,6 +146,12 @@ public class ServicioDiscosJPAImpl implements ServicioDiscos {
 		return entityManager
 				.createQuery("select distinct d.artista from Disco d where d.alta = true order by d.artista")
 				.getResultList();
+	}
+
+	@Override
+	public List<Map<String, Object>> obtener(String nombre, int comienzo, int resultadosPorPagina) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -40,7 +40,7 @@ public class ServicioWebDiscos {
 		//return servicioDiscos.obtenerDiscosParaFormatJSON(titulo, comienzo);
 		InfoDiscos info = new InfoDiscos();
 		info.setDiscos(servicioDiscos.obtenerDiscosParaFormatJSON(titulo, comienzo, artista, maxPrecio));
-		info.setTotalDiscos(servicioDiscos.obtenerTotalDiscos(titulo));
+		info.setTotalDiscos(servicioDiscos.obtenerTotalDiscos(titulo, artista, maxPrecio));
 		info.setArtistas(servicioDiscos.obtenerArtistasDiscos());
 		return info;
 	}

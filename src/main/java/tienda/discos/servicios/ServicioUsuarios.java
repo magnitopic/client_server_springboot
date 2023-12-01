@@ -17,4 +17,6 @@ public interface ServicioUsuarios {
 	
 	// metodos web
 	Map<String, Object> nativeObtenerUserPorId(int id);
+
+	void guardarCambiosUsuario(Usuario usuarioEditar);
 }

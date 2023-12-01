@@ -29,26 +29,24 @@
 					</div>
 					<div id="profile-element">
 						<span>Telephone:</span>
-						<input
-							class="profile-input"
-							name="tel"
-							value="{{tel}}"
-							id="tel"
-						/>
+						<p th:text="${usuario.tel}" id="tel"></p>
 					</div>
-					<div>
+					<div id="profile-element">
 						<span>Country:</span>
-						<input
-							class="profile-input"
-							name="pais"
-							value="{{pais}}"
-							id="pais"
-						/>
+						<p th:text="${usuario.pais}" id="pais"></p>
 					</div>
 					<div id="profile-element">
 						<span th:text="#{admin.email}"></span>
 						<p th:text="${usuario.email}"></p>
 					</div>
+					<a
+						th:href="@{${'editarUsuario?id='+ usuario.id}}"
+						id="updateUserDataAdmin"
+						type="button"
+						value="Actualizar usuario"
+					>
+						Editar usuario
+					</a>
 				</div>
 			</div>
 		</div>

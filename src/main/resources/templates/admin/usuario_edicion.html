@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Admin - Usuario editar</title>
+	</head>
+	<body>
+		<div th:insert="fragments/general.html :: menu"></div>
+
+		Editar los datos del usuario:<br />
+
+		<form
+			action="#"
+			th:action="guardarCambiosUsuario"
+			th:object="${usuarioEditar}"
+			method="post"
+			enctype="multipart/form-data"
+		>
+			<div id="profile-element">
+				<span th:text="#{admin.nombre}"></span>
+				<input
+					class="profile-input"
+					th:field="*{nombre}"
+					id="userName"
+				/>
+			</div>
+			<div id="profile-element">
+				<span th:text="#{admin.pass}"></span>
+				<input
+					class="profile-input"
+					th:field="*{pass}"
+					id="pass"
+				/>
+			</div>
+			<div id="profile-element">
+				<span>Telephone:</span>
+				<input
+					class="profile-input"
+					name="tel"
+					th:field="*{tel}"
+					id="tel"
+				/>
+			</div>
+			<div id="profile-element">
+				<span>Country:</span>
+				<input
+					class="profile-input"
+					name="pais"
+					th:field="*{pais}"
+					id="pais"
+				/>
+			</div>
+			<div id="profile-element">
+				<span th:text="#{admin.email}"></span>
+				<input
+					class="profile-input"
+					name="email"
+					th:field="*{email}"
+					id="email"
+				/>
+			</div>
+			<input type="hidden" th:field="*{id}" />
+			<input type="hidden" th:field="*{avatar}" />
+			<input type="submit" value="Guardar cambios del usuario" />
+		</form>
+	</body>
+</html>
