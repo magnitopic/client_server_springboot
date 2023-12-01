@@ -1,26 +1,40 @@
-<!-- esta plantilla sera procesada en el paso 1 -->
-<div>REALIZAR PEDIDO - PASO 1</div>
-<div>introduce tus datos de envio:</div>
-
-<div>
-	<label for="nombre">Nombre</label>
-	<input type="text" name="nombre" id="campo_nombre" /><br />
-	<span id="errorNombre" style="color: red"></span>
+<div action="#" id="pasos_container">
+	<div>
+		<h2>REALIZAR PEDIDO - PASO 1</h2>
+		<h3>introduce tus datos de envio:</h3>
+	</div>
+	<div class="pasos_holder">
+		<label for="nombre">Nombre</label>
+		<input
+			class="pasos_input"
+			type="text"
+			name="nombre"
+			id="campo_nombre"
+		/><br />
+		<span class="errorIndicator" id="errorNombre"></span>
+	</div>
+	<div class="pasos_holder">
+		<label for="direccion">Direccion</label>
+		<input
+			class="pasos_input"
+			type="text"
+			name="direccion"
+			id="campo_direccion"
+		/><br />
+		<span id="errorDireccion" class="errorIndicator"></span>
+	</div>
+	<div class="pasos_holder">
+		<label for="provincia">Provincia</label>
+		<select
+			class="pasos_input"
+			name="provincia"
+			id="campo_provincia"
+		></select>
+		<br />
+	</div>
+	<br />
+	<button class="pasos-button" id="aceptar_paso_1">Continuar</button>
 </div>
-<div>
-	<label for="direccion">Direccion</label>
-	<input type="text" name="direccion" id="campo_direccion" /><br />
-	<span id="errorDireccion" style="color: red"></span>
-</div>
-<div>
-	<label for="provincia">Provincia</label>
-	<select name="provincia" id="campo_provincia"></select
-	><br />
-</div>
-
-<br />
-
-<button style="padding: 10px" id="aceptar_paso_1">ACEPTAR</button>
 
 <script>
 	// script que llena el select de las provincias con los valores del array de provincias

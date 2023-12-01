@@ -6,6 +6,24 @@
 		id="nombre_buscador"
 		placeholder="Buscar discos..."
 	/>
+	<details>
+		<summary>Filtros de busqueda</summary>
+		<div>
+			<label for="artista_buscador">Artista</label>
+			<input
+				type="text"
+				id="artista_buscador"
+				placeholder="Artista"
+			/>
+		</div>
+		<div>
+			<label for="max-price">Precio máximo:</label>
+			<div>
+				<span id="max-price-value">250</span> €
+				<input type="range" min="1" max="250" value="250" id="max-price">
+			</div>
+		</div>
+	</details>
 </form>
 <div>
 	Paginación: <br>

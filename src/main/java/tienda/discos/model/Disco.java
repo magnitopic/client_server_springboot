@@ -37,7 +37,7 @@ public class Disco {
 	private String ano;
 	@NotNull(message = "Debes insertar un precio")
 	@Min(value = 1, message = "el precio mínimo es un euro")
-	@Max(value = 999, message = "el precio maximo es 999€")
+	@Max(value = 250, message = "el precio maximo es 999€")
 	private Double precio;
 
 	private boolean alta = true;

@@ -38,7 +38,6 @@ function mostrar_discos() {
 		$("#contenedor").html(texto_html);
 
 		// indicar que hace el buscador
-
 		$("#contenedor").html(texto_html);
 		$("#nombre_buscador").val(nombre_a_buscar);
 		$("#nombre_buscador").focus();
@@ -48,7 +47,12 @@ function mostrar_discos() {
 			mostrar_discos();
 		});
 
-		//paginacion de los discos
+		// filtros del buscador
+		$("#max-price").on('input', function (e) {
+			$("#max-price-value").html($(this).val());
+		});
+
+		// paginación de los discos
 		$("#total_resultados").html(
 			(comienzo_resulatdos + 10 < totalDiscos
 				? comienzo_resulatdos + 10
@@ -70,7 +74,9 @@ function mostrar_discos() {
 			mostrar_discos();
 		});
 
+		//añadir al carrito
 		$(".enlace_comprar_listado_principal").click(addToCartDisk);
+		// ver detalles del disco
 		$(".card").on("click", function () {
 			if (!$(event.target).is('input[type="button"]')) {
 				let idProducto = $(this).attr("id-producto");
