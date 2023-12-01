@@ -58,7 +58,8 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			// registro de 20 discos de prueba para la paginación
 			
 			for (int i = 0; i < 20; i++) {
-				Disco d = new Disco("TestDisk" + i, "Artist", "RecordLabel", "1999", 20.99);
+				double rndPrecio = Math.random() * 100;
+				Disco d = new Disco("TestDisk" + i, "Artist", "RecordLabel", "1999", rndPrecio);
 				d.setAlta(true);
 				d.setGenero(rock);
 				entityManager.persist(d);
@@ -75,17 +76,17 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			d2.setAlta(true);
 			d2.setImagenPortada(copiarImagenBase("http://localhost:8080/imagenes_base/2.jpg"));
 			//copiarImagenBase(rutaReal, "/imagenes_base/2.jpg", "/subidas/2.jpg");
-			Disco d3 = new Disco("Tranquility Base Hotel and Casino", "The Arctic Monkeys", "Domino", "2018", 21.99);
+			Disco d3 = new Disco("Tranquility Base Hotel and Casino", "The Arctic Monkeys", "Domino", "2018",42.5);
 			d3.setGenero(rock);
 			d3.setAlta(true);
 			d3.setImagenPortada(copiarImagenBase("http://localhost:8080/imagenes_base/3.jpg"));
 			//copiarImagenBase(rutaReal, "/imagenes_base/3.jpg", "/subidas/3.jpg");
-			Disco d4 = new Disco("Blue Album", "Weezer", "DGC", "1994", 21.99);
+			Disco d4 = new Disco("Blue Album", "Weezer", "DGC", "1994", 13.25);
 			d4.setGenero(indie);
 			d4.setAlta(true);
 			d4.setImagenPortada(copiarImagenBase("http://localhost:8080/imagenes_base/4.jpg"));
 			//copiarImagenBase(rutaReal, "/imagenes_base/4.jpg", "/subidas/4.jpg");
-			Disco d5 = new Disco("Stadium Arcadium", "Red Hot Chili Peppers", "Warner", "2006", 21.99);
+			Disco d5 = new Disco("Stadium Arcadium", "Red Hot Chili Peppers", "Warner", "2006", 33.33);
 			d5.setGenero(rock);
 			d5.setAlta(true);
 			d5.setImagenPortada(copiarImagenBase("http://localhost:8080/imagenes_base/5.jpg"));

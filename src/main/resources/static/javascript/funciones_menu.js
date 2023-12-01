@@ -47,8 +47,6 @@ function mostrar_discos() {
 		$("#contenedor").html(texto_html);
 
 		// indicar que hace el buscador
-		if (flag == 0)
-			$("#nombre_buscador").focus();
 		$("#contenedor").html(texto_html);
 		$("#nombre_buscador").val(nombre_a_buscar);
 		$("#nombre_buscador").keyup(function (e) {
@@ -61,7 +59,7 @@ function mostrar_discos() {
 		// filtros del buscador
 
 		// filtrar por precio
-		if (flag == 1){
+		if (flag === 1){
 			$("#max-price").focus();
 			$('details').prop('open', true);
 		}
@@ -76,7 +74,7 @@ function mostrar_discos() {
 			mostrar_discos();
 		});
 		// filtrar por artista
-		if (flag == 2){
+		if (flag === 2){
 			$("#artistas").focus();
 			$('details').prop('open', true);
 		}
@@ -86,6 +84,11 @@ function mostrar_discos() {
 			flag = 2;
 			mostrar_discos();
 		});
+
+		if (flag === 0){
+			$("#nombre_buscador").focus();
+			console.log("cosas");
+		}
 		
 		// paginación de los discos
 		$("#total_resultados").html(
