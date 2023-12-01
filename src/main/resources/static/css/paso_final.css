@@ -1,0 +1,33 @@
+#productos_pedido {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+#productos-precio {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #00ff00;
+}
+
+.disk-info {
+	display: flex;
+	flex-direction: row;
+	flex-direction: column;
+	border-radius: 10px;
+	border: 1px solid #252525;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin: 20px;
+	padding: 20px;
+}
+.disk-info h3 {
+	margin: 0px;
+}
+
+.disk-bottom {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}

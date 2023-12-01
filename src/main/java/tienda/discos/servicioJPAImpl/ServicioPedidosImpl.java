@@ -70,7 +70,7 @@ public class ServicioPedidosImpl implements ServicioPedidos {
 	public void procesarPaso2(String titular, String numero, String tipoTarjeta, int idUsuario) {
 		Pedido p = obtenerPedidoActual(idUsuario);
 		p.setTitularTargeta(titular);
-		p.setNumeroTarjeta(tipoTarjeta);
+		p.setNumeroTarjeta(numero);
 		p.setTipoTarjeta(tipoTarjeta);
 		entityManager.merge(p);
 	}

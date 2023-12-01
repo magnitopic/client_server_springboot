@@ -1,47 +1,41 @@
-<div>REALIZAR PEDIDO - PASO 3</div>
-
-<div>resumen del pedido:</div>
-
-<br />
-
-<div>productos del pedido:</div>
-<div id="productos_pedido">
-	{{#discos}}
-	<div style="margin: 10px">
-		titulo: {{nombre}} <br />
-		<img height="60px" src="mostrar_imagen?id={{disco_id}}" /> <br />
-		cantidad: {{cantidad}} <br />
-		precio/unidad: {{precio_disco}}
+<div id="pasos_container">
+	<h1>REALIZAR PEDIDO - PASO 3</h1>
+	<h2>Resumen del pedido:</h2>
+	<h3>Productos del pedido:</h3>
+	<div id="productos_pedido">
+		{{#discos}}
+		<div class="disk-info">
+			<h3>{{nombre}}</h3>
+			<div class="disk-bottom">
+				<img height="60px" src="mostrar_imagen?id={{disco_id}}" />
+				<div>
+					Cantidad: {{cantidad}}<br />
+					<span id="productos-precio">{{precio_disco}} €</span>
+				</div>
+			</div>
+		</div>
+		{{/discos}}
 	</div>
-	{{/discos}}
-</div>
-
-<br />
-
-<div>datos de envio:</div>
-<div style="margin: 10px">
-	nombre completo: {{nombreCompleto}} <br />
-	direccion: {{direccion}} <br />
-	provincia: {{provincia}} <br />
-</div>
-
-<br />
-
-<div>datos de pago:</div>
-<div style="margin: 10px">
-	tipo tarjeta: {{tipoTarjeta}} <br />
-	titular tarjeta: {{titularTarjeta}} <br />
-	numero tarjeta: {{numeroTarjeta}} <br />
-</div>
-
-<div>Info adicional:</div>
-<div style="margin: 10px">
-	observaciones: {{observaciones}} <br />
-	Regalo?: {{regalo}} <br />
-</div>
-
-<div>
-	<button style="margin: 10px; padding: 10px" id="boton_confirmar_pedido">
-		CONFIRMAR PEDIDO
-	</button>
+	<h3>Datos de envío:</h3>
+	<div style="margin: 10px">
+		<p>Nombre completo: {{nombreCompleto}}</p>
+		<p>Dirección: {{direccion}}</p>
+		<p>Provincia: {{provincia}}</p>
+	</div>
+	<h3>Datos de pago:</h3>
+	<div style="margin: 10px">
+		<p>Tipo tarjeta: {{tipoTarjeta}}</p>
+		<p>Titular tarjeta: {{titularTarjeta}}</p>
+		<p>Numero tarjeta: {{numeroTarjera}}</p>
+	</div>
+	<h3>Info adicional:</h3>
+	<div style="margin: 10px">
+		<p>Observaciones: {{observaciones}}</p>
+		<p>Regalo?: {{regalo}}</p>
+	</div>
+	<div>
+		<button id="boton_confirmar_pedido" class="pasos-button">
+			Confirmar pedido
+		</button>
+	</div>
 </div>

@@ -31,6 +31,8 @@ let checkout_paso_dos = () =>{
 	let tipo_tarjeta = $("#tipo_tarjeta").find(":selected").val();
 	let numero_tarjeta = $("#numero_tarjeta").val();
 	let titular_tarjeta = $("#titular_tarjeta").val();
+	console.log(numero_tarjeta);
+	
 	if (validatePasoDos(tipo_tarjeta, numero_tarjeta, titular_tarjeta))
 		return;
 	$.post("servicioWebPedidos/paso2",{
