@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="ISO-8859-1" />
 		<title>Admin - Listado discos</title>
-		<link rel="stylesheet" href="../css/profile.css" />
+		<link rel="stylesheet" href="../css/admin/users.css" />
 	</head>
 	<body>
 		<div th:insert="fragments/general.html :: menu"></div>
@@ -12,32 +12,34 @@
 
 		<div th:each="usuario : ${usuarios}">
 			<div id="profile-main">
-				<div>
+				<div id="user-img">
 					<img
 						style="width: 10em; border-radius: 50%"
 						th:src="@{${ '../mostrar_imagen_user?id=' + usuario.id }}"
 					/>
 				</div>
 				<div id="profile-data">
-					<div id="profile-element">
-						<span th:text="#{admin.nombre}"></span>
-						<p th:text="${usuario.nombre}" id="userName" />
-					</div>
-					<div id="profile-element">
-						<span th:text="#{admin.pass}"></span>
-						<p th:text="${usuario.pass}" id="pass"></p>
-					</div>
-					<div id="profile-element">
-						<span>Telephone:</span>
-						<p th:text="${usuario.tel}" id="tel"></p>
-					</div>
-					<div id="profile-element">
-						<span>Country:</span>
-						<p th:text="${usuario.pais}" id="pais"></p>
-					</div>
-					<div id="profile-element">
-						<span th:text="#{admin.email}"></span>
-						<p th:text="${usuario.email}"></p>
+					<div id="profile-info">
+						<div id="profile-element">
+							<span th:text="#{admin.nombre}"></span>
+							<p th:text="${usuario.nombre}" id="userName" />
+						</div>
+						<div id="profile-element">
+							<span th:text="#{admin.pass}"></span>
+							<p th:text="${usuario.pass}" id="pass"></p>
+						</div>
+						<div id="profile-element">
+							<span th:text="#{admin.telefono}"></span>
+							<p th:text="${usuario.tel}" id="tel"></p>
+						</div>
+						<div id="profile-element">
+							<span th:text="#{admin.pais}"></span>
+							<p th:text="${usuario.pais}" id="pais"></p>
+						</div>
+						<div id="profile-element">
+							<span th:text="#{admin.email}"></span>
+							<p th:text="${usuario.email}"></p>
+						</div>
 					</div>
 					<a
 						th:href="@{${'editarUsuario?id='+ usuario.id}}"

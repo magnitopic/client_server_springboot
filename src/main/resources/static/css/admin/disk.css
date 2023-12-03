@@ -1,0 +1,42 @@
+#disk-container{
+	display: grid;
+	grid-template-areas:	'image data data data data data'
+							'image data data data data data'
+							'image links links links links links';
+	background-color: lightblue;
+	padding: 10px;
+	margin: 1em;
+	border-radius: 5px;
+	width: fit-content;
+	max-width: 1200px;
+}
+
+#disk-container img{
+	grid-area: image;
+}
+
+#disk-info{
+	grid-area: data;
+	display: flex;
+	padding: 1em;
+	justify-content: space-between;
+	gap: 1em;
+}
+#disk-info > div{
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+#disk-title{
+	flex: 1;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#disk-links{
+	grid-area: links;
+	display: flex;
+	gap: 3em;
+	padding: 0px 1em;
+}

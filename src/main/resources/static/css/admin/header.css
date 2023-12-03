@@ -1,0 +1,44 @@
+body {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto", sans-serif;
+}
+
+#menu-title {
+	width: 100%;
+	text-align: center;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+#menu-topContainer {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	width: 100%;
+	border-bottom: lightblue 2px solid;
+	border-top: lightblue 2px solid;
+	margin-bottom: 1em;
+	padding: 1em 0px;
+}
+
+#menu-language {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	padding: 0px 1em;
+}
+#menu-links {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+#menu-links a {
+	color: black;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+#menu-links a:hover {
+	color: lightblue;
+}
