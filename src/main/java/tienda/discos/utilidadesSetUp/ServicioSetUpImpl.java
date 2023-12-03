@@ -58,7 +58,7 @@ public class ServicioSetUpImpl implements ServicioSetUp {
 			// registro de 20 discos de prueba para la paginación
 			 Random random = new Random();
 			for (int i = 0; i < 20; i++) {
-				double rndPrecio = Math.round(((random.nextDouble()) * 65) + 5) / 100.0;
+				double rndPrecio = Math.round((5 + (60 - 5) * random.nextDouble()) * 100.0) / 100.0;
 				Disco d = new Disco("TestDisk" + i, "Artist", "RecordLabel", "1999", rndPrecio);
 				d.setAlta(true);
 				d.setGenero(rock);
