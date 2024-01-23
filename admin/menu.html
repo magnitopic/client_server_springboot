@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="menu.css">
+</head>
+<body>
+	<div th:fragment="menu">
+		<div>
+			<a href="../" th:text="#{admin.volverCliente}">Volver a Cliente</a>
+		</div>
+		<div>
+			<div id="menu-topContainer">
+				<div id="menu-title">
+					<div th:text="#{admin.tituloPrincipal}">
+						Titulo Principal
+					</div>
+				</div>
+				<div id="menu-language">
+					<span th:text="#{admin.cambiaridoma}"></span>
+					<a href="?idioma=es">🇪🇸</a>
+					<a href="?idioma=en">🇬🇧</a>
+				</div>
+			</div>
+			<div id="menu-links">
+				<a href="obtenerDiscos" th:text="#{admin.gestionarDiscos}">Gestionar Discos</a>
+				<a href="obtenerGeneros" th:text="#{admin.gestionarGeneros}">Gestionar Generos</a>
+				<a href="obtenerUsuarios"  th:text="#{admin.gestionarUsuarios}"> Gestionar Usuarios</a>
+				<a href="obtenerPedidos"  th:text="#{admin.gestionarPedidos}">Gestionar Pedidos</a>
+				<a href="../logoutAdmin"   th:text="#{admin.logout}">Logout</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
